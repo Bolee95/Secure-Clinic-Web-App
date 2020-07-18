@@ -14,6 +14,7 @@ Da li postoji u "New seed"? *NE POSTOJI* __Proveriti naknadno da li je mozda pot
 
 18.07.
 - Napraviti i popuniti tabelu sa svim pacijentima *BLOCKED* treba da se ispravi bug u react-data-grid
+- Posalji remote zapocet projekat *DONE*
 
 
 __IMPROVEMENTS__
