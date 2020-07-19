@@ -20,6 +20,12 @@ class AllPatientsComponent extends React.Component {
         axios({ method: 'GET', url: '/doctor/getPacient/all', headers: { 'Identity_name': 'admin'}})
         .then(response => {
           console.log(response)
+        //   for (const person in response) {
+        //       if (response.hasOwnProperty('name')) {
+        //           const element = response[person];
+                  
+        //       }
+        //   }
           window.alert("Succedd")
         }, error => {
           window.alert(error)
