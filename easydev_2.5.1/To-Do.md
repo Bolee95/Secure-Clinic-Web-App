@@ -19,3 +19,8 @@ Da li postoji u "New seed"? *NE POSTOJI* __Proveriti naknadno da li je mozda pot
 
 __IMPROVEMENTS__
 - Kako uhvatiti greske koje se vrate sa servera? Za sad nema dovoljno informacija
+
+
+20.07
+- Ubacena nova tabelica za koriscenje
+- Isproban redux store kako se koristi

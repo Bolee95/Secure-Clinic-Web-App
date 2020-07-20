@@ -1,85 +1,79 @@
 /* eslint-disable react/no-unused-state,react/no-unescaped-entities */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Card, CardBody, Col } from 'reactstrap';
-import DataPaginationTable from '../../../../shared/components/table/DataPaginationTable';
-import Pagination from '../../../../shared/components/pagination/Pagination';
-import { PatientsProps } from '../../../../shared/prop-types/TableProps';
-
-DataTable.propTypes = {
-  data: PropTypes.array.isRequired
-};
+//import DataPaginationTable from '../../../../shared/components/table/DataPaginationTable';
+//import Pagination from '../../../../shared/components/pagination/Pagination';
+import { ThemeProps } from '../../../../shared/prop-types/ReducerProps';
+import DataTable from 'react-data-table-component';
 
 class AllPatientsTable extends PureComponent {
   static propTypes = {
-    data: PatientsProps.isRequired
+    //data: PatientsProps.isRequired,
+    theme: ThemeProps.isRequired
   };
 
   constructor() {
     super();
-    this.heads = [
+
+    const headers = [
       {
-        key: 'first_name',
+        selector: 'first_name',
         name: 'First Name',
         sortable: true,
       },
       {
-        key: 'last_name',
+        selector: 'last_name',
         name: 'Last Name',
         sortable: true,
       },
       {
-        key: 'lbo',
+        selector: 'lbo',
         name: 'LBO Number',
         sortable: true,
       },
       {
-        key: 'JMBG',
+        selector: 'JMBG',
         name: 'JMBG Number',
         sortable: true,
       },
       {
-        key: 'hospital_name',
+        selector: 'hospital_name',
         name: 'Hospital Name',
         sortable: true,
       },
       {
-        key: 'hospital_code',
+        selector: 'hospital_code',
         name: 'Hospital Code',
         sortable: true,
       },
       {
-        key: 'waiting_status',
+        selector: 'waiting_status',
         name: 'Waiting Status',
         sortable: true,
       },
       {
-        key: 'city',
+        selector: 'city',
         name: 'City',
         sortable: true,
       },
       {
-        key: 'waiting_list_code',
+        selector: 'waiting_list_code',
         name: 'Waiting List Code',
         sortable: true
       }
     ];
 
-    const initialPageNumber = 1;
-    const initialRowsCount = 10;
-
-    const minRows = 20;
-    const maxRows = 41;
-    const rowsCount = Math.random() * (maxRows - minRows);
-
-    const originalRows = this.createRows(rowsCount + minRows);
-    const currentPageRows = this.filterRows(originalRows, initialPageNumber, initialRowsCount);
+    const data = [ {first_name: 'Bogdan', last_name: 'ilic', lbo: '01234'}, { first_name: 'Darko', last_name: 'Ilic', lbo: '23454' }]
 
     this.state = {
-      rows: originalRows,
-      rowsToShow: currentPageRows,
-      pageOfItems: initialPageNumber,
-      itemsToShow: initialRowsCount,
+      data: data,
+      headers: headers //,
+      //rowsToShow: currentPageRows,
+      //pageOfItems: initialPageNumber,
+      //itemsToShow: initialRowsCount,
     };
   }
 
@@ -139,11 +133,17 @@ class AllPatientsTable extends PureComponent {
   };
 
   render() {
-    const {
-      rows, itemsToShow, pageOfItems, rowsToShow,
-    } = this.state;
+    const { headers, data } = this.state;
+    const { theme } = this.props;
 
     return (
+      
+      <DataTable pagination={true} 
+                 theme={ theme.className === 'theme-light' ? 'light' : 'dark'}
+                 title="Test"
+                 columns={headers}
+                 data={data}/>
+      /*}
       <Col md={12} lg={12}>
         <Card>
           <CardBody>
@@ -165,9 +165,11 @@ class AllPatientsTable extends PureComponent {
           </CardBody>
         </Card>
       </Col>
+    */
     );
   }
 }
 
-
-export default AllPatientsTable;
+export default withRouter(connect(state => ({
+  theme: state.theme,
+}))(AllPatientsTable));

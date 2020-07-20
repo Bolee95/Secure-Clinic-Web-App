@@ -16,7 +16,7 @@ class AllPatientsComponent extends React.Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         axios({ method: 'GET', url: '/doctor/getPacient/all', headers: { 'Identity_name': 'admin'}})
         .then(response => {
           console.log(response)
@@ -26,9 +26,9 @@ class AllPatientsComponent extends React.Component {
                   
         //       }
         //   }
-          window.alert("Succedd")
+        //  window.alert("Succedd")
         }, error => {
-          window.alert(error)
+        //  window.alert(error)
           
         })
       }
