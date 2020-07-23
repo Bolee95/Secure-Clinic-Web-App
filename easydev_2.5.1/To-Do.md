@@ -16,11 +16,14 @@ Da li postoji u "New seed"? *NE POSTOJI* __Proveriti naknadno da li je mozda pot
 - Napraviti i popuniti tabelu sa svim pacijentima *BLOCKED* treba da se ispravi bug u react-data-grid
 - Posalji remote zapocet projekat *DONE*
 
-
 __IMPROVEMENTS__
 - Kako uhvatiti greske koje se vrate sa servera? Za sad nema dovoljno informacija
-
 
 20.07
 - Ubacena nova tabelica za koriscenje
 - Isproban redux store kako se koristi
+
+23.07
+- Parsisan response sa servera za sve pacijente
+- Omogucen prikaz tabele sa podacima za pacijente
+- Provaljeno kako se koristi Loading komponenta
