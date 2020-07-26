@@ -31,6 +31,10 @@ class SidebarContent extends Component {
           </SidebarCategory>
         </ul>
         <ul className="sidebar__block">
+          <SidebarCategory title="Admin" icon="diamond">
+            <SidebarLink title="Create User" route="/pages/createUser" onClick={this.hideSidebar} />
+            <SidebarLink title="Delete User" route="/pages/deleteUser" onClick={this.hideSidebar} />
+          </SidebarCategory>
           <SidebarCategory title="Patient" icon="diamond">
             <SidebarLink title="Create Patient" route="/pages/createPatient" onClick={this.hideSidebar} />
             <SidebarLink title="All Patients" route="/pages/allPatients" onClick={this.hideSidebar} />

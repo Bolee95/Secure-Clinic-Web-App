@@ -27,3 +27,6 @@ __IMPROVEMENTS__
 - Parsisan response sa servera za sve pacijente
 - Omogucen prikaz tabele sa podacima za pacijente
 - Provaljeno kako se koristi Loading komponenta
+
+26.07
+- Dodate metode za Admin usera
