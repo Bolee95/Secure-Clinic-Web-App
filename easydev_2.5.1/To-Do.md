@@ -30,3 +30,14 @@ __IMPROVEMENTS__
 
 26.07
 - Dodate metode za Admin usera
+
+-------------------------------------------
+KAIZEN -- Small improvements every day 
+11.08.
+- Dodati ostatak logike za:
+-- Doktora
+-- Pacijenta
+
+- Prilikom logovanja na sistem, sacuvati podatke o ulogovanom korisniku, zavisno koji je tip korisnika
+(Logovanje promeniti da sadrzi samo polje za unos username-a (ID-a))
+- Dodati chaincode metodu za pribavljanje svih pacijenata za odredjenu bolnicu ( ako je moguce, ako ne, odraditi improvizaciju)
