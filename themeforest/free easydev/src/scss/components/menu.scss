@@ -1,0 +1,51 @@
+.menu {
+  position: absolute;
+  width: 100%;
+
+  .menu__wrap {
+    width: 100%;
+    display: flex;
+    padding-top: 62px;
+  }
+
+  .menu__logo {
+    height: 42px;
+  }
+
+  .menu__nav {
+    margin-left: auto;
+
+    .menu__nav-item {
+      position: relative;
+      background: transparent;
+      border: none;
+      color: $color-accent;
+      padding: 0;
+      margin-right: 60px;
+      font-size: 14px;
+      transition: 0.3s;
+      cursor: pointer;
+      display: none;
+      font-family: 'Poppins', sans-serif;
+
+      &:hover {
+        color: darken($color-accent, 15%);
+      }
+
+      @media screen and (min-width: 992px) {
+        display: inline-block;
+      }
+    }
+  }
+
+  .menu__nav-new {
+    position: absolute;
+    background: #f06a8e;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    right: -6px;
+    display: block;
+    top: -3px;
+  }
+}

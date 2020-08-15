@@ -1,6 +1,6 @@
 {
-  "name": "easydev-seed",
-  "version": "2.5.0",
+  "name": "SecureClinic",
+  "version": "1.0.0",
   "proxy": "http://localhost:3001",
   "private": true,
   "scripts": {
@@ -32,6 +32,7 @@
     "redux": "^4.0.5",
     "redux-form": "^8.3.6",
     "smooth-scrollbar": "^8.5.2",
+    "store": "^2.0.12",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {

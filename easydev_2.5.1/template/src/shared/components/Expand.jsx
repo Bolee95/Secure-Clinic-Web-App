@@ -43,6 +43,7 @@ export default class Expand extends PureComponent {
       icon: true,
       expand: true,
       'expand--load': load,
+      'account__btn': true
     });
 
     return (

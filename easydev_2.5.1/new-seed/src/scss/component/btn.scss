@@ -333,10 +333,10 @@
   }
 
   &.expand {
-
     svg {
       width: 0;
-      transition: all 0.3s;
+      transition: all 0.2s;
+      margin-left: 42%;
     }
 
     &.expand--load {
@@ -351,9 +351,10 @@
       }
       svg {
         width: 14px;
-        animation: rotating 2s linear infinite;
+        animation: rotating 1s linear infinite;
       }
     }
+
   }
 }
 
