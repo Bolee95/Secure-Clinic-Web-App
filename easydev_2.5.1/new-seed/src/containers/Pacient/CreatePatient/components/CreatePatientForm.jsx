@@ -3,36 +3,33 @@ import {
   Card, CardBody, Col, Button, ButtonToolbar,
 } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import EyeIcon from 'mdi-react/EyeIcon';
-import EmailIcon from 'mdi-react/EmailIcon';
-import AccountSearchIcon from 'mdi-react/AccountSearchIcon';
-//import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import renderFileInputField from '../../../../shared/components/form/FileInput';
+import renderSelectField from '../../../../shared/components/form/Select';
+import ExpandButton from '../../../../shared/components/Buttons/ExpandButton';
 
 class CreatePatientForm extends PureComponent {
   static propTypes = {
-    t: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
   };
 
   constructor() {
     super();
+
+    const cities = [
+      { value: 'Beograd', label: 'Beograd' },
+      { value: 'Nis', label: 'Nis' }
+    ]
+
     this.state = {
-      showPassword: false,
-    };
+      cities: cities
+    }
   }
 
-  showPassword = (e) => {
-    e.preventDefault();
-    this.setState(prevState => ({ showPassword: !prevState.showPassword }));
-  };
-
-
   render() {
-    const { handleSubmit, reset } = this.props;
-    const { showPassword } = this.state;
+    const { handleSubmit, reset, isLoading } = this.props;
+    const { cities } = this.state;
 
     return (
       <Col md={12} lg={12}>
@@ -40,7 +37,6 @@ class CreatePatientForm extends PureComponent {
           <CardBody>
             <div className="card__title">
               <h4 className="page-title" >New Pacient Formulae</h4>
-              {/*<h5 className="bold-text">{t('forms.basic_form.vertical_form')}</h5>*/}
               <h1 className="subhead">Please, insert mandatory user data for creating new one inside system</h1>
             </div>
             <form className="form" onSubmit={handleSubmit}>
@@ -67,10 +63,21 @@ class CreatePatientForm extends PureComponent {
                 </div>
               </div>
               <div className="form__form-group">
+                <span className="form__form-group-label">City</span>
+                <div className="form__form-group-field">
+                  <Field
+                    name="city"
+                    component={renderSelectField}
+                    options={cities}
+                    placeholder={"Select city"}
+                  />
+                </div>
+              </div>
+              <div className="form__form-group">
                 <span className="form__form-group-label">JMBG number</span>
                 <div className="form__form-group-field">
                   <Field
-                    name="jbmg"
+                    name="jmbg"
                     component="input"
                     type="number"
                     placeholder="0123456789"
@@ -172,7 +179,8 @@ class CreatePatientForm extends PureComponent {
               </div>
     */}
               <ButtonToolbar className="form__button-toolbar">
-                <Button color="primary" type="submit">Submit</Button>
+                {/* <Button color="primary" type="submit">Submit</Button> */}
+                <ExpandButton title="Submit" load={isLoading} ></ExpandButton>
                 <Button type="button" onClick={reset}>
                   Cancel
                 </Button>

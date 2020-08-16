@@ -9,14 +9,12 @@ class CreateUserForm extends PureComponent {
   static propTypes = {
     t: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
   };
 
   constructor() {
     super();
-    this.state = {
-      showPassword: false,
-    };
   }
 
   render() {

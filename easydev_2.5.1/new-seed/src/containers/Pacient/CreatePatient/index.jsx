@@ -10,20 +10,21 @@ class CreatePatientComponent extends React.Component {
     super();
 
     this.state = { 
-      loadingStarted : false
+      isLoading : false
     };
 
     this.processFormData = this.processFormData.bind(this);
   }
 
   processFormData(data) {
-    this.setState({ loadingStarted: true });
+    this.setState({ isLoading: true });
 
     var bodyFormData = new FormData();
-    bodyFormData.set('Name', data['name']);
-    bodyFormData.set('Surname', data['surname']);
+    bodyFormData.set('name', data['name']);
+    bodyFormData.set('surname', data['surname']);
     bodyFormData.set('jmbg', data['jmbg']);
     bodyFormData.set('lbo', data['lbo']);
+    bodyFormData.set('city', data['city'].value);
 
     axios({ method: 'POST', url: '/doctor/addPacient', data: bodyFormData, headers: { 'Identity_name': 'admin' }})
     .then(response => {
@@ -43,14 +44,9 @@ class CreatePatientComponent extends React.Component {
 
     const { isLoading } = this.state;
 
-    if (isLoading) {
-      return <Loading loading={isLoading}/>
-    }
-
-
     return (
       <Container className="dashboard">
-        <CreatePatientForm onSubmit={this.processFormData}></CreatePatientForm>
+        <CreatePatientForm onSubmit={this.processFormData} isLoading={isLoading}></CreatePatientForm>
       </Container>
     )
   };

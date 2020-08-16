@@ -38,7 +38,8 @@ class LogInComponent extends React.Component {
         this.props.history.push("/pages");
       
         var store = require('store');
-        store.set('user', { userId: userId, role: 'doctor' });
+        // Hardcoded for now, should be fixed when holding of system user data i saved 
+        store.set('user', { userId: userId, role: 'doctor', hospitalCode: 'AD' });
         store.set('loggedIn', true);
       }
     }, error => {

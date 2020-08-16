@@ -7,7 +7,7 @@ import { Card, CardBody, Col } from 'reactstrap';
 import { ThemeProps } from '../../../../shared/prop-types/ReducerProps';
 import DataTable from 'react-data-table-component';
 
-class AllPatientsTable extends PureComponent {
+class AllPendingsForHospitalTable extends PureComponent {
   static propTypes = {
     data: array.isRequired,
     theme: ThemeProps.isRequired
@@ -16,58 +16,50 @@ class AllPatientsTable extends PureComponent {
   constructor() {
     super();
 
+    this.onRowClick = this.onRowClick.bind(this);
     const headers = [
       {
-        selector: 'first_name',
-        name: 'First Name',
+        selector: 'index',
+        name: 'Index',
         sortable: true,
       },
       {
-        selector: 'last_name',
-        name: 'Last Name',
+        selector: 'pacientLbo',
+        name: 'Pacient LBO',
         sortable: true,
       },
       {
-        selector: 'lbo',
-        name: 'LBO Number',
+        selector: 'pacientJmbg',
+        name: 'Pacient JMBG',
         sortable: true,
       },
       {
-        selector: 'JMBG',
-        name: 'JMBG Number',
-        sortable: true,
-      },
-      {
-        selector: 'hospital_name',
-        name: 'Hospital Name',
-        sortable: true,
-      },
-      {
-        selector: 'hospital_code',
+        selector: 'hospitalCode',
         name: 'Hospital Code',
         sortable: true,
       },
+     
       {
-        selector: 'waiting_status',
-        name: 'Waiting Status',
+        selector: 'serviceCode',
+        name: 'Service Code',
         sortable: true,
       },
       {
-        selector: 'city',
-        name: 'City',
+        selector: 'ordinationCode',
+        name: 'Ordination Code',
         sortable: true,
       },
-      {
-        selector: 'waiting_list_code',
-        name: 'Waiting List Code',
-        sortable: true
-      }
+     
     ];
 
     this.state = {
       data: [],
       headers: headers
     };
+  }
+
+  onRowClick(row) {
+    window.alert(row.pacientLbo);
   }
 
 
@@ -80,14 +72,15 @@ class AllPatientsTable extends PureComponent {
       <Card>
         <CardBody>
           <div className="card__title">
-            <h5 className="bold-text">All patients in system</h5>
-            <h5 className="subhead">List of all patients for all hospitals registered</h5>
+            <h5 className="bold-text">All pendings in system</h5>
+            <h5 className="subhead">List of all pendings for all hospitals registered</h5>
           </div>
       <DataTable pagination={true} 
                  theme={ theme.className === 'theme-light' ? 'light' : 'dark'}
                  noHeader={true}
                  columns={headers}
-                 data={data}/>
+                 data={data}
+                 onRowClicked={this.onRowClick}/>
         </CardBody>
        </Card>
       </Col>
@@ -97,4 +90,4 @@ class AllPatientsTable extends PureComponent {
 
 export default withRouter(connect(state => ({
   theme: state.theme,
-}))(AllPatientsTable));
+}))(AllPendingsForHospitalTable));

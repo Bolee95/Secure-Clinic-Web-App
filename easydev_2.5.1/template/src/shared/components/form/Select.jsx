@@ -52,14 +52,16 @@ class SelectField extends PureComponent {
 
 const renderSelectField = (props) => {
   const {
-    input, meta, options, placeholder, className,
+    input, meta, options, placeholder, className, onChange
   } = props;
+  window.alert(className);
   return (
     <div className={`form__form-group-input-wrap ${className}`}>
       <SelectField
         {...input}
         options={options}
         placeholder={placeholder}
+        onChange={onChange}
       />
       {meta.touched && meta.error && <span className="form__form-group-error">{meta.error}</span>}
     </div>

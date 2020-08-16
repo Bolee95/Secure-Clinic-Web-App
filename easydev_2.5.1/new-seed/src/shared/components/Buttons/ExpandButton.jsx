@@ -16,7 +16,7 @@ export default class ExpandButton extends PureComponent {
   static defaultProps = {
     title: '',
     outline: false,
-    color: 'btn btn-primary account__btn',
+    color: 'btn btn-primary'
   };
 
   constructor() {
@@ -24,11 +24,11 @@ export default class ExpandButton extends PureComponent {
   }
 
   render() {
-    const { color, outline, title, load, onSubmit } = this.props;
+    const { color, outline, title, load, fullExpand, onSubmit } = this.props;
     const expandClass = classNames({
       icon: load,
       expand: true,
-      'expand--load': load
+      'expand--load': load,
     });
 
     return (

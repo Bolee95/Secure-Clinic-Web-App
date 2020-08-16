@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form';
 import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ExpandButton from '../../../shared/components/Buttons/ExpandButton';
 
 // Klasa koja se dodaje u UI kroz index 
 class LogInForm extends PureComponent {
@@ -86,7 +85,7 @@ class LogInForm extends PureComponent {
         </div>
          */}
         {/* Komponente koje funkcionisu slicno kao href */}
-        <ExpandButton  type="submit" title="Log In" load={isLoading}></ExpandButton>
+        <button className="btn btn-primary account__btn account__btn--small" type="submit">Log In</button>
         <Link className="btn btn-outline-primary account__btn account__btn--small" to="/pages/">Hijack login</Link>
       </form>
     );

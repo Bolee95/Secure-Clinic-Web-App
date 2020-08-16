@@ -38,6 +38,11 @@ class SidebarContent extends Component {
           <SidebarCategory title="Patient" icon="diamond">
             <SidebarLink title="Create Patient" route="/pages/createPatient" onClick={this.hideSidebar} />
             <SidebarLink title="All Patients" route="/pages/allPatients" onClick={this.hideSidebar} />
+            <SidebarLink title="All Patients For Hospital" route="/pages/allPatientsForHospital" onClick={this.hideSidebar} />
+            <SidebarLink title="Add New Pending" route="/pages/addNewPending" onClick={this.hideSidebar} />
+            <SidebarLink title="All Pendings" route="/pages/allPendings" onClick={this.hideSidebar} />
+            <SidebarLink title="All Pendings For Hospital" route="/pages/allPendingsForHospital" onClick={this.hideSidebar} />
+            <SidebarLink title="Set Pacient Waiting Status" route="/pages/setPacientWaitingStatus" onClick={this.hideSidebar} />
           </SidebarCategory>
           <SidebarCategory title="Example" icon="diamond">
             <SidebarLink title="Page two" route="/pages/two" onClick={this.hideSidebar} />

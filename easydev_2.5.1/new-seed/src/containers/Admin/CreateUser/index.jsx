@@ -17,7 +17,8 @@ class CreateUserComponent extends React.Component {
   }
 
   processFormData(data) {
-    this.setState({ loadingStarted: true });
+    
+    this.setState({ isLoading: true });
 
     var bodyFormData = new FormData();
     bodyFormData.set('userName', data['username']);

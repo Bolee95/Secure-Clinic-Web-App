@@ -8,13 +8,23 @@ import CreatePacientForm from '../Pacient/CreatePatient/index';
 import ExamplePageTwo from '../ExampleTwo/index';
 import ExamplePageThree from '../ExampleThree/index';
 import AllPatientsComponent from '../Pacient/AllPatients/index';
+import AllPatientsForHospitalComponent from '../Pacient/AllPatientsForHospital/index';
+import NewPendingComponent from '../Pacient/AddToPending/index';
+import AllPendingsComponent from '../Pacient/AllPendings/index';
 import CreateUserForm from '../Admin/CreateUser/index';
 import DeleteUserForm from '../Admin/DeleteUser/index';
+import AllPendingsForHospitalComponent from '../Pacient/AllPendingsForHospital';
+import PacientWaitingStatusComponent from '../Pacient/SetPacientWaitingStatus';
 
 const Pages = () => (
   <Switch>
     <Route path="/pages/createPatient" component={CreatePacientForm} />
     <Route path="/pages/allPatients" component={AllPatientsComponent}/>
+    <Route path="/pages/allPatientsForHospital" component={AllPatientsForHospitalComponent}/>
+    <Route path="/pages/addNewPending" component={NewPendingComponent}/>
+    <Route path="/pages/allPendings" component={AllPendingsComponent}/>
+    <Route path="/pages/allPendingsForHospital" component={AllPendingsForHospitalComponent}/>
+    <Route path="/pages/setPacientWaitingStatus" component={PacientWaitingStatusComponent}/>
     <Route path="/pages/createUser" component={CreateUserForm}/>
     <Route path="/pages/deleteUser" component={DeleteUserForm}/>
     <Route path="/pages/two" component={ExamplePageTwo} />

@@ -3,10 +3,8 @@ import { Container } from 'reactstrap';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllPatientsTable from './components/AllPatientsTable';
-import { PatientProps } from './../../../shared/prop-types/TableProps';
-import { array } from 'prop-types';
 
-class AllPatientsComponent extends React.Component {
+class AllPatientsForHospitalComponent extends React.Component {
 
     constructor() {
         super();
@@ -18,8 +16,12 @@ class AllPatientsComponent extends React.Component {
     }
 
     componentDidMount() {
+        
+        var store = require('store');
+        const hospitalCode = store.get('user').hospitalCode;
+
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/doctor/getPacient/all', headers: { 'Identity_name': 'admin' }})
+        axios({ method: 'GET', url: '/doctor/getPacient/allForHospital', headers: { 'Identity_name': 'admin' }, params: { 'hospitalCode': hospitalCode }})
         .then(response => {
             let newPatients = []
             for (let index = 0; index < response.data.length; index++) {
@@ -63,4 +65,4 @@ class AllPatientsComponent extends React.Component {
     };
 }
 
-export default AllPatientsComponent;
+export default AllPatientsForHospitalComponent;
