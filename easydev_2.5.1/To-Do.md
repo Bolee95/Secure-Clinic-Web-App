@@ -1,4 +1,4 @@
-##TO-DO##
+##TO-DO Web App ##
 16.07.
 
 - Loading komponenta *DONE* 
@@ -35,9 +35,22 @@ __IMPROVEMENTS__
 KAIZEN -- Small improvements every day 
 11.08.
 - Dodati ostatak logike za:
--- Doktora
+-- Doktora *DONE*
 -- Pacijenta
 
 - Prilikom logovanja na sistem, sacuvati podatke o ulogovanom korisniku, zavisno koji je tip korisnika
 (Logovanje promeniti da sadrzi samo polje za unos username-a (ID-a))
-- Dodati chaincode metodu za pribavljanje svih pacijenata za odredjenu bolnicu ( ako je moguce, ako ne, odraditi improvizaciju)
+- Dodati chaincode metodu za pribavljanje svih pacijenata za odredjenu bolnicu ( ako je moguce, ako ne, odraditi improvizaciju) *DONE*
+
+15.08.
+- Login forma refaktorisana
+- Dodat lokal storage za podatke (lib 'storage')
+
+16-17.08
+- Dodate stranice za pending
+- Dodato loading dugme
+- Dodata metoda za promenu waiting statusa korisnika
+
+18.08
+
+- Will seee...

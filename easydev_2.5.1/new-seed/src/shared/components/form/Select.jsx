@@ -45,7 +45,7 @@ class SelectField extends PureComponent {
         className="react-select"
         placeholder={placeholder}
         classNamePrefix="react-select"
-      />
+        />
     );
   }
 }

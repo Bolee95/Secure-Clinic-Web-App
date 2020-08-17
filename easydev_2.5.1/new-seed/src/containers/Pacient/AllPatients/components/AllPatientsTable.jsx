@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Card, CardBody, Col } from 'reactstrap';
 import { ThemeProps } from '../../../../shared/prop-types/ReducerProps';
 import DataTable from 'react-data-table-component';
+import { Button, ButtonToolbar } from 'reactstrap';
 
 class AllPatientsTable extends PureComponent {
   static propTypes = {

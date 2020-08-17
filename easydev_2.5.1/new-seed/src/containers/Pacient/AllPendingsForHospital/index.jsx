@@ -13,10 +13,15 @@ class AllPendingsForHospitalComponent extends React.Component {
             loading: false,
             pendings: []
         };
+
+        this.approveTapped = this.approveTapped.bind(this);
     }
 
     componentDidMount() {
+        this.getPatients();
+    }
 
+    getPatients() {
         var store = require('store');
         const hospitalCode = store.get('user').hospitalCode;
 
@@ -45,7 +50,28 @@ class AllPendingsForHospitalComponent extends React.Component {
         }, error => {
            window.alert(error)    
         })
-      }
+    }
+
+    approveTapped(rowData) {
+
+        const storage = require('store');
+        const licenceId = storage.get('user').userId;
+
+        var bodyFormData = new FormData();
+        bodyFormData.set('licenceId', licenceId);
+        bodyFormData.set('pacientLbo', rowData.pacientLbo);
+        bodyFormData.set('serviceCode', rowData.serviceCode);
+        bodyFormData.set('hospitalCode', rowData.hospitalCode);
+        bodyFormData.set('ordinationCode', rowData.ordinationCode);
+
+        axios({ method: 'POST', url: '/shared/approvePending', data: bodyFormData, headers: { 'Identity_name': 'doctor' } })
+        .then(response => {
+            window.alert('succedd');
+            this.getPatients();
+        }, error => {
+            window.alert('error');
+        })
+    }
 
     render() {
         const { pendings, loading } = this.state;
@@ -57,7 +83,7 @@ class AllPendingsForHospitalComponent extends React.Component {
 
         return (    
             <Container className="dashboard">
-                <AllPendingsForHospitalTable data={pendings}/>
+                <AllPendingsForHospitalTable data={pendings} onApprove={this.approveTapped}/>
             </Container>
         )
     };
