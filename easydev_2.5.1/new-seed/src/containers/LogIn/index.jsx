@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogInForm from './components/LogInForm';
+import Loading from '../../shared/components/Loading';
 import axios from 'axios';
 
 class LogInComponent extends React.Component {
@@ -34,25 +35,48 @@ class LogInComponent extends React.Component {
     .then(response => {
       let isValid = response['data'];
       if (isValid) {
-        console.log(isValid);
-        this.props.history.push("/pages");
-      
-        var store = require('store');
-        // Hardcoded for now, should be fixed when holding of system user data i saved 
-        store.set('user', { userId: userId, role: 'doctor', hospitalCode: 'AD' });
-        store.set('loggedIn', true);
+        this.retrieveUserData(userId);
       }
     }, error => {
       window.alert(error);
       console.log(error);
-    }).then(() => {
       this.setState({ isLoading: false });
-    });
+    })
+  }
+
+  retrieveUserData(licenceId) {
+    axios({ method: 'GET', url: '/shared/getEntity', params: { licenceId: licenceId }, headers: { 'Identity_name': 'doctor' }})
+    .then(response => {
+
+      let entityData = response.data;
+      var store = require('store');
+
+      store.set('user', { licenceId: entityData.licenceId,
+                          name: entityData.name,
+                          surname: entityData.surname,
+                          role: entityData.role,
+                          hospitalName: entityData.hospitalName,
+                          hospitalCode: entityData.hospitalCode
+      })
+      store.set('loggedIn', true);
+
+      this.props.history.push("/pages");
+    }, error => {
+      window.alert(error);
+      console.log(error);
+    })
+    .then(() => {
+      this.setState({ isLoading: false });
+    })
   }
   
   render() {
 
     const { isLoading } = this.state;
+
+    if (isLoading) {
+      return (<Loading loading={isLoading} />);
+    }
 
     return (
       <div className="account">

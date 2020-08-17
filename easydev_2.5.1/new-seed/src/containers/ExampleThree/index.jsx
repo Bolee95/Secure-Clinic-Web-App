@@ -6,6 +6,7 @@ import ShowResults from '../Show';
 import Loading from '../../shared/components/Loading';
 import Notification from '../../shared/components/Notification/BasicNotifications';
 import { BasicNotification } from '../../shared/components/Notification/Notification';
+import NotificationsTest from '../../shared/components/FullWidthNotification';
 
 let notificationLU = null;
 let notificationRU = null;
