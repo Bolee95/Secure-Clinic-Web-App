@@ -51,6 +51,9 @@ KAIZEN -- Small improvements every day
 - Dodato loading dugme
 - Dodata metoda za promenu waiting statusa korisnika
 
-18.08
+- Dodat i integrisan "Entity" ugovor
 
-- Will seee...
+18.08
+- Proveriti kako je moguce integrisati "FullWidth" notifikaciju u projekat
+- Prosiriti "Pending" ugovor sa dodatnim informacijama *DONE*
+- Omoguciti login i za obicnog korisnika, odnosno izmeniti trenutnu logiku
