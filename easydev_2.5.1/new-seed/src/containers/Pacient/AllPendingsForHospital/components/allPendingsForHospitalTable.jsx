@@ -28,29 +28,28 @@ class AllPendingsForHospitalTable extends PureComponent {
         sortable: true,
       },
       {
+        selector: 'pacientScreenName',
+        name: 'Pacient',
+        sortable: true,
+      },
+      {
         selector: 'pacientLbo',
         name: 'Pacient LBO',
         sortable: true,
       },
       {
-        selector: 'pacientJmbg',
-        name: 'Pacient JMBG',
+        selector: 'hospitalName',
+        name: 'Hospital Name',
         sortable: true,
       },
       {
-        selector: 'hospitalCode',
-        name: 'Hospital Code',
-        sortable: true,
-      },
-     
-      {
-        selector: 'serviceCode',
-        name: 'Service Code',
+        selector: 'ordinationName',
+        name: 'Ordination Name',
         sortable: true,
       },
       {
-        selector: 'ordinationCode',
-        name: 'Ordination Code',
+        selector: 'serviceName',
+        name: 'Service Name',
         sortable: true,
       },
       {

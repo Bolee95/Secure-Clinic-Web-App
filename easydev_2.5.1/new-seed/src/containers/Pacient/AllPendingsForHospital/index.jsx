@@ -38,7 +38,10 @@ class AllPendingsForHospitalComponent extends React.Component {
                     'pacientLbo': arrayItem.pacientLbo,
                     'serviceCode': arrayItem.serviceCode,
                     'pacientJmbg': arrayItem.pacientJmbg,
-                   
+                    'pacientScreenName': arrayItem.pacientScreenName,
+                    'hospitalName': arrayItem.hospitalName,
+                    'ordinationName': arrayItem.ordinationName,
+                    'serviceName': arrayItem.serviceName
                 }
                 pendings.push(pending);
             }
