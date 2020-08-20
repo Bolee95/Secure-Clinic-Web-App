@@ -120,7 +120,6 @@ class NewPendingComponent extends React.Component {
     this.setState({ formSubmited: true });
 
     const selectedPatient = this.state.patients.find(patient => patient.lbo == data['patient'].value);
-    const selectedHospital = this.state.hospitals.find(hospital => hospital.hospitalCode == data['hospitalCode'].value);
 
     var bodyFormData = new FormData();
     bodyFormData.set('pacientLbo', data['patient'].value);

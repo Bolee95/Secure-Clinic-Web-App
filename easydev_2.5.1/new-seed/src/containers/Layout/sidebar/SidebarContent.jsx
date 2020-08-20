@@ -48,6 +48,9 @@ class SidebarContent extends Component {
             <SidebarLink title="Page two" route="/pages/two" onClick={this.hideSidebar} />
             <SidebarLink title="Page three" route= "/pages/three" onClick={this.hideSidebar} />
           </SidebarCategory>
+          <SidebarCategory title="Shared" icon="diamond">
+            <SidebarLink title="All Waiting Lists For Hospital" route="/pages/allWaitingListsForHospital" onClick={this.hideSidebar} />
+          </SidebarCategory>
         </ul>
       </div>
     );

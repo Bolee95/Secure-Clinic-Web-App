@@ -41,7 +41,7 @@ class CreatePatientForm extends PureComponent {
             </div>
             <form className="form" onSubmit={handleSubmit}>
               <div className="form__form-group">
-                <span clform__form-group-descriptionform__form-group-descriptionassName="form__form-group-label">Name</span>
+                <span className="form__form-group-label">Name</span>
                 <div className="form__form-group-field">
                   <Field
                     name="name"

@@ -57,3 +57,19 @@ KAIZEN -- Small improvements every day
 - Proveriti kako je moguce integrisati "FullWidth" notifikaciju u projekat
 - Prosiriti "Pending" ugovor sa dodatnim informacijama *DONE*
 - Omoguciti login i za obicnog korisnika, odnosno izmeniti trenutnu logiku
+
+19.08
+- Pokusano dodavanje korisnika na WaitingListu, radi kako treba :) 
+- Oradjen refaktoring koda koji se automatski poziva
+
+20.08.
+- Dodata komponenta koja izlistava pacijente na izabranoj listi
+
+-------------------------------------------------------------------------
+Moguca unapredjenja:
+-- Waiting List
+- Prosiriti WaitingList instance sa sto vise podataka, kao sto su ime i prezime korisnika, naziv bolnice, ordinacije i servisa. Po potrebi kasnije prikazivati potrebne podatke zavisno ko od korisnika ih gleda
+- Naci nacin da se omoguci "Dark mode" u komponenti koja prikazuje sve pacijente za Waiting list (Mozda razdvojiti tabelu i komponentu koja drzi istu trenutno na dve zasebne komponente (?))
+
+-- Pending
+- Iskoristiti dodatno filtriranje Pending-a na osnovu novododatog flega
