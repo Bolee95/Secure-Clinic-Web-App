@@ -13,6 +13,8 @@ class AllWaitingListsForHospital extends React.Component {
             loading: false,
             waitingLists: [],
         };
+
+        this.returnFormatedDate = this.returnFormatedDate.bind(this);
     
     }
 
@@ -44,7 +46,7 @@ class AllWaitingListsForHospital extends React.Component {
                     let pacientItem = pacientsArray[index];
                     let pacient = {
                         'index': index + 1,
-                        'dateOfPlacement': pacientItem.dateOfPlacement,
+                        'dateOfPlacement': this.returnFormatedDate(pacientItem.dateOfPlacement),
                         'pacientLbo': pacientItem.pacientLbo,
                         'pacientPlace': pacientItem.pacientPlace,
                         'pacientScore': pacientItem.pacientScore
@@ -65,6 +67,14 @@ class AllWaitingListsForHospital extends React.Component {
         }, error => {
            window.alert(error);    
         })
+    }
+
+    returnFormatedDate(date) {
+        const nonformatedDate = new Date(date); 
+        //let formattedDate = nonformatedDate.getFullYear() + "-" + (nonformatedDate.getMonth() + 1) + "-" + nonformatedDate.getDate() + " " + nonformatedDate.getHours() + ":" + nonformatedDate.getMinutes() + ":" + nonformatedDate.getSeconds();
+        let formattedDate = nonformatedDate.getDate() + '.' + nonformatedDate.getMonth() + '.' + nonformatedDate.getFullYear();
+        window.alert(formattedDate);
+        return formattedDate;
     }
 
     render() {
