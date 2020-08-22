@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // Klasa koja se dodaje u UI kroz index 
@@ -9,17 +8,28 @@ class LogInForm extends PureComponent {
   // Props-i koji se prosledjuju prilikom kreiranja komponente
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
+    logInAsUser: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired
   };
 
   constructor() {
     super();
-    // Definisanje i postavljanje state-a koji se koriste da bi se azurirao UI komponente
-    // this.state = {
-    //   showPassword: false,
-    // };
+
+    this.logInAsUserTapped = this.logInAsUserTapped.bind(this);
+    this.userIdChanged = this.userIdChanged.bind(this);
+
+    this.state = {
+      userIdInputText: ''
+    }
   }
 
+  logInAsUserTapped() {
+    this.props.logInAsUser(this.state.userIdInputText);
+  }
+
+  userIdChanged(e) {
+      this.setState({ userIdInputText: e.target.value });
+  }
   // Definicija f-je koja se rposledjuje u OnClick neke komponente i koja menja trenutno stanje state-a
   // showPassword = (e) => {
   //   e.preventDefault();
@@ -45,6 +55,7 @@ class LogInForm extends PureComponent {
               component="input"
               type="text"
               placeholder="Card ID"
+              onChange={this.userIdChanged}
             />
           </div>
         </div>
@@ -85,8 +96,8 @@ class LogInForm extends PureComponent {
         </div>
          */}
         {/* Komponente koje funkcionisu slicno kao href */}
-        <button className="btn btn-primary account__btn account__btn--small" type="submit">Log In</button>
-        <Link className="btn btn-outline-primary account__btn account__btn--small" to="/pages/">Hijack login</Link>
+        <button className="btn btn-primary account__btn account__btn--small" type="submit">Log in as Entity</button>
+        <button className="btn btn-outline-primary account__btn account__btn--small" type="button" onClick={this.logInAsUserTapped}>Log in as User</button>
       </form>
     );
   }

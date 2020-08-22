@@ -9,11 +9,12 @@ class LogInComponent extends React.Component {
   constructor() {
     super();
 
+    this.processLoginAsEntity = this.processLoginAsEntity.bind(this);
+    this.processLoginAsUser = this.processLoginAsUser.bind(this);
+
     this.state = {
       isLoading: false
     };
-
-    this.processLogin = this.processLogin.bind(this);
   }
 
   componentDidMount() {
@@ -23,7 +24,7 @@ class LogInComponent extends React.Component {
     }
   }
 
-  processLogin(data) {
+  processLoginAsEntity(data) {
 
     this.setState({ isLoading : true});
 
@@ -40,6 +41,35 @@ class LogInComponent extends React.Component {
     }, error => {
       window.alert(error);
       console.log(error);
+      this.setState({ isLoading: false });
+    })
+  }
+
+  processLoginAsUser(userId) {
+    this.setState({ isLoading: true });
+
+    axios({ method: 'GET', url: '/shared/getPacient', params: { pacientLbo: userId }, headers: { 'Identity_name': 'doctor' }})
+    .then(response => {
+
+      let pacientData = response.data;
+      var store = require('store');
+
+      store.set('user', { name: pacientData.name,
+                          surname: pacientData.surname,
+                          role: 'user',
+                          hospitalName: pacientData.hospitalName,
+                          hospitalCode: pacientData.hospitalCode,
+                          ordinationCode: pacientData.ordinationCode,
+                          serviceCode: pacientData.serviceCode,
+                          city: pacientData.city
+      })
+      store.set('loggedIn', true);
+      this.props.history.push("/pages");
+    }, error => {
+      window.alert(error);
+      console.log(error);
+    })
+    .then(() => {
       this.setState({ isLoading: false });
     })
   }
@@ -88,7 +118,7 @@ class LogInComponent extends React.Component {
               </h3>
               <h4 className="account__subhead subhead">Pacient centric and transparent Waiting lists managment</h4>
             </div>
-            <LogInForm onSubmit={this.processLogin} isLoading={isLoading} />
+            <LogInForm onSubmit={this.processLoginAsEntity} isLoading={isLoading} logInAsUser={this.processLoginAsUser} />
             <div className="account__or">
               <p>Or log to system by scanning ID card</p>
             </div>

@@ -1,8 +1,7 @@
 import React from 'react';
-import { Container } from 'reactstrap';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
-import AllWaitingListsForHospitalTable from './components/allWaitingListsForHospitalTable';
+import WaitingListSelectionForm from './components/waitingListSelectionForm';
 
 class AllWaitingListsForHospital extends React.Component {
 
@@ -27,13 +26,16 @@ class AllWaitingListsForHospital extends React.Component {
         const hospitalCode = store.get('user').hospitalCode;
 
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/getAllWaitingListsForHospital', headers: { 'Identity_name': 'doctor' }, params: { 'hospitalCode': 'AB' }})
+        axios({ method: 'GET', url: '/shared/getAllWaitingListsForHospital', headers: { 'Identity_name': 'doctor' }, params: { 'hospitalCode': hospitalCode }})
         .then(response => {
             let waitingLists = [];
             for (let index = 0; index < response.data.length; index++) {
                 let waitingListItem = response.data[index];
                 let waitingList = {
                     'key': waitingListItem.key,
+                    'hospitalName': waitingListItem.hospitalName,
+                    'ordinationName': waitingListItem.ordinationName,
+                    'serviceName': waitingListItem.serviceName,
                     'hospitalCode': waitingListItem.hospitalCode,
                     'ordinationCode': waitingListItem.ordinationCode,
                     'serviceCode': waitingListItem.serviceCode
@@ -49,7 +51,9 @@ class AllWaitingListsForHospital extends React.Component {
                         'dateOfPlacement': this.returnFormatedDate(pacientItem.dateOfPlacement),
                         'pacientLbo': pacientItem.pacientLbo,
                         'pacientPlace': pacientItem.pacientPlace,
-                        'pacientScore': pacientItem.pacientScore
+                        'pacientScore': pacientItem.pacientScore,
+                        'pacientScreenName': pacientItem.pacientScreenName,
+                        'maxWaitingDate': this.returnFormatedDate(pacientItem.maxWaitingDate)
                     }
 
                     pacients.push(pacient);
@@ -73,7 +77,7 @@ class AllWaitingListsForHospital extends React.Component {
         const nonformatedDate = new Date(date); 
         //let formattedDate = nonformatedDate.getFullYear() + "-" + (nonformatedDate.getMonth() + 1) + "-" + nonformatedDate.getDate() + " " + nonformatedDate.getHours() + ":" + nonformatedDate.getMinutes() + ":" + nonformatedDate.getSeconds();
         let formattedDate = nonformatedDate.getDate() + '.' + nonformatedDate.getMonth() + '.' + nonformatedDate.getFullYear();
-        window.alert(formattedDate);
+        //window.alert(formattedDate);
         return formattedDate;
     }
 
@@ -87,9 +91,7 @@ class AllWaitingListsForHospital extends React.Component {
 
         
         return (    
-            <Container className="dashboard">
-                <AllWaitingListsForHospitalTable waitingLists={waitingLists}/>
-            </Container>
+           <WaitingListSelectionForm waitingLists={waitingLists}/>
         )
     };
 }

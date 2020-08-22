@@ -22,13 +22,17 @@ class AllPendingsComponent extends React.Component {
             let pendings = [];
             for (let index = 0; index < response.data.length; index++) {
                 let arrayItem = response.data[index];
+
+                let isReviewed = (arrayItem.isReviewed == undefined) || (arrayItem.isReviewed == false) ? 'NO' : 'YES';
+
                 let pending = {
-                    'hospitalCode': arrayItem.hospitalCode,
-                    'ordinationCode': arrayItem.ordinationCode,
                     'pacientLbo': arrayItem.pacientLbo,
-                    'serviceCode': arrayItem.serviceCode,
                     'pacientJmbg': arrayItem.pacientJmbg,
-                   
+                    'hospitalName': arrayItem.hospitalName,
+                    'ordinationName': arrayItem.ordinationName,
+                    'serviceName': arrayItem.serviceName,
+                    'score': arrayItem.score,
+                    'isReviewed': isReviewed
                 }
                 pendings.push(pending);
             }

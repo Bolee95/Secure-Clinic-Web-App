@@ -50,6 +50,7 @@ class SidebarContent extends Component {
           </SidebarCategory>
           <SidebarCategory title="Shared" icon="diamond">
             <SidebarLink title="All Waiting Lists For Hospital" route="/pages/allWaitingListsForHospital" onClick={this.hideSidebar} />
+            <SidebarLink title="Waiting List For Pacient" route="/pages/waitingListForPacient" onClick={this.hideSidebar} />
           </SidebarCategory>
         </ul>
       </div>

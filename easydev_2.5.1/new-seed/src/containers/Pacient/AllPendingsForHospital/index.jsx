@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllPendingsForHospitalTable from './components/allPendingsForHospitalTable';
+import { array } from 'prop-types';
 
 class AllPendingsForHospitalComponent extends React.Component {
 
@@ -43,7 +44,10 @@ class AllPendingsForHospitalComponent extends React.Component {
                     'ordinationName': arrayItem.ordinationName,
                     'serviceName': arrayItem.serviceName
                 }
-                pendings.push(pending);
+                let isReviewed = arrayItem.isReviewed;
+                if (isReviewed != undefined && !isReviewed) {
+                    pendings.push(pending);
+                }   
             }
 
             this.setState({

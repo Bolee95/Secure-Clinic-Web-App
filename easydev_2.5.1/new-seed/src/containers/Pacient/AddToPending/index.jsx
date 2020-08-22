@@ -131,6 +131,7 @@ class NewPendingComponent extends React.Component {
     bodyFormData.set('serviceCode', data['serviceCode'].value);
     bodyFormData.set('hospitalCode', data['hospitalCode'].value);
     bodyFormData.set('ordinationCode', data['ordinationCode'].value);
+    bodyFormData.set('score', data['score']);
 
     axios({ method: 'POST', url: '/doctor/createNewPending', data: bodyFormData, headers: { 'Identity_name': 'doctor' }})
     .then(response => {

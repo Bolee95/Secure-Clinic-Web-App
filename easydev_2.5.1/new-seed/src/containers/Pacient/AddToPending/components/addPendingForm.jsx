@@ -113,6 +113,17 @@ class AddPendingForm extends PureComponent {
                   />
                 </div>
               </div>
+              <div className="form__form-group">
+                <span className="form__form-group-label">Pacient score</span>
+                <div className="form__form-group-field">
+                <Field
+                    name="score"
+                    component="input"
+                    type="number"
+                    placeholder="Score"
+                  />
+                </div>
+              </div>
               <ButtonToolbar className="form__button-toolbar">
                 <ExpandButton title="Submit" load={isLoading} ></ExpandButton>
                 <Button type="button" onClick={reset}>

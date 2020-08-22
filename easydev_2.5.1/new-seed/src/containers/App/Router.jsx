@@ -16,6 +16,7 @@ import DeleteUserForm from '../Admin/DeleteUser/index';
 import AllPendingsForHospitalComponent from '../Pacient/AllPendingsForHospital';
 import PacientWaitingStatusComponent from '../Pacient/SetPacientWaitingStatus';
 import AllWaitingListsForHospitalComponent from '../Shared/AllWaitingListsForHospital';
+import WaitingListForPacientComponent from '../Pacient/WaitingListForPacient';
 
 const Pages = () => (
   <Switch>
@@ -27,6 +28,7 @@ const Pages = () => (
     <Route path="/pages/allPendingsForHospital" component={AllPendingsForHospitalComponent}/>
     <Route path="/pages/setPacientWaitingStatus" component={PacientWaitingStatusComponent}/>
     <Route path="/pages/allWaitingListsForHospital" component={AllWaitingListsForHospitalComponent}/>
+    <Route path="/pages/waitingListForPacient" component={WaitingListForPacientComponent} />
     <Route path="/pages/createUser" component={CreateUserForm}/>
     <Route path="/pages/deleteUser" component={DeleteUserForm}/>
     <Route path="/pages/two" component={ExamplePageTwo} />
