@@ -65,7 +65,7 @@ KAIZEN -- Small improvements every day
 20.08.
 - Dodata komponenta koja izlistava pacijente na izabranoj listi
 
-22.08.
+22.08./23.08.
 - Prosiriti WaitingList instance sa sto vise podataka, kao sto su ime i prezime korisnika, naziv bolnice, ordinacije i servisa. Po potrebi kasnije prikazivati potrebne podatke zavisno ko od korisnika ih gleda *DONE*
 - Dopuniti UI sa novim poljima iz baze *DONE*
 - Naci nacin da se omoguci "Dark mode" u komponenti koja prikazuje sve pacijente za Waiting list (Mozda razdvojiti tabelu i komponentu koja drzi istu trenutno na dve zasebne komponente (?)) *DONE*
@@ -73,12 +73,13 @@ KAIZEN -- Small improvements every day
 - Iskoristiti dodatno filtriranje Pending-a na osnovu novododatog flega *DONE*
 - Proveri zasto se lose postavljaju ordinationCode i serviceCode kada se promeni status na listu za korisnika *DONE*
 
+24.08.
+- Testirati dodavanje i cuvanje dokumenata
+- Razmisliti gde da se koriste pacijentovi privatni podaci i kako *DONE* Provereno kako to trenutno funkcionise. Trenutno stanje modela podataka je ok
+- Dodati komponente koje ce da rade sa privatnim podacima korisnika
+
 -------------------------------------------------------------------------
 Moguca unapredjenja
--- Testirati dodavanje i cuvanje dokumenata
--- Razmisliti gde da se koriste pacijentovi privatni podaci i kako 
-
-
 
 UI
 -- Pokusaj dodavanje notifikacije kada se javi greska
