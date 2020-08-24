@@ -82,6 +82,7 @@ KAIZEN -- Small improvements every day
 Moguca unapredjenja:
 
 - Naci nacin da se uhvate greske sa nizeg nivoa od API-ja
+- Izlistavanje transakcija (?) Proveriti Master Rad folder za primer
 
 UI
 -- Pokusaj dodavanje notifikacije kada se javi greska
