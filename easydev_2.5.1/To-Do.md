@@ -75,11 +75,13 @@ KAIZEN -- Small improvements every day
 
 24.08.
 - Testirati dodavanje i cuvanje dokumenata
-- Razmisliti gde da se koriste pacijentovi privatni podaci i kako *DONE* Provereno kako to trenutno funkcionise. Trenutno stanje modela podataka je ok
+- Razmisliti gde da se koriste pacijentovi privatni podaci i kako *DONE* Provereno kako to trenutno funkcionise. Trenutno stanje modela podataka je ok *DONE*
 - Dodati komponente koje ce da rade sa privatnim podacima korisnika
 
 -------------------------------------------------------------------------
-Moguca unapredjenja
+Moguca unapredjenja:
+
+- Naci nacin da se uhvate greske sa nizeg nivoa od API-ja
 
 UI
 -- Pokusaj dodavanje notifikacije kada se javi greska
