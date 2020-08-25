@@ -1,22 +1,24 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Layout from '../Layout/index';
+import Layout from '../Layout';
 import MainWrapper from './MainWrapper';
 
-import LogIn from '../LogIn/index';
-import CreatePacientForm from '../Pacient/CreatePatient/index';
-import ExamplePageTwo from '../ExampleTwo/index';
-import ExamplePageThree from '../ExampleThree/index';
-import AllPatientsComponent from '../Pacient/AllPatients/index';
-import AllPatientsForHospitalComponent from '../Pacient/AllPatientsForHospital/index';
-import NewPendingComponent from '../Pacient/AddToPending/index';
-import AllPendingsComponent from '../Pacient/AllPendings/index';
-import CreateUserForm from '../Admin/CreateUser/index';
-import DeleteUserForm from '../Admin/DeleteUser/index';
+import LogIn from '../LogIn';
+import CreatePacientForm from '../Pacient/CreatePatient';
+import ExamplePageTwo from '../ExampleTwo';
+import ExamplePageThree from '../ExampleThree';
+import AllPatientsComponent from '../Pacient/AllPatients';
+import AllPatientsForHospitalComponent from '../Pacient/AllPatientsForHospital';
+import NewPendingComponent from '../Pacient/AddToPending';
+import AllPendingsComponent from '../Pacient/AllPendings';
+import CreateUserForm from '../Admin/CreateUser';
+import DeleteUserForm from '../Admin/DeleteUser';
 import AllPendingsForHospitalComponent from '../Pacient/AllPendingsForHospital';
 import PacientWaitingStatusComponent from '../Pacient/SetPacientWaitingStatus';
 import AllWaitingListsForHospitalComponent from '../Shared/AllWaitingListsForHospital';
 import WaitingListForPacientComponent from '../Pacient/WaitingListForPacient';
+import AllPacientsPrivateDataComponent from '../PrivateData/AllPacientsPrivateData';
+import AddDiseaseToSicknessHistoryComponent from '../PrivateData/AddDiseaseToSicknessHistory';
 
 const Pages = () => (
   <Switch>
@@ -31,6 +33,8 @@ const Pages = () => (
     <Route path="/pages/waitingListForPacient" component={WaitingListForPacientComponent} />
     <Route path="/pages/createUser" component={CreateUserForm}/>
     <Route path="/pages/deleteUser" component={DeleteUserForm}/>
+    <Route path="/pages/allPacientsPrivateData" component={AllPacientsPrivateDataComponent} />
+    <Route path="/pages/addNewDiseaseToSicknessHistory" component={AddDiseaseToSicknessHistoryComponent} />
     <Route path="/pages/two" component={ExamplePageTwo} />
     <Route path="/pages/three" component={ExamplePageThree} />
   </Switch>

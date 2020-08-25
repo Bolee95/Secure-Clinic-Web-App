@@ -52,6 +52,10 @@ class SidebarContent extends Component {
             <SidebarLink title="All Waiting Lists For Hospital" route="/pages/allWaitingListsForHospital" onClick={this.hideSidebar} />
             <SidebarLink title="Waiting List For Pacient" route="/pages/waitingListForPacient" onClick={this.hideSidebar} />
           </SidebarCategory>
+          <SidebarCategory title="Private data" icon="diamond"> 
+            <SidebarLink title="All Pacients Private Data" route="/pages/allPacientsPrivateData" onClick={this.hideSidebar} />
+            <SidebarLink title="Add Disease to Sickness History" route="/pages/addNewDiseaseToSicknessHistory" onClick={this.hideSidebar} />
+          </SidebarCategory>
         </ul>
       </div>
     );
