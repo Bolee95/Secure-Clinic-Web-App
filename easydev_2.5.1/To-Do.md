@@ -80,10 +80,14 @@ KAIZEN -- Small improvements every day
 - Dodati komponente koje ce da rade sa privatnim podacima korisnika *DONE*
 - Dodati ime i prezime za korisnika u privatnim podacima *DONE*
 
+26.08
+- Podesiti da se prikazuje sidebar zavisno od toga koji korisnik je ulogovan *DONE* Treba da postoji korisnik i u bazi i u walletu
+
+27.08.
+- Napraviti logiku za cuvanje dokumenata i ucitavanje istih
+
 -------------------------------------------------------------------------
 Moguca unapredjenja:
-
-- Testirati dodavanje i cuvanje dokumenata
 
 - Naci nacin da se uhvate greske sa nizeg nivoa od API-ja
 - Izlistavanje transakcija (?) Proveriti Master Rad folder za primer
