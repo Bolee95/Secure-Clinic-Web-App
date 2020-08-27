@@ -140,10 +140,10 @@
 .dropzone__img-name {
   color: white;
   position: absolute;
-  font-size: 12px;
+  font-size: 15px;
   text-align: center;
-  opacity: 0;
-  transition: all 0.3s;
+  opacity: 1;
+  transition: all 0.1s;
   z-index: 10;
   width: 100%;
   line-height: 12px;

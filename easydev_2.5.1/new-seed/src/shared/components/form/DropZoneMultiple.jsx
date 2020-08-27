@@ -42,7 +42,7 @@ class DropZoneMultipleField extends PureComponent {
       <div className="dropzone dropzone--multiple">
         <Dropzone
           className="dropzone__input"
-          accept="image/jpeg, image/png"
+          accept="image/jpeg, image/png, application/pdf, text/html, text/plain"
           name={name}
           onDrop={(filesToUpload) => {
             this.onDrop(value ? value.concat(filesToUpload) : filesToUpload);

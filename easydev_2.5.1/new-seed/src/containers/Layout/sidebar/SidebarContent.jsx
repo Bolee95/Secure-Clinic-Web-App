@@ -108,6 +108,7 @@ class SidebarContent extends Component {
         <SidebarCategory title="Private data" icon="arrow-right-circle"> 
           <SidebarLink title="All Pacients Private Data" route="/pages/allPacientsPrivateData" onClick={this.hideSidebar} />
           <SidebarLink title="Add Disease to Sickness History" route="/pages/addNewDiseaseToSicknessHistory" onClick={this.hideSidebar} />
+          <SidebarLink title="Upload files for pacient" route="/pages/uploadFilesForPacient" onClick={this.hideSidebar} />
         </SidebarCategory>
         </ul>
       </div>
