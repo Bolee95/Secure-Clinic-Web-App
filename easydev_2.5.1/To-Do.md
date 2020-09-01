@@ -86,11 +86,31 @@ KAIZEN -- Small improvements every day
 27.08.
 - Napraviti logiku za cuvanje dokumenata i ucitavanje istih
 
+28.08.
+- Konsultacije prosle odlicno :) 
+
+30.08.
+- Odraditi logiku za citanje i dodavanje jednog/vise fajlova *DONE*
+- Dodati nove API pozive *DONE*
+- Uskladiti trenutnu web aplikaicju da prihvata fajlove gde je to potrebno
+
+31.08.
+
+- Logika za citanje i pisanje odradjena, potrebno je da se ubaci mogucnost skidanja dokumenata, trenutno ne radi
+
 -------------------------------------------------------------------------
 Moguca unapredjenja:
 
-- Naci nacin da se uhvate greske sa nizeg nivoa od API-ja
+- Naci nacin da se uhvate greske sa nizeg nivoa od API-ja (Mozda da se izbaci hvatanje greske, nego da se vraca {success, error} sa nizeg nivoa
 - Izlistavanje transakcija (?) Proveriti Master Rad folder za primer
 
 UI
 -- Pokusaj dodavanje notifikacije kada se javi greska
+
+--------------------------------------------------------------------------
+
+Major tasks:
+
+- Uploading i citanje podataka *WORK IN PROGRESS*
+- Logika za Ammends 
+- Implementacija BI za statistiku 
