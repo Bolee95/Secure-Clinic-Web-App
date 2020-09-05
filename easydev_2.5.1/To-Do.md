@@ -124,7 +124,7 @@ KAIZEN -- Small improvements every day
 -------------------------------------------------------------------------
 Moguca unapredjenja:
 
-- Naci nacin da se uhvate greske sa nizeg nivoa od API-ja (Mozda da se izbaci hvatanje greske, nego da se vraca {success, error} sa nizeg nivoa
+- Naci nacin da se uhvate greske sa nizeg nivoa od API-ja (Mozda da se izbaci hvatanje greske, nego da se vraca {success, error} sa nizeg nivoa 
 - Izlistavanje transakcija (?) Proveriti Master Rad folder za primer
 
 UI

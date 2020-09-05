@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Container, Row } from 'reactstrap';
-import PropTypes from 'prop-types';
-import showResults from '../../Show';
 import DropZone from './components/DropZone';
 import axios from 'axios';
-import fileDownload from 'js-file-download';
-import { appendFileSync } from 'fs';
 
 class UploadFilesComponent extends Component {
 
