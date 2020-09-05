@@ -80,6 +80,7 @@ class LogInComponent extends React.Component {
 
       let entityData = response.data;
       var store = require('store');
+      window.alert(entityData.licenceId + ' ' + entityData.name);
 
       store.set('user', { licenceId: entityData.licenceId,
                           name: entityData.name,

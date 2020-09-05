@@ -121,6 +121,11 @@ KAIZEN -- Small improvements every day
 - Spreciti da se desi pucanje kada nije ukljucena baza *DONE*
 
 
+05.09.
+- Male popravke, zabelezeno u kompitu *DONE*
+- Proveriti zasto ne postoji licence id za entitet kada se uloguje
+- Proveriti da li se kreira i entitet kada se pravi korisnik u wallet *DONE*
+
 -------------------------------------------------------------------------
 Moguca unapredjenja:
 

@@ -1,8 +1,8 @@
+import axios from 'axios';
 import React from 'react';
 import { Container } from 'reactstrap';
-import CreateUserForm from './components/CreateUserForm';
 import Loading from '../../../shared/components/Loading';
-import axios from 'axios';
+import CreateUserForm from './components/CreateUserForm';
 
 class CreateUserComponent extends React.Component {
 
@@ -14,6 +14,7 @@ class CreateUserComponent extends React.Component {
      };
 
     this.processFormData = this.processFormData.bind(this);
+    this.createNewEntity = this.createNewEntity.bind(this);
   }
 
   processFormData(data) {
@@ -21,31 +22,52 @@ class CreateUserComponent extends React.Component {
     this.setState({ isLoading: true });
 
     var bodyFormData = new FormData();
-    bodyFormData.set('userName', data['username']);
+    bodyFormData.set('userName', data['licenceId']);
 
     axios({ method: 'POST', url: '/admin/registerUserWallet', data: bodyFormData, headers: { 'Identity_name': 'admin' }})
     .then(response => {
-      console.log(response);
-      window.alert("Succedd");
+      this.createNewEntity(data);
     }, error => {
       window.alert(error);
-      console.log(error);
-    }).then(() => {
-        this.setState({ isLoading: false });
+      this.setState({ isLoading: false });
     });
-    console.log("On submit data passed:" + JSON.stringify(data, null ,2));
+  }
+
+  // identityName, licenceId, role, name, surname, hospitalName, hospitalCode
+  createNewEntity(data) {
+
+    var store = require('store');
+    let currentUser = store.get('user');
+    
+    var formData = new FormData();
+    formData.set('licenceId', data['licenceId']);
+    formData.set('role', data['role'].value);
+    formData.set('name', data['name']);
+    formData.set('surname', data['surname']);
+    formData.set('hospitalName', currentUser.hospitalName);
+    formData.set('hospitalCode', currentUser.hospitalCode);
+
+    axios({ method: 'POST', url: '/admin/createEntity', data: formData, headers: { 'Identity_name': 'admin' }})
+    .then(response => {
+      window.alert('success!');
+    }, error => {
+      window.alert(error);
+    })
+    .then( () => {
+      this.setState({ isLoading: false });
+    });
   }
 
   render() {
     const { isLoading } = this.state;
 
-    if (isLoading) {
-        return (<Loading loading={isLoading} />);
-    }
+    // if (isLoading) {
+    //     return (<Loading loading={isLoading} />);
+    // }
 
     return (
       <Container className="dashboard">
-        <CreateUserForm onSubmit={this.processFormData}></CreateUserForm>
+        <CreateUserForm onSubmit={this.processFormData} isLoading={isLoading}></CreateUserForm>
       </Container>
     )
   };
