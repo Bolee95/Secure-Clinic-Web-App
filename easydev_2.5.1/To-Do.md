@@ -123,7 +123,7 @@ KAIZEN -- Small improvements every day
 
 05.09.
 - Male popravke, zabelezeno u kompitu *DONE*
-- Proveriti zasto ne postoji licence id za entitet kada se uloguje
+- Proveriti zasto ne postoji licence id za entitet kada se uloguje *DONE*
 - Proveriti da li se kreira i entitet kada se pravi korisnik u wallet *DONE*
 
 -------------------------------------------------------------------------
