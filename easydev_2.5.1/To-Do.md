@@ -92,11 +92,34 @@ KAIZEN -- Small improvements every day
 30.08.
 - Odraditi logiku za citanje i dodavanje jednog/vise fajlova *DONE*
 - Dodati nove API pozive *DONE*
-- Uskladiti trenutnu web aplikaicju da prihvata fajlove gde je to potrebno
+
 
 31.08.
 
 - Logika za citanje i pisanje odradjena, potrebno je da se ubaci mogucnost skidanja dokumenata, trenutno ne radi
+
+01.09.
+
+- Sredjen problem od juce
+
+02.09.
+
+- Proveriti da li postoje svi potrebni api pozivi *DONE*
+-- Treba prosiriti Pending ugovor sa listom dokumenata *DONE*
+-- Treba omoguciti da korisnik moze od jednom celu listu dokumentata da posalje (PacientPrivateData) *DONE*
+
+03.09.
+
+- Dovrsiti komponentu za dodavanje dokumenata za pacijenta *DONE*
+-- Dropzone komponentu *DONE*
+-- Komponenta za dodavanja korisnika u Pending (Iskoristiti ponovo dropzone) *DONE*
+- Uskladiti trenutnu web aplikaicju da prihvata fajlove gde je to potrebno *DONE*
+
+04.09.
+
+- Dodati u listu pendinga i da se izlistavaju linkovi ka dokumentima *DONE*
+- Spreciti da se desi pucanje kada nije ukljucena baza *DONE*
+
 
 -------------------------------------------------------------------------
 Moguca unapredjenja:
@@ -111,6 +134,6 @@ UI
 
 Major tasks:
 
-- Uploading i citanje podataka *WORK IN PROGRESS*
+- Uploading i citanje podataka *DONE*
 - Logika za Ammends 
 - Implementacija BI za statistiku 

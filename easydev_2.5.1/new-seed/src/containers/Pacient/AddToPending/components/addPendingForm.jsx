@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import renderSelectField from '../../../../shared/components/form/Select';
 import ExpandButton from '../../../../shared/components/Buttons/ExpandButton';
+import renderDropZoneMultipleField from '../../../../shared/components/form/DropZoneMultiple';
 
 class AddPendingForm extends PureComponent {
   static propTypes = {
@@ -124,6 +125,10 @@ class AddPendingForm extends PureComponent {
                   />
                 </div>
               </div>
+              <Field
+                    name="files"
+                    component={renderDropZoneMultipleField}
+                />
               <ButtonToolbar className="form__button-toolbar">
                 <ExpandButton title="Submit" load={isLoading} ></ExpandButton>
                 <Button type="button" onClick={reset}>

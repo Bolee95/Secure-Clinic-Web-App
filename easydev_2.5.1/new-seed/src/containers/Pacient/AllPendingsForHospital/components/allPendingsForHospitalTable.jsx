@@ -63,6 +63,10 @@ class AllPendingsForHospitalTable extends PureComponent {
                                      message="Are you sure you want to approve this patient's pending for waiting list?"
                                      onAgreed={ () => this.onApproveClick(row)}/>
       </ButtonToolbar>,
+      },
+      {
+        selector: 'documents',
+        name: 'Documents'
       }
     ];
 

@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllPendingsForHospitalTable from './components/allPendingsForHospitalTable';
-import { array } from 'prop-types';
+import fileDownload from 'js-file-download';
 
 class AllPendingsForHospitalComponent extends React.Component {
 
@@ -16,6 +16,7 @@ class AllPendingsForHospitalComponent extends React.Component {
         };
 
         this.approveTapped = this.approveTapped.bind(this);
+        this.documentClicked = this.documentClicked.bind(this);
     }
 
     componentDidMount() {
@@ -44,8 +45,20 @@ class AllPendingsForHospitalComponent extends React.Component {
                     'ordinationName': arrayItem.ordinationName,
                     'serviceName': arrayItem.serviceName
                 }
+
+                let documents = arrayItem.documentIds;
+
+                var links = [];
+                for (var i=0; i < documents.length; i++) {
+                    let test = <div><button className="base-btn" onClick={(i) => this.documentClicked(i)} value={documents[i]}>Document {[i]}</button></div>
+                    links.push(test);
+                }
+
+                pending.documents = links;
+
+
                 let isReviewed = arrayItem.isReviewed;
-                if (isReviewed != undefined && !isReviewed) {
+                if (isReviewed !== undefined && !isReviewed) {
                     pendings.push(pending);
                 }   
             }
@@ -57,6 +70,21 @@ class AllPendingsForHospitalComponent extends React.Component {
         }, error => {
            window.alert(error)    
         })
+    }
+
+    documentClicked(e) {        
+        let documentId = e.target.value;
+        axios({ method: 'GET',
+            url: '/shared/getFile',
+            params: { 'fileId': documentId },
+            responseType: 'blob',})
+        .then(response => {
+            let filename = response.headers['filename'];
+            let mimeType = response.headers['mimeType'];
+            fileDownload(response.data, filename, mimeType);
+        }, error => {
+            window.alert(error);
+        });
     }
 
     approveTapped(rowData) {

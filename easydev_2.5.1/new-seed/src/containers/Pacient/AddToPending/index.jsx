@@ -119,9 +119,37 @@ class NewPendingComponent extends React.Component {
 
     this.setState({ formSubmited: true });
 
-    const selectedPatient = this.state.patients.find(patient => patient.lbo == data['patient'].value);
+    if (data['patient'] === undefined) {
+      this.setState({ formSubmited: false });
+      window.alert("No patient selected");
+      return;
+    }
 
+    var documentsFormData = new FormData();
+    for (var i = 0; i< data["files"].length; i++) {
+      let file = data["files"][i];
+      documentsFormData.append('file[' + i + ']', file);
+    }
+
+
+    axios({ method: 'POST', 
+    url: '/shared/uploadFiles', 
+    data: documentsFormData,
+    headers: { 'Identity_name': 'admin', 'content-type': 'multipart/form-data' }})
+    .then(response => {
+      this.addNewPending(data, response.data);
+    }, error => {
+      this.setState({ formSubmited: false });
+      window.alert(error);
+    });
+    
+  }
+
+  addNewPending(data, documentIds) {
     var bodyFormData = new FormData();
+
+    const selectedPatient = this.state.patients.find(patient => patient.lbo === data['patient'].value);
+
     bodyFormData.set('pacientLbo', data['patient'].value);
     bodyFormData.set('pacientJmbg', selectedPatient['jmbg']);
     bodyFormData.set('pacientScreenName', data['patient'].label);
@@ -132,6 +160,7 @@ class NewPendingComponent extends React.Component {
     bodyFormData.set('hospitalCode', data['hospitalCode'].value);
     bodyFormData.set('ordinationCode', data['ordinationCode'].value);
     bodyFormData.set('score', data['score']);
+    bodyFormData.set('documentIds', documentIds);
 
     axios({ method: 'POST', url: '/doctor/createNewPending', data: bodyFormData, headers: { 'Identity_name': 'doctor' }})
     .then(response => {

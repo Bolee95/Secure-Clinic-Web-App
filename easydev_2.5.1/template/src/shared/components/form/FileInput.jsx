@@ -26,6 +26,7 @@ class FileInputField extends PureComponent {
         <label htmlFor={name}>Choose the file</label>
         <span>{value.name}</span>
         <input
+          multiple
           type="file"
           name={name}
           id={name}
@@ -34,7 +35,8 @@ class FileInputField extends PureComponent {
               e.preventDefault();
               // convert files to an array
               const files = [...e.target.files];
-              onChange({ file: files[0], name: files[0].name });
+              const reducer = (accumulator, currentVal) => accumulator.name + ', ' + currentVal.name;
+              onChange({ file: files, name: files.reduce(reducer)});//  files[0].name + ", " + files[1].name});
             }
           }
         />
