@@ -90,7 +90,7 @@ class AllPendingsForHospitalComponent extends React.Component {
     approveTapped(rowData) {
 
         const storage = require('store');
-        const licenceId = storage.get('user').userId;
+        const licenceId = storage.get('user').licenceId;
 
         var bodyFormData = new FormData();
         bodyFormData.set('licenceId', licenceId);
