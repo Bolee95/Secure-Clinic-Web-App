@@ -126,6 +126,29 @@ KAIZEN -- Small improvements every day
 - Proveriti zasto ne postoji licence id za entitet kada se uloguje *DONE*
 - Proveriti da li se kreira i entitet kada se pravi korisnik u wallet *DONE*
 
+Ammends
+Case 1:
+- izabere se neka od liste cekanja za bolnicu korisnika
+- Izabere se pacijent na listi
+- Izabere se jedan od razloga zbog koga treba da se skine sa liste 
+- Dodaju se dokuemnti kao dokaz
+- Dodaje se opis
+-- Napravi se Ammend
+
+Case 2: 
+- Entitet izlistava Ammende za svoju bolnicu ( Na slican nacin kao kod pendinga, ne pokazuju se ammendi koji su vec prihvaceni)
+- Kada troje potvrde ammend, radi se neka od akcija koja je definisana ammendom
+
+06.09.
+- Refaktorisanje ugovora za Ammendove *DONE*
+- Refaktorisanje API-ja i beckenda *DONE*
+
+07.09.
+
+- Proveriti metodu za sklanjanje sa liste cekanja da li radi
+-- Napraviti workaround metodu za dodavanje korisnika na listu cekanja bez pedninga, u svrhu testiranja 
+- Poceti sa frontendom
+
 -------------------------------------------------------------------------
 Moguca unapredjenja:
 
@@ -140,5 +163,6 @@ UI
 Major tasks:
 
 - Uploading i citanje podataka *DONE*
-- Logika za Ammends 
+- Logika za Ammends *WORK IN PROGRESS*
+- Integracija podataka koje je dekan poslao u projekat
 - Implementacija BI za statistiku 
