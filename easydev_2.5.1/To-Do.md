@@ -145,9 +145,12 @@ Case 2:
 
 07.09.
 
-- Proveriti metodu za sklanjanje sa liste cekanja da li radi
--- Napraviti workaround metodu za dodavanje korisnika na listu cekanja bez pedninga, u svrhu testiranja 
-- Poceti sa frontendom
+- Proveriti metodu za sklanjanje sa liste cekanja da li radi *DONE*
+-- Napraviti workaround metodu za dodavanje korisnika na listu cekanja bez pedninga, u svrhu testiranja *DONE*
+
+08.09.
+
+- Poceti sa frontendom za Ammends
 
 -------------------------------------------------------------------------
 Moguca unapredjenja:
