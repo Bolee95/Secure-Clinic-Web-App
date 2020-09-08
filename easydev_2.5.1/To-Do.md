@@ -150,7 +150,11 @@ Case 2:
 
 08.09.
 
-- Poceti sa frontendom za Ammends
+- Napravljena forma za kreiranje Ammenda *DONE*
+- Napravljena lista sa Ammend-ovima za bolnicu i approve funkciju *DONE*
+- Proveriti kako da ne vraca ammende koji su vec potpisani od strane trenutnog korisnika/entiteta *DONE*
+
+- Zameniti logiku za proveru kojeg je tipa entitet zavisno od licenceID (kod allpendingsForHospital i allAmmendsForHospital)
 
 -------------------------------------------------------------------------
 Moguca unapredjenja:

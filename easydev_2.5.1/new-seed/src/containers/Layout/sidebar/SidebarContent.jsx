@@ -110,6 +110,10 @@ class SidebarContent extends Component {
           <SidebarLink title="Add Disease to Sickness History" route="/pages/addNewDiseaseToSicknessHistory" onClick={this.hideSidebar} />
           <SidebarLink title="Upload files for pacient" route="/pages/uploadFilesForPacient" onClick={this.hideSidebar} />
         </SidebarCategory>
+        <SidebarCategory title="Ammends" icon="arrow-right-circle">
+          <SidebarLink title="Create Ammend" route="/pages/createAmmend" onClick={this.hideSidebar} />
+          <SidebarLink title="All Ammends For Hospital" route="/pages/allAmmendsForHospital" onClick={this.hideSidebar} />
+        </SidebarCategory>
         </ul>
       </div>
     );

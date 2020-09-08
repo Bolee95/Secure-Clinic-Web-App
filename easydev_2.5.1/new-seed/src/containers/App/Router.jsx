@@ -20,6 +20,8 @@ import WaitingListForPacientComponent from '../Pacient/WaitingListForPacient';
 import AllPacientsPrivateDataComponent from '../PrivateData/AllPacientsPrivateData';
 import AddDiseaseToSicknessHistoryComponent from '../PrivateData/AddDiseaseToSicknessHistory';
 import UploadFilesComponent from '../Shared/UploadFiles';
+import CreateAmmendComponent from '../Ammend/CreateAmmend';
+import AllAmmendsForHospital from '../Ammend/AllAmmendsForHospital';
 
 const Pages = () => (
   <Switch>
@@ -39,6 +41,9 @@ const Pages = () => (
     <Route path="/pages/uploadFilesForPacient" component={UploadFilesComponent} />
     <Route path="/pages/two" component={ExamplePageTwo} />
     <Route path="/pages/three" component={ExamplePageThree} />
+
+    <Route path="/pages/createAmmend" component={CreateAmmendComponent} />
+    <Route path="/pages/allAmmendsForHospital" component={AllAmmendsForHospital} />
   </Switch>
 );
 
