@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllPendingsTable from './components/allPendingsTable';
+import fileDownload from 'js-file-download';
 
 class AllPendingsComponent extends React.Component {
 
@@ -34,6 +35,21 @@ class AllPendingsComponent extends React.Component {
                     'score': arrayItem.score,
                     'isReviewed': isReviewed
                 }
+
+                var documents = arrayItem.documentIds;
+
+                if (documents === undefined) {
+                    documents = [];
+                }
+
+                var links = [];
+                for (var i=0; i < documents.length; i++) {
+                    let test = <div><button className="base-btn" onClick={(i) => this.documentClicked(i)} value={documents[i]}>Document {[i]}</button></div>
+                    links.push(test);
+                }
+
+                pending.documents = links;
+
                 pendings.push(pending);
             }
 
@@ -45,6 +61,21 @@ class AllPendingsComponent extends React.Component {
            window.alert(error)    
         })
       }
+
+      documentClicked(e) {        
+        let documentId = e.target.value;
+        axios({ method: 'GET',
+            url: '/shared/getFile',
+            params: { 'fileId': documentId },
+            responseType: 'blob',})
+        .then(response => {
+            let filename = response.headers['filename'];
+            let mimeType = response.headers['mimeType'];
+            fileDownload(response.data, filename, mimeType);
+        }, error => {
+            window.alert(error);
+        });
+    }
 
     render() {
         const { pendings, loading } = this.state;

@@ -154,7 +154,16 @@ Case 2:
 - Napravljena lista sa Ammend-ovima za bolnicu i approve funkciju *DONE*
 - Proveriti kako da ne vraca ammende koji su vec potpisani od strane trenutnog korisnika/entiteta *DONE*
 
+09.09.
+
+- Dodati komponentu koja izlistava sve Ammende *DONE* 
+- Dodati dodatna polja za Ammend objekat (naziv bolnice, ordinacije..?)  *DONE*
+
+10.09.
 - Zameniti logiku za proveru kojeg je tipa entitet zavisno od licenceID (kod allpendingsForHospital i allAmmendsForHospital)
+- Naci bolji nacin da se kastuje AmmendType
+- Resiti bolje postavljanje maxWaitingTime za listu cekanja
+
 
 -------------------------------------------------------------------------
 Moguca unapredjenja:

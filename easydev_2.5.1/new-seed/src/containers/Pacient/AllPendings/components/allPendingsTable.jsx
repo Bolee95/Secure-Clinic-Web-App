@@ -51,6 +51,10 @@ class AllPatientsTable extends PureComponent {
         selector: 'isReviewed',
         name: 'Is Pending Reviewed',
         sortable: false
+      },
+      {
+        selector: 'documents',
+        name: 'Documents'
       }
     ];
 

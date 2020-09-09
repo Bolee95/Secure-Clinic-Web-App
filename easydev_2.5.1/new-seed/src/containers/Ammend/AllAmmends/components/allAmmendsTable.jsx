@@ -8,7 +8,7 @@ import { ThemeProps } from '../../../../shared/prop-types/ReducerProps';
 import DataTable from 'react-data-table-component';
 import Modal from '../../../../shared/components/ModalPopUp';
 
-class AllAmmendsForHospitalTable extends PureComponent {
+class AllAmmendsTable extends PureComponent {
   static propTypes = {
     data: array.isRequired,
     theme: ThemeProps.isRequired,
@@ -17,9 +17,6 @@ class AllAmmendsForHospitalTable extends PureComponent {
 
   constructor() {
     super();
-
-    this.onRowClick = this.onRowClick.bind(this);
-    this.onApproveClick = this.onApproveClick.bind(this);
 
     const headers = [
       {
@@ -33,23 +30,18 @@ class AllAmmendsForHospitalTable extends PureComponent {
         sortable: true,
       },
       {
-        selector: 'screenname',
-        name: 'Pacient Name',
+        selector: 'hospitalCode',
+        name: 'Hospital Code',
         sortable: true,
       },
       {
-        selector: 'hospitalName',
-        name: 'Hospital Name',
+        selector: 'ordinationCode',
+        name: 'Ordination Code',
         sortable: true,
       },
       {
-        selector: 'ordinationName',
-        name: 'Ordination Name',
-        sortable: true,
-      },
-      {
-        selector: 'serviceName',
-        name: 'Service Name',
+        selector: 'serviceCode',
+        name: 'Service Code',
         sortable: true,
       },
       {
@@ -57,16 +49,8 @@ class AllAmmendsForHospitalTable extends PureComponent {
         name: 'Action'
       },
       {
-        selector: 'approvePending',
-        name: 'Actions',
-        cell: row =>  <ButtonToolbar className="form__button-toolbar">
-                                   <Modal
-                                     color="primary"
-                                     title="Question"
-                                     btn="Approve"
-                                     message="Are you sure you want to approve this patient's ammend for waiting list?"
-                                     onAgreed={ () => this.onApproveClick(row)}/>
-      </ButtonToolbar>,
+        selector: 'description',
+        name: 'Description'
       },
       {
         selector: 'evidences',
@@ -80,16 +64,6 @@ class AllAmmendsForHospitalTable extends PureComponent {
     };
   }
 
-  onApproveClick(row) {
-    const { onApprove } = this.props;
-    onApprove(row);
-  }
-
-  onRowClick(row) {
-    window.alert(row.pacientLbo);
-  }
-
-
   render() {
     const { headers } = this.state;
     const { theme, data } = this.props;
@@ -99,8 +73,8 @@ class AllAmmendsForHospitalTable extends PureComponent {
       <Card>
         <CardBody>
           <div className="card__title">
-            <h5 className="bold-text">All Ammends in hospital</h5>
-            <h5 className="subhead">List of all ammends for hospital in which is current entity registered</h5>
+            <h5 className="bold-text">All Ammends</h5>
+            <h5 className="subhead">List of all ammends in which is current entity registered</h5>
           </div>
       <DataTable pagination={true} 
                  theme={ theme.className === 'theme-light' ? 'light' : 'dark'}
@@ -117,4 +91,4 @@ class AllAmmendsForHospitalTable extends PureComponent {
 
 export default withRouter(connect(state => ({
   theme: state.theme,
-}))(AllAmmendsForHospitalTable));
+}))(AllAmmendsTable));

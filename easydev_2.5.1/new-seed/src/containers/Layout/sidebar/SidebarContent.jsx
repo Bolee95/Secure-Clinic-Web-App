@@ -113,6 +113,7 @@ class SidebarContent extends Component {
         <SidebarCategory title="Ammends" icon="arrow-right-circle">
           <SidebarLink title="Create Ammend" route="/pages/createAmmend" onClick={this.hideSidebar} />
           <SidebarLink title="All Ammends For Hospital" route="/pages/allAmmendsForHospital" onClick={this.hideSidebar} />
+          <SidebarLink title="All Ammends" route="/pages/allAmmends" onClick={this.hideSidebar} />
         </SidebarCategory>
         </ul>
       </div>

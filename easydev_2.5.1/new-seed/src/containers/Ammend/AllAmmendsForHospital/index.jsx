@@ -6,6 +6,7 @@ import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllAmmendsForHospitalTable from './components/allAmmendsForHospitalTable';
 import fileDownload from 'js-file-download';
+import { ammendStringForType } from './../../../shared/AmmendType';
 
 class AllAmmendsForHospital extends React.Component {
 
@@ -50,12 +51,13 @@ class AllAmmendsForHospital extends React.Component {
                         let arrayItem = response.data[index];
                         let ammend = {
                             'index': index,
-                            'action': arrayItem.action,
+                            'action': ammendStringForType(arrayItem.action),
                             'description': arrayItem.description,
-                            'hospitalCode': arrayItem.hospitalCode,
-                            'ordinationCode': arrayItem.ordinationCode,
-                            'serviceCode': arrayItem.serviceCode,
+                            'hospitalName': arrayItem.hospitalName,
+                            'ordinationName': arrayItem.ordinationName,
+                            'serviceName': arrayItem.serviceName,
                             'pacientLbo': arrayItem.pacientLbo,
+                            'screenname': arrayItem.screenName
                         }
 
                         var evidences = arrayItem.evidences;

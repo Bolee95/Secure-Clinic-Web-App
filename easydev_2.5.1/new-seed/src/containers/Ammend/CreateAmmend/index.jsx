@@ -85,7 +85,7 @@ class CreateAmmendComponent extends React.Component {
                         isLoading: false
                     })
                 }, error => {
-                    window.alert(error)
+                    window.alert(error);
                 })
         }
 
@@ -112,7 +112,20 @@ class CreateAmmendComponent extends React.Component {
                 return;
             }
 
+            if (data['reason'] === undefined) {
+                this.setState({
+                    formSubmited: false
+                });
+                window.alert("No reason selected");
+                return;
+            }
+
             var documentsFormData = new FormData();
+
+            if (data["files"] === undefined) {
+                data["files"] = [];
+            }
+
             for (var i = 0; i < data["files"].length; i++) {
                 let file = data["files"][i];
                 documentsFormData.append('file[' + i + ']', file);
@@ -144,14 +157,17 @@ class CreateAmmendComponent extends React.Component {
             const selectedPacient = this.state.pacients.find(pacient => pacient.lbo === data['pacient'].value);
             const selectedWaitingList = this.state.waitingLists.find(waitingList => waitingList.key === data['waitingList'].value);
 
-            window.alert(selectedPacient.lbo);
             bodyFormData.set('pacientLbo', selectedPacient.lbo);
+            bodyFormData.set('screenname', selectedPacient.screenName);
             bodyFormData.set('action', data['reason'].value);
             bodyFormData.set('description', data['description']);
             bodyFormData.set('evidencesIds', documentIds);
             bodyFormData.set('hospitalCode', selectedWaitingList.hospitalCode);
             bodyFormData.set('ordinationCode', selectedWaitingList.ordinationCode);
             bodyFormData.set('serviceCode', selectedWaitingList.serviceCode);
+            bodyFormData.set('hospitalName', selectedWaitingList.hospitalName);
+            bodyFormData.set('ordinationName', selectedWaitingList.ordinationName);
+            bodyFormData.set('serviceName', selectedWaitingList.serviceName);
 
             axios({
                     method: 'POST',
