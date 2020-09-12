@@ -40,7 +40,7 @@ class AddDiseaseToSicknessHistoryComponent extends React.Component {
   loadPacientsPrivateData() {
     this.setState({ isLoading: true });
 
-    axios({ method: 'GET', url: '/shared/privateData/getPacientPrivateData/all', headers: { 'Identity_name': 'doctor' }})
+    axios({ method: 'GET', url: '/shared/privateData/getPacientPrivateData/all', headers: { 'Identity_name': 'doctor1' }})
       .then(response => {
         let pacientsPrivateData = [];
         for (let index = 0; index < response.data.length; index++) {
@@ -82,7 +82,7 @@ class AddDiseaseToSicknessHistoryComponent extends React.Component {
     bodyFormData.set('diseaseName', selectedDisease.diseaseName);
     bodyFormData.set('isActive', isActive );
 
-    axios({ method: 'POST', url: '/shared/privateData/addNewDiseaseToSicknessHistory', data: bodyFormData, headers: { 'Identity_name': 'doctor' }})
+    axios({ method: 'POST', url: '/shared/privateData/addNewDiseaseToSicknessHistory', data: bodyFormData, headers: { 'Identity_name': 'doctor1' }})
     .then(response => {
       console.log(response);
       window.alert("Succeed");

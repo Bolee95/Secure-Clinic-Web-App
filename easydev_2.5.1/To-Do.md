@@ -162,7 +162,7 @@ Case 2:
 10.09.
 - Zameniti logiku za proveru kojeg je tipa entitet zavisno od licenceID (kod allpendingsForHospital i allAmmendsForHospital)
 - Naci bolji nacin da se kastuje AmmendType
-- Resiti bolje postavljanje maxWaitingTime za listu cekanja
+- Resiti bolje postavljanje maxWaitingTime za listu cekanja -> Na primer, zavisno od koda intervencije/servisa, da se azurira ovaj podatak
 
 
 -------------------------------------------------------------------------
@@ -179,6 +179,6 @@ UI
 Major tasks:
 
 - Uploading i citanje podataka *DONE*
-- Logika za Ammends *WORK IN PROGRESS*
+- Logika za Ammends *DONE*
 - Integracija podataka koje je dekan poslao u projekat
 - Implementacija BI za statistiku 

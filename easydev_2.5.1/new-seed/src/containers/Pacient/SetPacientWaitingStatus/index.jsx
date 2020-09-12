@@ -61,7 +61,7 @@ class PacientWaitingStatusComponent extends React.Component {
     var bodyFormData = new FormData();
     bodyFormData.set('pacientLbo', data['patient'].value);
 
-    axios({ method: 'POST', url: targetUrl, data: bodyFormData, headers: { 'Identity_name': 'doctor' }})
+    axios({ method: 'POST', url: targetUrl, data: bodyFormData, headers: { 'Identity_name': 'doctor1' }})
     .then(response => {
       console.log(response);
       window.alert("Succeed");

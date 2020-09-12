@@ -174,7 +174,7 @@ class CreateAmmendComponent extends React.Component {
                     url: '/shared/createAmmend',
                     data: bodyFormData,
                     headers: {
-                        'Identity_name': 'doctor'
+                        'Identity_name': 'doctor1'
                     }
                 })
                 .then(response => {

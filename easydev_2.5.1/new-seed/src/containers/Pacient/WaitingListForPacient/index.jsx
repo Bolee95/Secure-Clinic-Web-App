@@ -31,7 +31,7 @@ class WaitingListForPacientComponent extends React.Component {
         const serviceCode = store.get('user').serviceCode;
 
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/getWaitingList', headers: { 'Identity_name': 'doctor' }, params: { 'hospitalCode': hospitalCode, 'ordinationCode': ordinationCode, 'serviceCode': serviceCode }})
+        axios({ method: 'GET', url: '/shared/getWaitingList', headers: { 'Identity_name': 'doctor1' }, params: { 'hospitalCode': hospitalCode, 'ordinationCode': ordinationCode, 'serviceCode': serviceCode }})
         .then(response => {
             let title;
             let pacients = [];   

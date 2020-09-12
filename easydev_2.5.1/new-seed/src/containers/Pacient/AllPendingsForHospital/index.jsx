@@ -28,7 +28,7 @@ class AllPendingsForHospitalComponent extends React.Component {
         const hospitalCode = store.get('user').hospitalCode;
 
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/getPendingsForHospital', headers: { 'Identity_name': 'doctor' }, params: { 'hospitalCode': hospitalCode }})
+        axios({ method: 'GET', url: '/shared/getPendingsForHospital', headers: { 'Identity_name': 'doctor1' }, params: { 'hospitalCode': hospitalCode }})
         .then(response => {
             let pendings = [];
             for (let index = 0; index < response.data.length; index++) {
@@ -99,7 +99,7 @@ class AllPendingsForHospitalComponent extends React.Component {
         bodyFormData.set('hospitalCode', rowData.hospitalCode);
         bodyFormData.set('ordinationCode', rowData.ordinationCode);
 
-        axios({ method: 'POST', url: '/shared/approvePending', data: bodyFormData, headers: { 'Identity_name': 'doctor' } })
+        axios({ method: 'POST', url: '/shared/approvePending', data: bodyFormData, headers: { 'Identity_name': 'doctor1' } })
         .then(response => {
             window.alert('succedd');
             this.getPatients();

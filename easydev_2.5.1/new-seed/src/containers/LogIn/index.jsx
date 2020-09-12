@@ -19,7 +19,7 @@ class LogInComponent extends React.Component {
 
   componentDidMount() {
     var store = require('store');
-    if (store.get('loggedin') == true) {
+    if (store.get('loggedin') === true) {
       this.props.history.push("/pages");
     }
   }
@@ -48,7 +48,7 @@ class LogInComponent extends React.Component {
   processLoginAsUser(userId) {
     this.setState({ isLoading: true });
 
-    axios({ method: 'GET', url: '/shared/getPacient', params: { pacientLbo: userId }, headers: { 'Identity_name': 'doctor' }})
+    axios({ method: 'GET', url: '/shared/getPacient', params: { pacientLbo: userId }, headers: { 'Identity_name': 'doctor1' }})
     .then(response => {
 
       let pacientData = response.data;
@@ -75,18 +75,20 @@ class LogInComponent extends React.Component {
   }
 
   retrieveUserData(licenceId) {
-    axios({ method: 'GET', url: '/shared/getEntity', params: { licenceId: licenceId }, headers: { 'Identity_name': 'doctor' }})
+    axios({ method: 'GET', url: '/shared/getEntity', params: { licenceId: licenceId }, headers: { 'Identity_name': 'doctor1' }})
     .then(response => {
 
       let entityData = response.data;
       var store = require('store');
   
-      store.set('user', { licenceId: entityData.licenceId,
+      window.alert(entityData.licenceId);
+      store.set('user', { 
                           name: entityData.name,
                           surname: entityData.surname,
                           role: entityData.role,
                           hospitalName: entityData.hospitalName,
-                          hospitalCode: entityData.hospitalCode
+                          hospitalCode: entityData.hospitalCode,
+                          licenceId: entityData.licenceId
       })
       store.set('loggedIn', true);
 

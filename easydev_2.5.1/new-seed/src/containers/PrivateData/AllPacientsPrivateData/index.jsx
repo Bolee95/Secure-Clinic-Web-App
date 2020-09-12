@@ -21,7 +21,7 @@ class AllPacientsPrivateDataComponent extends React.Component {
     pacientsPrivateData() {
 
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/privateData/getPacientPrivateData/all', headers: { 'Identity_name': 'doctor' }})
+        axios({ method: 'GET', url: '/shared/privateData/getPacientPrivateData/all', headers: { 'Identity_name': 'doctor1' }})
         .then(response => {
             let pacientsPrivateData = [];
             for (let index = 0; index < response.data.length; index++) {

@@ -29,8 +29,9 @@ class AllAmmendsForHospital extends React.Component {
 
         getPatients() {
             var store = require('store');
-            // TO-DO: Return old implementation, current one is for testing only!
-            const hospitalCode = 'AA'; //store.get('user').hospitalCode;
+            
+            const hospitalCode = store.get('user').hospitalCode;
+            const licenceId = store.get('user').licenceId;
 
             this.setState({
                 loading: true
@@ -39,10 +40,11 @@ class AllAmmendsForHospital extends React.Component {
                     method: 'GET',
                     url: '/shared/getAllAmmendsForHosptial',
                     headers: {
-                        'Identity_name': 'doctor'
+                        'Identity_name': 'doctor1'
                     },
                     params: {
-                        'hospitalCode': hospitalCode
+                        'hospitalCode': hospitalCode,
+                        'licenceId': licenceId
                     }
                 })
                 .then(response => {
@@ -56,8 +58,11 @@ class AllAmmendsForHospital extends React.Component {
                             'hospitalName': arrayItem.hospitalName,
                             'ordinationName': arrayItem.ordinationName,
                             'serviceName': arrayItem.serviceName,
+                            'hospitalCode': arrayItem.hospitalCode,
+                            'ordinationCode': arrayItem.ordinationCode,
+                            'serviceCode': arrayItem.serviceCode,
                             'pacientLbo': arrayItem.pacientLbo,
-                            'screenname': arrayItem.screenName
+                            'screenname': arrayItem.screenName,
                         }
 
                         var evidences = arrayItem.evidences;
@@ -125,19 +130,21 @@ class AllAmmendsForHospital extends React.Component {
             const storage = require('store');
             const licenceId = storage.get('user').licenceId;
 
+            let approvedAmmend = this.state.ammends.find(ammend =>  ammend.pacientLbo === rowData.pacientLbo);
+
             var bodyFormData = new FormData();
             bodyFormData.set('licenceId', licenceId);
-            bodyFormData.set('pacientLbo', rowData.pacientLbo);
-            bodyFormData.set('serviceCode', rowData.serviceCode);
-            bodyFormData.set('hospitalCode', rowData.hospitalCode);
-            bodyFormData.set('ordinationCode', rowData.ordinationCode);
+            bodyFormData.set('pacientLbo', approvedAmmend.pacientLbo);
+            bodyFormData.set('serviceCode', approvedAmmend.serviceCode);
+            bodyFormData.set('hospitalCode', approvedAmmend.hospitalCode);
+            bodyFormData.set('ordinationCode', approvedAmmend.ordinationCode);
 
             axios({
                     method: 'POST',
                     url: '/shared/approveAmmend',
                     data: bodyFormData,
                     headers: {
-                        'Identity_name': 'doctor'
+                        'Identity_name': 'doctor1'
                     }
                 })
                 .then(response => {

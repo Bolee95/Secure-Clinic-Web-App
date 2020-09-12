@@ -18,7 +18,7 @@ class AllPendingsComponent extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/getAllPendings', headers: { 'Identity_name': 'doctor' }})
+        axios({ method: 'GET', url: '/shared/getAllPendings', headers: { 'Identity_name': 'doctor1' }})
         .then(response => {
             let pendings = [];
             for (let index = 0; index < response.data.length; index++) {
