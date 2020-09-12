@@ -26,9 +26,13 @@ class AllPendingsForHospitalComponent extends React.Component {
     getPatients() {
         var store = require('store');
         const hospitalCode = store.get('user').hospitalCode;
+        const licenceId = store.get('user').licenceId;
 
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/getPendingsForHospital', headers: { 'Identity_name': 'doctor1' }, params: { 'hospitalCode': hospitalCode }})
+        axios({ method: 'GET',
+                url: '/shared/getPendingsForHospital', 
+                headers: { 'Identity_name': 'doctor1' }, 
+                params: { 'hospitalCode': hospitalCode, 'licenceId': licenceId }})
         .then(response => {
             let pendings = [];
             for (let index = 0; index < response.data.length; index++) {

@@ -160,7 +160,7 @@ Case 2:
 - Dodati dodatna polja za Ammend objekat (naziv bolnice, ordinacije..?)  *DONE*
 
 10.09.
-- Zameniti logiku za proveru kojeg je tipa entitet zavisno od licenceID (kod allpendingsForHospital i allAmmendsForHospital)
+- Zameniti logiku za proveru kojeg je tipa entitet zavisno od licenceID (kod allpendingsForHospital i allAmmendsForHospital) *DONE*
 - Naci bolji nacin da se kastuje AmmendType
 - Resiti bolje postavljanje maxWaitingTime za listu cekanja -> Na primer, zavisno od koda intervencije/servisa, da se azurira ovaj podatak
 
@@ -173,6 +173,7 @@ Moguca unapredjenja:
 
 UI
 -- Pokusaj dodavanje notifikacije kada se javi greska
+-- Srediti "Approve" dugme
 
 --------------------------------------------------------------------------
 
