@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import AddDiseaseToSicknesshistoryForm from './components/addDiseaseToSicknessHistoryForm';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
+import { showNotification } from './../../../shared/Notification';
 
 class AddDiseaseToSicknessHistoryComponent extends React.Component {
 
@@ -60,7 +61,7 @@ class AddDiseaseToSicknessHistoryComponent extends React.Component {
             loading: false
         })
       }, error => {
-         window.alert(error)    
+         showNotification('danger', error);
       })
       .then(() => {
           this.setState({
@@ -84,12 +85,9 @@ class AddDiseaseToSicknessHistoryComponent extends React.Component {
 
     axios({ method: 'POST', url: '/shared/privateData/addNewDiseaseToSicknessHistory', data: bodyFormData, headers: { 'Identity_name': 'doctor1' }})
     .then(response => {
-      console.log(response);
-      window.alert("Succeed");
+      showNotification('success', 'You have successfully added new Disease to Sickness History!');
     }, error => {
-      
-      window.alert(error);
-      console.log(error);
+      showNotification('danger', error);
     }).then(() => {
       this.setState({ formSubmited: false });
     });

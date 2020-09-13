@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import DeleteUserForm from './components/DeleteUserForm';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
+import { showNotification } from '../../../shared/Notification';
 
 class DeleteUserComponent extends React.Component {
 
@@ -24,15 +25,12 @@ class DeleteUserComponent extends React.Component {
 
     axios({ method: 'DELETE', url: '/admin/deleteUserWallet', data: bodyFormData, headers: { 'Identity_name': 'admin' }})
     .then(response => {
-      console.log(response);
-      window.alert("Succedd");
+      showNotification('success', 'Entity successfully deleted!');
     }, error => {
-      window.alert(error);
-      console.log(error);
+      showNotification('danger', error);
     }).then(() => {
         this.setState({ isLoading: false });
     });
-    console.log("On submit data passed:" + JSON.stringify(data, null ,2));
   }
 
   render() {

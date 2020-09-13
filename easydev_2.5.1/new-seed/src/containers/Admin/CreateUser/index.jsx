@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react';
 import { Container } from 'reactstrap';
-import Loading from '../../../shared/components/Loading';
 import CreateUserForm from './components/CreateUserForm';
+import { showNotification } from '../../../shared/Notification';
 
 class CreateUserComponent extends React.Component {
 
@@ -28,7 +28,7 @@ class CreateUserComponent extends React.Component {
     .then(response => {
       this.createNewEntity(data);
     }, error => {
-      window.alert(error);
+      showNotification('danger', error);
       this.setState({ isLoading: false });
     });
   }
@@ -47,11 +47,12 @@ class CreateUserComponent extends React.Component {
     formData.set('hospitalName', currentUser.hospitalName);
     formData.set('hospitalCode', currentUser.hospitalCode);
 
+
     axios({ method: 'POST', url: '/admin/createEntity', data: formData, headers: { 'Identity_name': 'admin' }})
     .then(response => {
-      window.alert('success!');
+      showNotification('success', 'New Entity successfully created!');
     }, error => {
-      window.alert(error);
+      showNotification('danger', error);
     })
     .then( () => {
       this.setState({ isLoading: false });
@@ -60,10 +61,6 @@ class CreateUserComponent extends React.Component {
 
   render() {
     const { isLoading } = this.state;
-
-    // if (isLoading) {
-    //     return (<Loading loading={isLoading} />);
-    // }
 
     return (
       <Container className="dashboard">

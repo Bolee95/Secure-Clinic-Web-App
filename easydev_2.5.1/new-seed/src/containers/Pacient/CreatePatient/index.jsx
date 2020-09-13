@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'reactstrap';
 import CreatePatientForm from './components/CreatePatientForm';
-import Loading from '../../../shared/components/Loading';
+import { showNotification } from './../../../shared/Notification';
 import axios from 'axios';
 
 class CreatePatientComponent extends React.Component {
@@ -28,16 +28,12 @@ class CreatePatientComponent extends React.Component {
 
     axios({ method: 'POST', url: '/doctor/addPacient', data: bodyFormData, headers: { 'Identity_name': 'admin' }})
     .then(response => {
-      console.log(response);
-      window.alert("Succeed");
+      showNotification('success', 'You have successfully created Pacient!');
     }, error => {
-      
-      window.alert(error);
-      console.log(error);
+      showNotification('danger', error);
     }).then(() => {
       this.setState({ isLoading: false });
     });
-    console.log("On submit data passed:" + JSON.stringify(data, null ,2));
   }
 
   render() {

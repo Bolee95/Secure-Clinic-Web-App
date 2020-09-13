@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import renderSelectField from '../../../../shared/components/form/Select';
 import ExpandButton from '../../../../shared/components/Buttons/ExpandButton';
 import renderDropZoneMultipleField from '../../../../shared/components/form/DropZoneMultiple';
+import { ammendStringForType } from '../../../../shared/AmmendType';
 
 class AmmendForm extends PureComponent {
   static propTypes = {
@@ -46,21 +47,17 @@ class AmmendForm extends PureComponent {
         pacientsData.push(pacientData);
     }
 
-    // TO-DO: Should be read from some file... Unify it
-    // USER_INITED: 1,
-    // TEHNICAL: 2,
-    // MEDICAL: 3
     var reasonOfAmmend = [{
             value: 1,
-            label: 'User initiated'
+            label: ammendStringForType("1")
         },
         {
             value: 2,
-            label: 'Tehnical'
+            label: ammendStringForType("2")
         },
         {
             value: 3,
-            label: 'Medical'
+            label: ammendStringForType("3")
         }
     ];
 

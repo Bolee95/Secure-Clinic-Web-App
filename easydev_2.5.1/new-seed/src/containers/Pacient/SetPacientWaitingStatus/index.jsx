@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import ChangePacientWaitingStatusForm from './components/setPacientWaitingStatusForm';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
+import { showNotification } from './../../../shared/Notification';
 
 class PacientWaitingStatusComponent extends React.Component {
 
@@ -40,7 +41,7 @@ class PacientWaitingStatusComponent extends React.Component {
                 isLoading: false
             })
         }, error => {
-           window.alert(error)    
+          showNotification('danger', error);   
         })
   }
 
@@ -51,10 +52,10 @@ class PacientWaitingStatusComponent extends React.Component {
     const newWaitingStatus = data['waitingStatus'].value;
     
     var targetUrl;
-    if (newWaitingStatus == 0) {
+    if (newWaitingStatus === 0) {
         
         targetUrl = '/doctor/resetPacientWaitingStatus';
-    } else if (newWaitingStatus == 1) {
+    } else if (newWaitingStatus === 1) {
         targetUrl = '/doctor/changePacientStatusToPending';
     }
 
@@ -63,12 +64,9 @@ class PacientWaitingStatusComponent extends React.Component {
 
     axios({ method: 'POST', url: targetUrl, data: bodyFormData, headers: { 'Identity_name': 'doctor1' }})
     .then(response => {
-      console.log(response);
-      window.alert("Succeed");
+      showNotification('success', 'You have successfully changed pacient waiting status!');
     }, error => {
-      
-      window.alert(error);
-      console.log(error);
+      showNotification('danger', error);
     }).then(() => {
       this.setState({ formSubmited: false });
     });
@@ -76,7 +74,7 @@ class PacientWaitingStatusComponent extends React.Component {
 
   render() {
 
-    const { isLoading, formSubmited, patients, hospitals, ordinations, services } = this.state;
+    const { isLoading, formSubmited, patients } = this.state;
 
     if (isLoading) {
         return (<Loading loading={isLoading} />);

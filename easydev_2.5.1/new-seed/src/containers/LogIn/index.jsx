@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import LogInForm from './components/LogInForm';
 import Loading from '../../shared/components/Loading';
 import axios from 'axios';
+import { showNotification } from '../../shared/Notification.js';
 
 class LogInComponent extends React.Component {
 
@@ -18,10 +19,10 @@ class LogInComponent extends React.Component {
   }
 
   componentDidMount() {
-    var store = require('store');
-    if (store.get('loggedin') === true) {
-      this.props.history.push("/pages");
-    }
+    var localStorage = require('store');
+    if (localStorage.get('loggedin') === true) {
+      this.props.history.push('/pages');
+    };
   }
 
   processLoginAsEntity(data) {
@@ -39,8 +40,7 @@ class LogInComponent extends React.Component {
         this.retrieveUserData(userId);
       }
     }, error => {
-      window.alert(error);
-      console.log(error);
+      showNotification('danger', error);
       this.setState({ isLoading: false });
     })
   }
@@ -66,8 +66,7 @@ class LogInComponent extends React.Component {
       store.set('loggedIn', true);
       this.props.history.push("/pages");
     }, error => {
-      window.alert(error);
-      console.log(error);
+      showNotification('danger', error);
     })
     .then(() => {
       this.setState({ isLoading: false });
@@ -81,7 +80,6 @@ class LogInComponent extends React.Component {
       let entityData = response.data;
       var store = require('store');
   
-      window.alert(entityData.licenceId);
       store.set('user', { 
                           name: entityData.name,
                           surname: entityData.surname,
@@ -94,8 +92,7 @@ class LogInComponent extends React.Component {
 
       this.props.history.push("/pages");
     }, error => {
-      window.alert(error);
-      console.log(error);
+      showNotification('danger', error);
     })
     .then(() => {
       this.setState({ isLoading: false });

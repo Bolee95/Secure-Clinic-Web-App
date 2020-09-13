@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import AddPendingForm from './components/addPendingForm';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
+import { showNotification } from './../../../shared/Notification';
 
 class NewPendingComponent extends React.Component {
 
@@ -52,7 +53,7 @@ class NewPendingComponent extends React.Component {
                 isLoading: false
             })
         }, error => {
-           window.alert(error)    
+           showNotification('danger', error);   
         })
 
         axios({ method: 'GET', url: '/shared/getHospital/all', headers: { 'Identity_name': 'admin' }})
@@ -103,7 +104,7 @@ class NewPendingComponent extends React.Component {
             })
 
         }, error => {
-           window.alert(error)    
+           showNotification('danger', error);
         })
   }
 
@@ -121,7 +122,7 @@ class NewPendingComponent extends React.Component {
 
     if (data['patient'] === undefined) {
       this.setState({ formSubmited: false });
-      window.alert("No patient selected");
+      showNotification('info', 'No patient selected!');
       return;
     }
 
@@ -140,7 +141,7 @@ class NewPendingComponent extends React.Component {
       this.addNewPending(data, response.data);
     }, error => {
       this.setState({ formSubmited: false });
-      window.alert(error);
+      showNotification('danger', error);
     });
     
   }
@@ -164,12 +165,9 @@ class NewPendingComponent extends React.Component {
 
     axios({ method: 'POST', url: '/doctor/createNewPending', data: bodyFormData, headers: { 'Identity_name': 'doctor1' }})
     .then(response => {
-      console.log(response);
-      window.alert("Succeed");
+      showNotification('success', 'You have successfully created new Pending!');
     }, error => {
-      
-      window.alert(error);
-      console.log(error);
+      showNotification('danger', error);
     }).then(() => {
       this.setState({ formSubmited: false });
     });

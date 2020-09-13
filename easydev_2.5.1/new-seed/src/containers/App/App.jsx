@@ -6,6 +6,7 @@ import '../../scss/app.scss';
 import Router from './Router';
 import store from './store';
 import ScrollToTop from './ScrollToTop';
+import ReactNotification from 'react-notifications-component'
 
 class App extends Component {
   constructor() {
@@ -29,6 +30,7 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <ScrollToTop>
+            <ReactNotification />
             <Fragment>
               {!loaded
               && (

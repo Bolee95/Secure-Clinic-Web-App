@@ -20,7 +20,7 @@ class CreateUserForm extends PureComponent {
   render() {
     const { handleSubmit, reset, isLoading } = this.props;
 
-    let roles = [{ label: 'Doctor', value: 'doctor1' },
+    let roles = [{ label: 'Doctor', value: 'doctor' },
                  { label: 'Tehnical', value: 'tehnical'},
                  { label: 'Director', value: 'director'},
                  { label: 'Admin', value: 'admin' }];

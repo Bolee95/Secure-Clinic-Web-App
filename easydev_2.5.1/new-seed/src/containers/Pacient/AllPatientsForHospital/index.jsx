@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllPatientsTable from './components/AllPatientsTable';
+import { showNotification } from './../../../shared/Notification';
 
 class AllPatientsForHospitalComponent extends React.Component {
 
@@ -45,13 +46,12 @@ class AllPatientsForHospitalComponent extends React.Component {
                 loading: false
             })
         }, error => {
-           window.alert(error)    
+           showNotification('danger', error);   
         })
       }
 
     render() {
         const { patients, loading } = this.state;
-        console.log("Is loading " + loading);
 
         if (loading) {
             return (<Loading loading={loading} />);

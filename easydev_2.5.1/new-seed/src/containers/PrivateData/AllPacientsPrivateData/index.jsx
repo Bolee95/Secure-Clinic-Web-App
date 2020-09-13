@@ -2,6 +2,7 @@ import React from 'react';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllPacientsPrivateDataForm from './components/allPacientsPrivateDataForm';
+import { showNotification } from './../../../shared/Notification';
 
 class AllPacientsPrivateDataComponent extends React.Component {
 
@@ -65,7 +66,7 @@ class AllPacientsPrivateDataComponent extends React.Component {
                 loading: false
             })
         }, error => {
-           window.alert(error);    
+           showNotification('danger', error);
         })
     }
 

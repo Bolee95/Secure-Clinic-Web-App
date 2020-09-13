@@ -3,7 +3,7 @@ import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import WaitingListForPacientTable from './components/WaitingListForPacientTable';
 import { Container } from 'reactstrap';
-import { isThisHour } from 'date-fns/esm';
+import { showNotification } from './../../../shared/Notification';
 
 class WaitingListForPacientComponent extends React.Component {
 
@@ -70,7 +70,7 @@ class WaitingListForPacientComponent extends React.Component {
                 title: title
             })
         }, error => {
-           window.alert(error);    
+           showNotification('danger', error);    
         }).then(() => {
             this.setState({
                 loading: false

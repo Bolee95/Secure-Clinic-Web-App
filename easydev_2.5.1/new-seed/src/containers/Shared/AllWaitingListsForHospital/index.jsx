@@ -2,6 +2,7 @@ import React from 'react';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import WaitingListSelectionForm from './components/waitingListSelectionForm';
+import { showNotification } from './../../../shared/Notification';
 
 class AllWaitingListsForHospital extends React.Component {
 
@@ -69,7 +70,7 @@ class AllWaitingListsForHospital extends React.Component {
                 loading: false
             })
         }, error => {
-           window.alert(error);    
+           showNotification('danger', error);   
         })
     }
 

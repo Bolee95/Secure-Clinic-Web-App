@@ -5,6 +5,7 @@ import axios from 'axios';
 import AllAmmendsTable from './components/allAmmendsTable';
 import fileDownload from 'js-file-download';
 import { ammendStringForType } from './../../../shared/AmmendType';
+import { showNotification } from './../../../shared/Notification';
 
 class AllAmmendsComponent extends React.Component {
 
@@ -66,7 +67,7 @@ class AllAmmendsComponent extends React.Component {
                 loading: false
             })
         }, error => {
-           window.alert(error)    
+            showNotification('danger', error);   
         })
       }
 
@@ -85,7 +86,7 @@ class AllAmmendsComponent extends React.Component {
             let mimeType = response.headers['mimeType'];
             fileDownload(response.data, filename, mimeType);
         }, error => {
-            window.alert(error);
+            showNotification('danger', error);
         });
     }
 

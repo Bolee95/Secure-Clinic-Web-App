@@ -4,6 +4,7 @@ import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllPendingsForHospitalTable from './components/allPendingsForHospitalTable';
 import fileDownload from 'js-file-download';
+import { showNotification } from './../../../shared/Notification';
 
 class AllPendingsForHospitalComponent extends React.Component {
 
@@ -72,7 +73,7 @@ class AllPendingsForHospitalComponent extends React.Component {
                 loading: false
             })
         }, error => {
-           window.alert(error)    
+           showNotification('danger', error);    
         })
     }
 
@@ -87,7 +88,7 @@ class AllPendingsForHospitalComponent extends React.Component {
             let mimeType = response.headers['mimeType'];
             fileDownload(response.data, filename, mimeType);
         }, error => {
-            window.alert(error);
+            showNotification('danger', error);
         });
     }
 
@@ -105,16 +106,15 @@ class AllPendingsForHospitalComponent extends React.Component {
 
         axios({ method: 'POST', url: '/shared/approvePending', data: bodyFormData, headers: { 'Identity_name': 'doctor1' } })
         .then(response => {
-            window.alert('succedd');
+            showNotification('success', 'You have successfully approved Pending!');
             this.getPatients();
         }, error => {
-            window.alert('error');
+            showNotification('danger', error);
         })
     }
 
     render() {
         const { pendings, loading } = this.state;
-        console.log("Is loading " + loading);
 
         if (loading) {
             return (<Loading loading={loading} />);

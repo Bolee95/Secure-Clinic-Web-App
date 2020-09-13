@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import DropZone from './components/DropZone';
 import axios from 'axios';
+import { showNotification } from './../../../shared/Notification';
 
 class UploadFilesComponent extends Component {
 
@@ -9,7 +10,6 @@ class UploadFilesComponent extends Component {
         super();
 
         this.processFormData = this.processFormData.bind(this);
-        this.downloadFileTest = this.downloadFileTest.bind(this);
         this.getPacientsPrivateData = this.getPacientsPrivateData.bind(this);
         this.updatePacientsDocumentsList = this.updatePacientsDocumentsList.bind(this);
 
@@ -20,7 +20,6 @@ class UploadFilesComponent extends Component {
     }
 
     componentDidMount() {
-        this.downloadFileTest();
         this.getPacientsPrivateData();
     }
 
@@ -47,24 +46,9 @@ class UploadFilesComponent extends Component {
                 loading: false
             })
         }, error => {
-           window.alert(error);    
+           showNotification('danger', error);   
         })
     }
-
-    downloadFileTest() {
-        // axios({ method: 'GET',
-        //         url: '/shared/getFile',
-        //         params: { 'fileId': '7UVTuqzpc8LdBFkbvbVeL8' },
-        //         responseType: 'blob',})
-        //         .then(response => {
-        //             let filename = response.headers['filename'];
-        //             let mimeType = response.headers['mimeType'];
-        //             fileDownload(response.data, filename, mimeType);
-        //         }, error => {
-        //             window.alert(error);
-        //         });
-    }
-
 
     processFormData(data) {
         this.setState({ isLoading: true });
@@ -72,7 +56,7 @@ class UploadFilesComponent extends Component {
         let formData = new FormData();
 
         if (data["pacient"] === undefined) {
-            window.alert("No pacient has been selected");
+            showNotification('info', 'No patient has been selected!');
             this.setState({ isLoading: false });
             return;
         } 
@@ -88,12 +72,10 @@ class UploadFilesComponent extends Component {
                 data: formData,
                 headers: { 'Identity_name': 'admin', 'content-type': 'multipart/form-data' }})
         .then(response => {
-            
             this.updatePacientsDocumentsList(response.data, selectedPacientsLbo);
-            
         }, error => {
             this.setState({ isLoading: false });
-            window.alert(error);
+            showNotification('danger', error);
         });
     }
 
@@ -108,9 +90,9 @@ class UploadFilesComponent extends Component {
                 data: formData,
                 headers: { 'Identity_name': 'admin' } })
         .then(response => {
-            window.alert("Succedd");
+            showNotification('success', 'Successfully uploaded new documents for pacient!');
         }, error => {
-            window.alert(error);
+            showNotification('danger', error);
         })
         .then(() => {
             this.setState({ isLoading: false });

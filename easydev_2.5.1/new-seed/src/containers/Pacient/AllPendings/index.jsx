@@ -4,6 +4,7 @@ import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllPendingsTable from './components/allPendingsTable';
 import fileDownload from 'js-file-download';
+import { showNotification } from './../../../shared/Notification';
 
 class AllPendingsComponent extends React.Component {
 
@@ -58,7 +59,7 @@ class AllPendingsComponent extends React.Component {
                 loading: false
             })
         }, error => {
-           window.alert(error)    
+           showNotification('danger', error);
         })
       }
 
@@ -73,13 +74,12 @@ class AllPendingsComponent extends React.Component {
             let mimeType = response.headers['mimeType'];
             fileDownload(response.data, filename, mimeType);
         }, error => {
-            window.alert(error);
+            showNotification('danger', error);
         });
     }
 
     render() {
         const { pendings, loading } = this.state;
-        console.log("Is loading " + loading);
 
         if (loading) {
             return (<Loading loading={loading} />);

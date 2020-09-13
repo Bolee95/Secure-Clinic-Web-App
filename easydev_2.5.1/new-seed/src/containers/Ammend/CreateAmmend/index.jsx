@@ -5,6 +5,7 @@ import {
 import AmmendForm from './components/ammendForm';
 import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
+import { showNotification } from './../../../shared/Notification';
 
 class CreateAmmendComponent extends React.Component {
 
@@ -85,7 +86,7 @@ class CreateAmmendComponent extends React.Component {
                         isLoading: false
                     })
                 }, error => {
-                    window.alert(error);
+                    showNotification('danger', error);
                 })
         }
 
@@ -108,7 +109,7 @@ class CreateAmmendComponent extends React.Component {
                 this.setState({
                     formSubmited: false
                 });
-                window.alert("No patient selected");
+                showNotification('info', 'No pacient selected!');
                 return;
             }
 
@@ -116,7 +117,7 @@ class CreateAmmendComponent extends React.Component {
                 this.setState({
                     formSubmited: false
                 });
-                window.alert("No reason selected");
+                showNotification('info', 'No Ammend reason selected!');
                 return;
             }
 
@@ -146,7 +147,7 @@ class CreateAmmendComponent extends React.Component {
                     this.setState({
                         formSubmited: false
                     });
-                    window.alert(error);
+                    showNotification('danger', error);
                 });
         }
 
@@ -178,9 +179,9 @@ class CreateAmmendComponent extends React.Component {
                     }
                 })
                 .then(response => {
-                    window.alert("Success!");
+                    showNotification('success', 'You have successfully created Ammend!');
                 }, error => {
-                    window.alert(error);
+                    showNotification('danger', error);
                 }).then(() => {
                     this.setState({
                         formSubmited: false

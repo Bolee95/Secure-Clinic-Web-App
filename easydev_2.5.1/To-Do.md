@@ -159,10 +159,14 @@ Case 2:
 - Dodati komponentu koja izlistava sve Ammende *DONE* 
 - Dodati dodatna polja za Ammend objekat (naziv bolnice, ordinacije..?)  *DONE*
 
-10.09.
+12.09.
 - Zameniti logiku za proveru kojeg je tipa entitet zavisno od licenceID (kod allpendingsForHospital i allAmmendsForHospital) *DONE*
-- Naci bolji nacin da se kastuje AmmendType
-- Resiti bolje postavljanje maxWaitingTime za listu cekanja -> Na primer, zavisno od koda intervencije/servisa, da se azurira ovaj podatak
+- Naci bolji nacin da se kastuje AmmendType *DONE* 
+- Resiti bolje postavljanje maxWaitingTime za listu cekanja -> Na primer, zavisno od koda intervencije/servisa, da se azurira ovaj podatak *Za sad je u redu ovako, predefinisano ce da bude samo kada se sama kreira lista cekanja*
+
+13.09.
+- Pokusaj dodavanje notifikacije kada se javi greska *DONE*
+- Dodato je logovanje requesta kod API-ja
 
 
 -------------------------------------------------------------------------
@@ -170,9 +174,9 @@ Moguca unapredjenja:
 
 - Naci nacin da se uhvate greske sa nizeg nivoa od API-ja (Mozda da se izbaci hvatanje greske, nego da se vraca {success, error} sa nizeg nivoa 
 - Izlistavanje transakcija (?) Proveriti Master Rad folder za primer
+- Proveriti da li se brise i enitet kada se brise wallet *NE BRISE SE ZA SAD*
 
 UI
--- Pokusaj dodavanje notifikacije kada se javi greska
 -- Srediti "Approve" dugme
 
 --------------------------------------------------------------------------
@@ -183,3 +187,4 @@ Major tasks:
 - Logika za Ammends *DONE*
 - Integracija podataka koje je dekan poslao u projekat
 - Implementacija BI za statistiku 
+

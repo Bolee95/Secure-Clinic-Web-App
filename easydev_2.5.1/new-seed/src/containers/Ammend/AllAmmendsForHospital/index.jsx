@@ -7,6 +7,7 @@ import axios from 'axios';
 import AllAmmendsForHospitalTable from './components/allAmmendsForHospitalTable';
 import fileDownload from 'js-file-download';
 import { ammendStringForType } from './../../../shared/AmmendType';
+import { showNotification } from './../../../shared/Notification';
 
 class AllAmmendsForHospital extends React.Component {
 
@@ -97,7 +98,7 @@ class AllAmmendsForHospital extends React.Component {
                         loading: false
                     });
                 }, error => {
-                    window.alert(error)
+                    showNotification('danger', error);
                 })
                 .then(() => {
                     this.setState({
@@ -121,7 +122,7 @@ class AllAmmendsForHospital extends React.Component {
                     let mimeType = response.headers['mimeType'];
                     fileDownload(response.data, filename, mimeType);
                 }, error => {
-                    window.alert(error);
+                    showNotification('danger', error);
                 });
         }
 
@@ -148,10 +149,10 @@ class AllAmmendsForHospital extends React.Component {
                     }
                 })
                 .then(response => {
-                    window.alert('success!');
+                    showNotification('success', "You have successfully approved ammend!");
                     this.getPatients();
                 }, error => {
-                    window.alert('error');
+                    showNotification('danger', error);
                 })
         }
 
