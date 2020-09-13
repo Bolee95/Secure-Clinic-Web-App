@@ -166,8 +166,14 @@ Case 2:
 
 13.09.
 - Pokusaj dodavanje notifikacije kada se javi greska *DONE*
-- Dodato je logovanje requesta kod API-ja
+- Dodato je logovanje requesta kod API-ja *DONE*
 
+
+14.09.
+- Generalni test aplikacije
+-- Skloniti placeholder vrednosti (identity_name)
+
+- Srediti "Approve" dugme (da se prikazuje u celosti)
 
 -------------------------------------------------------------------------
 Moguca unapredjenja:
@@ -177,14 +183,27 @@ Moguca unapredjenja:
 - Proveriti da li se brise i enitet kada se brise wallet *NE BRISE SE ZA SAD*
 
 UI
--- Srediti "Approve" dugme
+
 
 --------------------------------------------------------------------------
 
-Major tasks:
+
+Major tasks (by priority):
 
 - Uploading i citanje podataka *DONE*
 - Logika za Ammends *DONE*
+- Generalni test aplikacije
 - Integracija podataka koje je dekan poslao u projekat
+- Pisanje rada
 - Implementacija BI za statistiku 
+- Dalja nadogradnja nedostataka (unapredjenja) projekta
+
+----------------------------------------------------------------------------
+Integracija podataka 
+- Iskoristiti dokument "Zdravstvene ustanove"
+-- Iskoristiti nazive organizacijonih jedinica
+-- Iskoritisti identifikatore
+-- Proveriti da li moze da se iskoristi i adresa
+
+- Prilikom inicijalizacije ugovora "Hospital", ubaciti sve ove podatke
 
