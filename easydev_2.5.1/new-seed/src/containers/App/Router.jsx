@@ -5,8 +5,6 @@ import MainWrapper from './MainWrapper';
 
 import LogIn from '../LogIn';
 import CreatePacientForm from '../Pacient/CreatePatient';
-import ExamplePageTwo from '../ExampleTwo';
-import ExamplePageThree from '../ExampleThree';
 import AllPatientsComponent from '../Pacient/AllPatients';
 import AllPatientsForHospitalComponent from '../Pacient/AllPatientsForHospital';
 import NewPendingComponent from '../Pacient/AddToPending';
@@ -40,8 +38,6 @@ const Pages = () => (
     <Route path="/pages/allPacientsPrivateData" component={AllPacientsPrivateDataComponent} />
     <Route path="/pages/addNewDiseaseToSicknessHistory" component={AddDiseaseToSicknessHistoryComponent} />
     <Route path="/pages/uploadFilesForPacient" component={UploadFilesComponent} />
-    <Route path="/pages/two" component={ExamplePageTwo} />
-    <Route path="/pages/three" component={ExamplePageThree} />
 
     <Route path="/pages/createAmmend" component={CreateAmmendComponent} />
     <Route path="/pages/allAmmendsForHospital" component={AllAmmendsForHospital} />

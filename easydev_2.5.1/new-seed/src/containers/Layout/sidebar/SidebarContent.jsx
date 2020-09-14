@@ -97,10 +97,6 @@ class SidebarContent extends Component {
           <SidebarLink title="All Pendings For Hospital" route="/pages/allPendingsForHospital" onClick={this.hideSidebar} />
           <SidebarLink title="Set Pacient Waiting Status" route="/pages/setPacientWaitingStatus" onClick={this.hideSidebar} />
         </SidebarCategory>
-        <SidebarCategory title="Example" icon="arrow-right-circle">
-          <SidebarLink title="Page two" route="/pages/two" onClick={this.hideSidebar} />
-          <SidebarLink title="Page three" route= "/pages/three" onClick={this.hideSidebar} />
-        </SidebarCategory>
         <SidebarCategory title="Shared" icon="arrow-right-circle">
           <SidebarLink title="All Waiting Lists For Hospital" route="/pages/allWaitingListsForHospital" onClick={this.hideSidebar} />
           <SidebarLink title="Waiting List For Pacient" route="/pages/waitingListForPacient" onClick={this.hideSidebar} />

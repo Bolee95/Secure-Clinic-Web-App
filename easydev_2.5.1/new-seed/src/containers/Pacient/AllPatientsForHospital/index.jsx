@@ -4,6 +4,7 @@ import Loading from '../../../shared/components/Loading';
 import axios from 'axios';
 import AllPatientsTable from './components/AllPatientsTable';
 import { showNotification } from './../../../shared/Notification';
+import { getWaitingStatusString } from './../../../shared/WaitingStatus';
 
 class AllPatientsForHospitalComponent extends React.Component {
 
@@ -35,7 +36,7 @@ class AllPatientsForHospitalComponent extends React.Component {
                     'JMBG': arrayItem.jmbg,
                     'hospital_name': arrayItem.hospitalName,
                     'hospital_code': arrayItem.hospitalCode,
-                    'waiting_status': arrayItem.currentWaitingStatus,
+                    'waiting_status': getWaitingStatusString(arrayItem.currentWaitingStatus),
                     'waiting_list_code': arrayItem.waitingListCode
                 }
                 newPatients.push(patient);

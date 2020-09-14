@@ -11,7 +11,6 @@ class ChangePacientWaitingStatusForm extends PureComponent {
   static propTypes = {
     patients: PropTypes.array.isRequired,
     isLoading: PropTypes.bool.isRequired,
-    updateSelectionData: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
   };

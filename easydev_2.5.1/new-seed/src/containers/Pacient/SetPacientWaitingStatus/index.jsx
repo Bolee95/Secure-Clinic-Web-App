@@ -47,15 +47,13 @@ class PacientWaitingStatusComponent extends React.Component {
 
 
   processFormData(data) {
-
     this.setState({ formSubmited: true });
     const newWaitingStatus = data['waitingStatus'].value;
     
     var targetUrl;
-    if (newWaitingStatus === 0) {
-        
+    if (newWaitingStatus === "0") {
         targetUrl = '/doctor/resetPacientWaitingStatus';
-    } else if (newWaitingStatus === 1) {
+    } else if (newWaitingStatus === "1") {
         targetUrl = '/doctor/changePacientStatusToPending';
     }
 
@@ -83,10 +81,9 @@ class PacientWaitingStatusComponent extends React.Component {
     return (
       <Container className="dashboard">
         <ChangePacientWaitingStatusForm onSubmit={this.processFormData} 
-                        updateSelectionData={this.updateOrdinationsAndServices}
                         isLoading={formSubmited}
                         patients={patients}
-                        ></ChangePacientWaitingStatusForm>
+        ></ChangePacientWaitingStatusForm>
       </Container>
     );
   };

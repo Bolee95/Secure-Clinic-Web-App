@@ -127,24 +127,26 @@ class NewPendingComponent extends React.Component {
     }
 
     var documentsFormData = new FormData();
-    for (var i = 0; i< data["files"].length; i++) {
-      let file = data["files"][i];
-      documentsFormData.append('file[' + i + ']', file);
+    if (data["files"] !== undefined) {
+      for (var i = 0; i< data["files"].length; i++) {
+        let file = data["files"][i];
+        documentsFormData.append('file[' + i + ']', file);
+      }
+
+        axios({ method: 'POST', 
+        url: '/shared/uploadFiles', 
+        data: documentsFormData,
+        headers: { 'Identity_name': 'admin', 'content-type': 'multipart/form-data' }})
+        .then(response => {
+          this.addNewPending(data, response.data);
+        }, error => {
+          this.setState({ formSubmited: false });
+          showNotification('danger', error);
+        });
+      } else {
+        this.addNewPending(data, "");
+      }
     }
-
-
-    axios({ method: 'POST', 
-    url: '/shared/uploadFiles', 
-    data: documentsFormData,
-    headers: { 'Identity_name': 'admin', 'content-type': 'multipart/form-data' }})
-    .then(response => {
-      this.addNewPending(data, response.data);
-    }, error => {
-      this.setState({ formSubmited: false });
-      showNotification('danger', error);
-    });
-    
-  }
 
   addNewPending(data, documentIds) {
     var bodyFormData = new FormData();

@@ -48,9 +48,13 @@ class AllAmmendsTable extends PureComponent {
         selector: 'action',
         name: 'Action'
       },
+      // {
+      //   selector: 'description',
+      //   name: 'Description'
+      // },
       {
-        selector: 'description',
-        name: 'Description'
+        selector: 'isReviewed',
+        name: 'Is reviewed'
       },
       {
         selector: 'evidences',

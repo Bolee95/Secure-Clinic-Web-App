@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import CreatePatientForm from './components/CreatePatientForm';
 import { showNotification } from './../../../shared/Notification';
 import axios from 'axios';
+import { store } from 'store';
 
 class CreatePatientComponent extends React.Component {
 
@@ -19,12 +20,18 @@ class CreatePatientComponent extends React.Component {
   processFormData(data) {
     this.setState({ isLoading: true });
 
+    var store = require('store');
+    let hospitalCode = store.get('user').hospitalCode;
+    let hospitalName = store.get('user').hospitalName;
+
     var bodyFormData = new FormData();
     bodyFormData.set('name', data['name']);
     bodyFormData.set('surname', data['surname']);
     bodyFormData.set('jmbg', data['jmbg']);
     bodyFormData.set('lbo', data['lbo']);
     bodyFormData.set('city', data['city'].value);
+    bodyFormData.set('hospitalCode', hospitalCode);
+    bodyFormData.set('hospitalName', hospitalName);
 
     axios({ method: 'POST', url: '/doctor/addPacient', data: bodyFormData, headers: { 'Identity_name': 'admin' }})
     .then(response => {

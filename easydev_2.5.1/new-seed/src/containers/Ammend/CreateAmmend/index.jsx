@@ -26,16 +26,14 @@ class CreateAmmendComponent extends React.Component {
 
         componentDidMount() {
 
-            var userHospitalId;
+            var hospitalCode;
             var store = require('store');
             var user = store.get('user');
             if (user !== undefined) {
-                let hospitalId = user.hospitalId;
-                if (hospitalId !== undefined) {
-                    userHospitalId = hospitalId;
-                } else {
+                hospitalCode = user.hospitalCode;
+                if (hospitalCode === undefined) {
                     // TO-DO: should be removed, this is for testing purposes only!
-                    userHospitalId = 'AA';
+                    hospitalCode = 'AA';
                 }
             }
 
@@ -47,7 +45,7 @@ class CreateAmmendComponent extends React.Component {
                     method: 'GET',
                     url: '/shared/getAllWaitingListsForHospital',
                     headers: { 'Identity_name': 'admin' },
-                    params: { 'hospitalCode': userHospitalId  }
+                    params: { 'hospitalCode': hospitalCode  }
                 })
                 .then(response => {
                     let waitingLists = [];
