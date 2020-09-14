@@ -72,7 +72,6 @@ class AllPacientsPrivateDataComponent extends React.Component {
 
     render() {
         const { pacientsPrivateData, loading } = this.state;
-        console.log("Is loading " + loading);
 
         if (loading) {
             return (<Loading loading={loading} />);

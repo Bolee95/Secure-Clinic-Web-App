@@ -78,19 +78,16 @@ class AllWaitingListsForHospital extends React.Component {
         const nonformatedDate = new Date(date); 
         //let formattedDate = nonformatedDate.getFullYear() + "-" + (nonformatedDate.getMonth() + 1) + "-" + nonformatedDate.getDate() + " " + nonformatedDate.getHours() + ":" + nonformatedDate.getMinutes() + ":" + nonformatedDate.getSeconds();
         let formattedDate = nonformatedDate.getDate() + '.' + nonformatedDate.getMonth() + '.' + nonformatedDate.getFullYear();
-        //window.alert(formattedDate);
         return formattedDate;
     }
 
     render() {
         const { waitingLists, loading } = this.state;
-        console.log("Is loading " + loading);
 
         if (loading) {
             return (<Loading loading={loading} />);
         }
 
-        
         return (    
            <WaitingListSelectionForm waitingLists={waitingLists}/>
         )
