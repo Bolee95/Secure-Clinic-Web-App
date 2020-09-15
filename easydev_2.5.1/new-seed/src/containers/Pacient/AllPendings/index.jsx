@@ -18,14 +18,17 @@ class AllPendingsComponent extends React.Component {
     }
 
     componentDidMount() {
+        var store = require('store');
+        let licenceId = store.get('user').licenceId;
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/getAllPendings', headers: { 'Identity_name': 'doctor1' }})
+        
+        axios({ method: 'GET', url: '/shared/getAllPendings', headers: { 'Identity_name': licenceId }})
         .then(response => {
             let pendings = [];
             for (let index = 0; index < response.data.length; index++) {
                 let arrayItem = response.data[index];
 
-                let isReviewed = (arrayItem.isReviewed == undefined) || (arrayItem.isReviewed == false) ? 'NO' : 'YES';
+                let isReviewed = (arrayItem.isReviewed === undefined) || (arrayItem.isReviewed === false) ? 'NO' : 'YES';
 
                 let pending = {
                     'pacientLbo': arrayItem.pacientLbo,

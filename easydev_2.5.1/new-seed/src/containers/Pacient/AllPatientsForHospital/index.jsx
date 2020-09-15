@@ -20,10 +20,11 @@ class AllPatientsForHospitalComponent extends React.Component {
     componentDidMount() {
         
         var store = require('store');
-        const hospitalCode = store.get('user').hospitalCode;
+        let hospitalCode = store.get('user').hospitalCode;
+        let licenceId = store.get('user').licenceId;
 
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/doctor/getPacient/allForHospital', headers: { 'Identity_name': 'admin' }, params: { 'hospitalCode': hospitalCode }})
+        axios({ method: 'GET', url: '/doctor/getPacient/allForHospital', headers: { 'Identity_name': licenceId }, params: { 'hospitalCode': hospitalCode }})
         .then(response => {
             let newPatients = []
             for (let index = 0; index < response.data.length; index++) {

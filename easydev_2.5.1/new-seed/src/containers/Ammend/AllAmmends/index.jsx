@@ -20,7 +20,10 @@ class AllAmmendsComponent extends React.Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/getAmmend/all', headers: { 'Identity_name': 'doctor1' }})
+        let store = require('store');
+        let licenceId = store.get('user').licenceId;
+
+        axios({ method: 'GET', url: '/shared/getAmmend/all', headers: { 'Identity_name': licenceId }})
         .then(response => {
             let ammends = [];
             for (let index = 0; index < response.data.length; index++) {
@@ -36,7 +39,7 @@ class AllAmmendsComponent extends React.Component {
                     'serviceCode': arrayItem.serviceCode,
                     'action': ammendStringForType(arrayItem.action),
                     'description': arrayItem.description,
-                    'isReviewed': isReviewed
+                    'isReviewed': isReviewed ? "YES" : "NO"
                 };
 
                 var evidences = arrayItem.evidences;

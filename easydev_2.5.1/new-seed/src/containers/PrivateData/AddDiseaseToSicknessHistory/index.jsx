@@ -72,18 +72,21 @@ class AddDiseaseToSicknessHistoryComponent extends React.Component {
 
   processFormData(data) {
 
+    var store = require('store');
+    const licenceId = store.get('user').licenceId;
+
     this.setState({ formSubmited: true });
 
-    const selectedPatientPrivateData = this.state.pacientsPrivateData.find(privateData => privateData.lbo == data['patient'].value);
+    const selectedPatientPrivateData = this.state.pacientsPrivateData.find(privateData => privateData.lbo === data['patient'].value);
     const selectedDisease = data['disease'].value;
-    const isActive = data['active'].value == 'YES' ? true : false;
+    const isActive = data['active'].value === 'YES' ? true : false;
     var bodyFormData = new FormData();
     bodyFormData.set('pacientLbo', selectedPatientPrivateData.lbo);
     bodyFormData.set('diseaseCode', selectedDisease.diseaseCode);
     bodyFormData.set('diseaseName', selectedDisease.diseaseName);
     bodyFormData.set('isActive', isActive );
 
-    axios({ method: 'POST', url: '/shared/privateData/addNewDiseaseToSicknessHistory', data: bodyFormData, headers: { 'Identity_name': 'doctor1' }})
+    axios({ method: 'POST', url: '/shared/privateData/addNewDiseaseToSicknessHistory', data: bodyFormData, headers: { 'Identity_name': licenceId }})
     .then(response => {
       showNotification('success', 'You have successfully added new Disease to Sickness History!');
     }, error => {

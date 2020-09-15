@@ -170,10 +170,14 @@ Case 2:
 
 
 14.09.
-- Generalni test aplikacije
--- Skloniti placeholder vrednosti (identity_name)
+- Generalni test aplikacije *DONE*
 
-- Srediti "Approve" dugme (da se prikazuje u celosti)
+15.09.
+-- Skloniti placeholder vrednosti (identity_name) *DONE*
+- Srediti "Approve" dugme (da se prikazuje u celosti) *DONE*
+
+
+16.09.
 
 -------------------------------------------------------------------------
 Moguca unapredjenja:
@@ -184,7 +188,6 @@ Moguca unapredjenja:
 
 UI
 
-
 --------------------------------------------------------------------------
 
 
@@ -192,7 +195,7 @@ Major tasks (by priority):
 
 - Uploading i citanje podataka *DONE*
 - Logika za Ammends *DONE*
-- Generalni test aplikacije
+- Generalni test aplikacije *SA TRENUTNIM STANJEM ODRADJENO, NA KRAJU DEVLOPEMNTA se sklanjaju placeholderi*
 - Integracija podataka koje je dekan poslao u projekat
 - Pisanje rada
 - Implementacija BI za statistiku 

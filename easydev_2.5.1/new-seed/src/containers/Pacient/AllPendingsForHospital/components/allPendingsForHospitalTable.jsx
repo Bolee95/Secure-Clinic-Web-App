@@ -41,6 +41,7 @@ class AllPendingsForHospitalTable extends PureComponent {
         selector: 'hospitalName',
         name: 'Hospital Name',
         sortable: true,
+        minWidth: 100
       },
       {
         selector: 'ordinationName',

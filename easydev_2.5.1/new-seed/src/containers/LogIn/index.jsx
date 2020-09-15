@@ -48,7 +48,7 @@ class LogInComponent extends React.Component {
   processLoginAsUser(userId) {
     this.setState({ isLoading: true });
 
-    axios({ method: 'GET', url: '/shared/getPacient', params: { pacientLbo: userId }, headers: { 'Identity_name': 'doctor1' }})
+    axios({ method: 'GET', url: '/shared/getPacient', params: { pacientLbo: userId }, headers: { 'Identity_name': 'admin' }})
     .then(response => {
 
       let pacientData = response.data;
@@ -74,7 +74,7 @@ class LogInComponent extends React.Component {
   }
 
   retrieveUserData(licenceId) {
-    axios({ method: 'GET', url: '/shared/getEntity', params: { licenceId: licenceId }, headers: { 'Identity_name': 'doctor1' }})
+    axios({ method: 'GET', url: '/shared/getEntity', params: { licenceId: licenceId }, headers: { 'Identity_name': 'admin' }})
     .then(response => {
 
       let entityData = response.data;

@@ -24,9 +24,11 @@ class UploadFilesComponent extends Component {
     }
 
     getPacientsPrivateData() {
-
+        var store = require('store');
+        const licenceId = store.get('user').licenceId;
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/privateData/getPacientPrivateData/all', headers: { 'Identity_name': 'doctor1' }})
+
+        axios({ method: 'GET', url: '/shared/privateData/getPacientPrivateData/all', headers: { 'Identity_name': licenceId }})
         .then(response => {
             let pacientsPrivateData = [];
             for (let index = 0; index < response.data.length; index++) {
@@ -51,6 +53,8 @@ class UploadFilesComponent extends Component {
     }
 
     processFormData(data) {
+        var store = require('store');
+        const licenceId = store.get('user').licenceId;
         this.setState({ isLoading: true });
 
         let formData = new FormData();
@@ -70,7 +74,7 @@ class UploadFilesComponent extends Component {
         axios({ method: 'POST', 
                 url: '/shared/uploadFiles', 
                 data: formData,
-                headers: { 'Identity_name': 'admin', 'content-type': 'multipart/form-data' }})
+                headers: { 'Identity_name': licenceId, 'content-type': 'multipart/form-data' }})
         .then(response => {
             this.updatePacientsDocumentsList(response.data, selectedPacientsLbo);
         }, error => {
@@ -80,7 +84,8 @@ class UploadFilesComponent extends Component {
     }
 
     updatePacientsDocumentsList(documentsList, pacientLbo) {
-
+        var store = require('store');
+        const licenceId = store.get('user').licenceId;
         let formData = new FormData();
 
         formData.set('pacientLbo', pacientLbo);
@@ -88,7 +93,7 @@ class UploadFilesComponent extends Component {
         axios({ method: 'POST',
                 url: '/shared/privateData/addNewDocumentId',
                 data: formData,
-                headers: { 'Identity_name': 'admin' } })
+                headers: { 'Identity_name': licenceId } })
         .then(response => {
             showNotification('success', 'Successfully uploaded new documents for pacient!');
         }, error => {

@@ -18,8 +18,11 @@ class AllPatientsComponent extends React.Component {
     }
 
     componentDidMount() {
+        let store = require('store');
+        let licenceId = store.get('user').licenceId;
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/doctor/getPacient/all', headers: { 'Identity_name': 'admin' }})
+
+        axios({ method: 'GET', url: '/doctor/getPacient/all', headers: { 'Identity_name': licenceId }})
         .then(response => {
             let newPatients = []
             for (let index = 0; index < response.data.length; index++) {

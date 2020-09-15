@@ -21,10 +21,13 @@ class CreateUserComponent extends React.Component {
     
     this.setState({ isLoading: true });
 
+    let store = require('store');
+    let licenceId = store.get('user').licenceId;
+
     var bodyFormData = new FormData();
     bodyFormData.set('userName', data['licenceId']);
 
-    axios({ method: 'POST', url: '/admin/registerUserWallet', data: bodyFormData, headers: { 'Identity_name': 'admin' }})
+    axios({ method: 'POST', url: '/admin/registerUserWallet', data: bodyFormData, headers: { 'Identity_name': licenceId }})
     .then(response => {
       this.createNewEntity(data);
     }, error => {
@@ -33,7 +36,6 @@ class CreateUserComponent extends React.Component {
     });
   }
 
-  // identityName, licenceId, role, name, surname, hospitalName, hospitalCode
   createNewEntity(data) {
 
     var store = require('store');
@@ -48,7 +50,7 @@ class CreateUserComponent extends React.Component {
     formData.set('hospitalCode', currentUser.hospitalCode);
 
 
-    axios({ method: 'POST', url: '/admin/createEntity', data: formData, headers: { 'Identity_name': 'admin' }})
+    axios({ method: 'POST', url: '/admin/createEntity', data: formData, headers: { 'Identity_name': currentUser.licenceId }})
     .then(response => {
       showNotification('success', 'New Entity successfully created!');
     }, error => {

@@ -31,6 +31,7 @@ class AllPatientsTable extends PureComponent {
         selector: 'hospitalName',
         name: 'Hospital Name',
         sortable: true,
+        minWidth: 100
       },
       {
         selector: 'ordinationName',
@@ -50,7 +51,7 @@ class AllPatientsTable extends PureComponent {
       {
         selector: 'isReviewed',
         name: 'Is Pending Reviewed',
-        sortable: false
+        sortable: false,
       },
       {
         selector: 'documents',

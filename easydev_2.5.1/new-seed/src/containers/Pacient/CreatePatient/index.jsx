@@ -23,6 +23,7 @@ class CreatePatientComponent extends React.Component {
     var store = require('store');
     let hospitalCode = store.get('user').hospitalCode;
     let hospitalName = store.get('user').hospitalName;
+    let licenceId = store.get('user').licenceId;
 
     var bodyFormData = new FormData();
     bodyFormData.set('name', data['name']);
@@ -33,7 +34,7 @@ class CreatePatientComponent extends React.Component {
     bodyFormData.set('hospitalCode', hospitalCode);
     bodyFormData.set('hospitalName', hospitalName);
 
-    axios({ method: 'POST', url: '/doctor/addPacient', data: bodyFormData, headers: { 'Identity_name': 'admin' }})
+    axios({ method: 'POST', url: '/doctor/addPacient', data: bodyFormData, headers: { 'Identity_name': licenceId }})
     .then(response => {
       showNotification('success', 'You have successfully created Pacient!');
     }, error => {

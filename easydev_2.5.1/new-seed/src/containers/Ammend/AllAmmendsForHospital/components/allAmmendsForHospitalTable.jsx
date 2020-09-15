@@ -23,11 +23,6 @@ class AllAmmendsForHospitalTable extends PureComponent {
 
     const headers = [
       {
-        selector: 'index',
-        name: 'Index',
-        sortable: true,
-      },
-      {
         selector: 'pacientLbo',
         name: 'Pacient LBO',
         sortable: true,

@@ -20,10 +20,13 @@ class DeleteUserComponent extends React.Component {
   processFormData(data) {
     this.setState({ loadingStarted: true });
 
+    let store = require('store');
+    let licenceId = store.get('user').licenceId;
+
     var bodyFormData = new FormData();
     bodyFormData.set('username', data['username']);
 
-    axios({ method: 'DELETE', url: '/admin/deleteUserWallet', data: bodyFormData, headers: { 'Identity_name': 'admin' }})
+    axios({ method: 'DELETE', url: '/admin/deleteUserWallet', data: bodyFormData, headers: { 'Identity_name': licenceId }})
     .then(response => {
       showNotification('success', 'Entity successfully deleted!');
     }, error => {

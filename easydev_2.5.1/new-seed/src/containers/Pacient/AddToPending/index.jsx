@@ -24,9 +24,11 @@ class NewPendingComponent extends React.Component {
   }
 
   componentDidMount() {
+      let store = require('store');
+      let licenceId = store.get('user').licenceId;
       this.setState({ isLoading: true });
 
-      axios({ method: 'GET', url: '/doctor/getPacient/all', headers: { 'Identity_name': 'admin' }})
+      axios({ method: 'GET', url: '/doctor/getPacient/all', headers: { 'Identity_name': licenceId }})
         .then(response => {
             let newPatients = []
             for (let index = 0; index < response.data.length; index++) {
@@ -56,7 +58,7 @@ class NewPendingComponent extends React.Component {
            showNotification('danger', error);   
         })
 
-        axios({ method: 'GET', url: '/shared/getHospital/all', headers: { 'Identity_name': 'admin' }})
+        axios({ method: 'GET', url: '/shared/getHospital/all', headers: { 'Identity_name': licenceId }})
         .then(response => {
             let hospitals = [];
             for (let index = 0; index < response.data.length; index++) {
@@ -118,6 +120,9 @@ class NewPendingComponent extends React.Component {
 
   processFormData(data) {
 
+    let store = require('store');
+    let licenceId = store.get('user').licenceId;
+
     this.setState({ formSubmited: true });
 
     if (data['patient'] === undefined) {
@@ -136,7 +141,7 @@ class NewPendingComponent extends React.Component {
         axios({ method: 'POST', 
         url: '/shared/uploadFiles', 
         data: documentsFormData,
-        headers: { 'Identity_name': 'admin', 'content-type': 'multipart/form-data' }})
+        headers: { 'Identity_name': licenceId, 'content-type': 'multipart/form-data' }})
         .then(response => {
           this.addNewPending(data, response.data);
         }, error => {
@@ -149,8 +154,10 @@ class NewPendingComponent extends React.Component {
     }
 
   addNewPending(data, documentIds) {
-    var bodyFormData = new FormData();
+    let store = require('store');
+    let licenceId = store.get('user').licenceId;
 
+    var bodyFormData = new FormData();
     const selectedPatient = this.state.patients.find(patient => patient.lbo === data['patient'].value);
 
     bodyFormData.set('pacientLbo', data['patient'].value);
@@ -165,7 +172,7 @@ class NewPendingComponent extends React.Component {
     bodyFormData.set('score', data['score']);
     bodyFormData.set('documentIds', documentIds);
 
-    axios({ method: 'POST', url: '/doctor/createNewPending', data: bodyFormData, headers: { 'Identity_name': 'doctor1' }})
+    axios({ method: 'POST', url: '/doctor/createNewPending', data: bodyFormData, headers: { 'Identity_name': licenceId }})
     .then(response => {
       showNotification('success', 'You have successfully created new Pending!');
     }, error => {

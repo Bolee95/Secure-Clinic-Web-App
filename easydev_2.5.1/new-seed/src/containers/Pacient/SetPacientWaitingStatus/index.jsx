@@ -20,9 +20,11 @@ class PacientWaitingStatusComponent extends React.Component {
   }
 
   componentDidMount() {
+      var store = require('store');
+      let licenceId = store.get('user').licenceId;
       this.setState({ isLoading: true });
 
-      axios({ method: 'GET', url: '/doctor/getPacient/all', headers: { 'Identity_name': 'admin' }})
+      axios({ method: 'GET', url: '/doctor/getPacient/all', headers: { 'Identity_name': licenceId }})
         .then(response => {
             let newPatients = []
             for (let index = 0; index < response.data.length; index++) {
@@ -47,6 +49,9 @@ class PacientWaitingStatusComponent extends React.Component {
 
 
   processFormData(data) {
+    var store = require('store');
+    let licenceId = store.get('user').licenceId;
+
     this.setState({ formSubmited: true });
     const newWaitingStatus = data['waitingStatus'].value;
     
@@ -60,7 +65,7 @@ class PacientWaitingStatusComponent extends React.Component {
     var bodyFormData = new FormData();
     bodyFormData.set('pacientLbo', data['patient'].value);
 
-    axios({ method: 'POST', url: targetUrl, data: bodyFormData, headers: { 'Identity_name': 'doctor1' }})
+    axios({ method: 'POST', url: targetUrl, data: bodyFormData, headers: { 'Identity_name': licenceId }})
     .then(response => {
       showNotification('success', 'You have successfully changed pacient waiting status!');
     }, error => {

@@ -41,7 +41,7 @@ class AllAmmendsForHospital extends React.Component {
                     method: 'GET',
                     url: '/shared/getAllAmmendsForHosptial',
                     headers: {
-                        'Identity_name': 'doctor1'
+                        'Identity_name': licenceId
                     },
                     params: {
                         'hospitalCode': hospitalCode,
@@ -145,7 +145,7 @@ class AllAmmendsForHospital extends React.Component {
                     url: '/shared/approveAmmend',
                     data: bodyFormData,
                     headers: {
-                        'Identity_name': 'doctor1'
+                        'Identity_name': licenceId
                     }
                 })
                 .then(response => {

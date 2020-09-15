@@ -44,7 +44,7 @@ class CreateAmmendComponent extends React.Component {
             axios({
                     method: 'GET',
                     url: '/shared/getAllWaitingListsForHospital',
-                    headers: { 'Identity_name': 'admin' },
+                    headers: { 'Identity_name': user.licenceId },
                     params: { 'hospitalCode': hospitalCode  }
                 })
                 .then(response => {
@@ -99,6 +99,9 @@ class CreateAmmendComponent extends React.Component {
 
         processFormData(data) {
 
+            let store = require('store');
+            let licenceId = store.get('user').licenceId;
+
             this.setState({
                 formSubmited: true
             });
@@ -135,7 +138,7 @@ class CreateAmmendComponent extends React.Component {
                     url: '/shared/uploadFiles',
                     data: documentsFormData,
                     headers: {
-                        'Identity_name': 'admin',
+                        'Identity_name': licenceId,
                         'content-type': 'multipart/form-data'
                     }
                 })
@@ -152,6 +155,8 @@ class CreateAmmendComponent extends React.Component {
         createNewAmmend(data, documentIds) {
             var bodyFormData = new FormData();
 
+            let store = require('store');
+            let licenceId = store.get('user').licenceId;
 
             const selectedPacient = this.state.pacients.find(pacient => pacient.lbo === data['pacient'].value);
             const selectedWaitingList = this.state.waitingLists.find(waitingList => waitingList.key === data['waitingList'].value);
@@ -173,7 +178,7 @@ class CreateAmmendComponent extends React.Component {
                     url: '/shared/createAmmend',
                     data: bodyFormData,
                     headers: {
-                        'Identity_name': 'doctor1'
+                        'Identity_name': licenceId
                     }
                 })
                 .then(response => {
