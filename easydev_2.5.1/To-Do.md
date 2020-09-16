@@ -176,13 +176,15 @@ Case 2:
 -- Skloniti placeholder vrednosti (identity_name) *DONE*
 - Srediti "Approve" dugme (da se prikazuje u celosti) *DONE*
 
-
-16.09.
+17.09.
+- Naci nacin da se uhvate greske sa nizeg nivoa od API-ja (Mozda da se izbaci hvatanje greske, nego da se vraca {success, error} sa nizeg nivoa 
+- Integracija podataka koje je dekan poslao u projekat
+-- Iscitavanje podataka iz tabele
+-- Kreiranje objekata od istih
 
 -------------------------------------------------------------------------
 Moguca unapredjenja:
 
-- Naci nacin da se uhvate greske sa nizeg nivoa od API-ja (Mozda da se izbaci hvatanje greske, nego da se vraca {success, error} sa nizeg nivoa 
 - Izlistavanje transakcija (?) Proveriti Master Rad folder za primer
 - Proveriti da li se brise i enitet kada se brise wallet *NE BRISE SE ZA SAD*
 
@@ -195,10 +197,12 @@ Major tasks (by priority):
 
 - Uploading i citanje podataka *DONE*
 - Logika za Ammends *DONE*
-- Generalni test aplikacije *SA TRENUTNIM STANJEM ODRADJENO, NA KRAJU DEVLOPEMNTA se sklanjaju placeholderi*
-- Integracija podataka koje je dekan poslao u projekat
-- Pisanje rada
-- Implementacija BI za statistiku 
+- Generalni test aplikacije 1 *DONE*
+- Integracija podataka koje je dekan poslao u projekat / Soft DL:  20.09.
+- Pisanje rada / Soft DL: 10.10.
+- Implementacija BI za statistiku Soft DL: 27.09.
+- Generalni test 2
+-- Skloniti placeholdere
 - Dalja nadogradnja nedostataka (unapredjenja) projekta
 
 ----------------------------------------------------------------------------
