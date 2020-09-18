@@ -48,7 +48,7 @@ class UploadFilesComponent extends Component {
                 loading: false
             })
         }, error => {
-           showNotification('danger', error);   
+           showNotification('danger', error.response.data.message);   
         })
     }
 
@@ -79,7 +79,7 @@ class UploadFilesComponent extends Component {
             this.updatePacientsDocumentsList(response.data, selectedPacientsLbo);
         }, error => {
             this.setState({ isLoading: false });
-            showNotification('danger', error);
+            showNotification('danger', error.response.data.message);
         });
     }
 
@@ -97,7 +97,7 @@ class UploadFilesComponent extends Component {
         .then(response => {
             showNotification('success', 'Successfully uploaded new documents for pacient!');
         }, error => {
-            showNotification('danger', error);
+            showNotification('danger', error.response.data.message);
         })
         .then(() => {
             this.setState({ isLoading: false });

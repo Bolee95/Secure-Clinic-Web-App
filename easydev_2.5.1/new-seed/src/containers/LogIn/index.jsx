@@ -39,8 +39,8 @@ class LogInComponent extends React.Component {
       if (isValid) {
         this.retrieveUserData(userId);
       }
-    }, error => {
-      showNotification('danger', error);
+    },  error => {
+      showNotification('danger', error.response.data.message);
       this.setState({ isLoading: false });
     })
   }
@@ -66,7 +66,7 @@ class LogInComponent extends React.Component {
       store.set('loggedIn', true);
       this.props.history.push("/pages");
     }, error => {
-      showNotification('danger', error);
+      showNotification('danger', error.response.data.message);
     })
     .then(() => {
       this.setState({ isLoading: false });
@@ -92,7 +92,7 @@ class LogInComponent extends React.Component {
 
       this.props.history.push("/pages");
     }, error => {
-      showNotification('danger', error);
+      showNotification('danger', error.response.data.message);
     })
     .then(() => {
       this.setState({ isLoading: false });
@@ -122,18 +122,6 @@ class LogInComponent extends React.Component {
               <p>Or log to system by scanning ID card</p>
             </div>
             <Link className="btn btn-primary account__btn account__btn--small" to="/log_in">Scan</Link>
-            {/* <div className="account__social">
-              <Link
-                className="account__social-btn account__social-btn--facebook"
-                to="/pages/one"
-              ><FacebookIcon />
-              </Link>
-              <Link
-                className="account__social-btn account__social-btn--google"
-                to="/pages/one"
-              ><GooglePlusIcon />
-              </Link>
-            </div> */}
           </div>
         </div>
       </div>

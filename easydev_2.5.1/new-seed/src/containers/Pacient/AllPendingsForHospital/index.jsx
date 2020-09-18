@@ -73,7 +73,7 @@ class AllPendingsForHospitalComponent extends React.Component {
                 loading: false
             })
         }, error => {
-           showNotification('danger', error);    
+           showNotification('danger', error.response.data.message);    
         })
     }
 
@@ -88,7 +88,7 @@ class AllPendingsForHospitalComponent extends React.Component {
             let mimeType = response.headers['mimeType'];
             fileDownload(response.data, filename, mimeType);
         }, error => {
-            showNotification('danger', error);
+            showNotification('danger', error.response.data.message);
         });
     }
 
@@ -109,7 +109,7 @@ class AllPendingsForHospitalComponent extends React.Component {
             showNotification('success', 'You have successfully approved Pending!');
             this.getPatients();
         }, error => {
-            showNotification('danger', error);
+            showNotification('danger', error.response.data.message);
         })
     }
 

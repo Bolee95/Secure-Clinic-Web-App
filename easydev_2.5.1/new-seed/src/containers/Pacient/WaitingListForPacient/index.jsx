@@ -71,7 +71,7 @@ class WaitingListForPacientComponent extends React.Component {
                 title: title
             })
         }, error => {
-           showNotification('danger', error);    
+           showNotification('danger', error.response.data.message);    
         }).then(() => {
             this.setState({
                 loading: false

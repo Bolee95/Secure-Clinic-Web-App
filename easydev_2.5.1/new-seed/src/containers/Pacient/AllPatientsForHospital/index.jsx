@@ -48,7 +48,7 @@ class AllPatientsForHospitalComponent extends React.Component {
                 loading: false
             })
         }, error => {
-           showNotification('danger', error);   
+           showNotification('danger', error.response.data.message);   
         })
       }
 

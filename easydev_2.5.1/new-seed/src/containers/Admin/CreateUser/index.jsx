@@ -31,7 +31,7 @@ class CreateUserComponent extends React.Component {
     .then(response => {
       this.createNewEntity(data);
     }, error => {
-      showNotification('danger', error);
+      showNotification('danger', error.response.data.message);
       this.setState({ isLoading: false });
     });
   }
@@ -54,7 +54,7 @@ class CreateUserComponent extends React.Component {
     .then(response => {
       showNotification('success', 'New Entity successfully created!');
     }, error => {
-      showNotification('danger', error);
+      showNotification('danger', error.response.data.message);
     })
     .then( () => {
       this.setState({ isLoading: false });

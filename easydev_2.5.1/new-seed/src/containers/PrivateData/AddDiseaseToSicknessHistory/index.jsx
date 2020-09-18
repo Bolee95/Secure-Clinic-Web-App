@@ -61,7 +61,7 @@ class AddDiseaseToSicknessHistoryComponent extends React.Component {
             loading: false
         })
       }, error => {
-         showNotification('danger', error);
+         showNotification('danger', error.response.data.message);
       })
       .then(() => {
           this.setState({
@@ -90,7 +90,7 @@ class AddDiseaseToSicknessHistoryComponent extends React.Component {
     .then(response => {
       showNotification('success', 'You have successfully added new Disease to Sickness History!');
     }, error => {
-      showNotification('danger', error);
+      showNotification('danger', error.response.data.message);
     }).then(() => {
       this.setState({ formSubmited: false });
     });

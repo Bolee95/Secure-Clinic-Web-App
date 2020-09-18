@@ -55,7 +55,7 @@ class NewPendingComponent extends React.Component {
                 isLoading: false
             })
         }, error => {
-           showNotification('danger', error);   
+           showNotification('danger', error.response.data.message);   
         })
 
         axios({ method: 'GET', url: '/shared/getHospital/all', headers: { 'Identity_name': licenceId }})
@@ -106,7 +106,7 @@ class NewPendingComponent extends React.Component {
             })
 
         }, error => {
-           showNotification('danger', error);
+           showNotification('danger', error.response.data.message);
         })
   }
 
@@ -146,7 +146,7 @@ class NewPendingComponent extends React.Component {
           this.addNewPending(data, response.data);
         }, error => {
           this.setState({ formSubmited: false });
-          showNotification('danger', error);
+          showNotification('danger', error.response.data.message);
         });
       } else {
         this.addNewPending(data, "");
@@ -176,7 +176,7 @@ class NewPendingComponent extends React.Component {
     .then(response => {
       showNotification('success', 'You have successfully created new Pending!');
     }, error => {
-      showNotification('danger', error);
+      showNotification('danger', error.response.data.message);
     }).then(() => {
       this.setState({ formSubmited: false });
     });

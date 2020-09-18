@@ -62,7 +62,7 @@ class AllPendingsComponent extends React.Component {
                 loading: false
             })
         }, error => {
-           showNotification('danger', error);
+           showNotification('danger', error.response.data.message);
         })
       }
 
@@ -77,7 +77,7 @@ class AllPendingsComponent extends React.Component {
             let mimeType = response.headers['mimeType'];
             fileDownload(response.data, filename, mimeType);
         }, error => {
-            showNotification('danger', error);
+            showNotification('danger', error.response.data.message);
         });
     }
 

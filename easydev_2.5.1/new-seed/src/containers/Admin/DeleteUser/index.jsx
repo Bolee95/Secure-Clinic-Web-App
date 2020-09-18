@@ -30,7 +30,7 @@ class DeleteUserComponent extends React.Component {
     .then(response => {
       showNotification('success', 'Entity successfully deleted!');
     }, error => {
-      showNotification('danger', error);
+      showNotification('danger', error.response.data.message);
     }).then(() => {
         this.setState({ isLoading: false });
     });

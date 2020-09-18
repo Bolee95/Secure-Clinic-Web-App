@@ -84,7 +84,7 @@ class CreateAmmendComponent extends React.Component {
                         isLoading: false
                     })
                 }, error => {
-                    showNotification('danger', error);
+                    showNotification('danger', error.response.data.message);
                 })
         }
 
@@ -148,7 +148,7 @@ class CreateAmmendComponent extends React.Component {
                     this.setState({
                         formSubmited: false
                     });
-                    showNotification('danger', error);
+                    showNotification('danger', error.response.data.message);
                 });
         }
 
@@ -184,7 +184,7 @@ class CreateAmmendComponent extends React.Component {
                 .then(response => {
                     showNotification('success', 'You have successfully created Ammend!');
                 }, error => {
-                    showNotification('danger', error);
+                    showNotification('danger', error.response.data.message);
                 }).then(() => {
                     this.setState({
                         formSubmited: false

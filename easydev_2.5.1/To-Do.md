@@ -177,8 +177,15 @@ Case 2:
 - Srediti "Approve" dugme (da se prikazuje u celosti) *DONE*
 
 17.09.
-- Naci nacin da se uhvate greske sa nizeg nivoa od API-ja (Mozda da se izbaci hvatanje greske, nego da se vraca {success, error} sa nizeg nivoa 
+- Naci nacin da se uhvate greske sa nizeg nivoa od API-ja (Mozda da se izbaci hvatanje greske, nego da se vraca {success, error} sa nizeg nivoa  *DONE*
+-- Nepokrivene metode su zabelezene u fajlu gde je projekat
+
+18.09.
+- Hvatanje greske iz ugovora i iz logike *DONEEEE* GG
+
+19.09.
 - Integracija podataka koje je dekan poslao u projekat
+-- Sredjivanje podataka (kataloga)
 -- Iscitavanje podataka iz tabele
 -- Kreiranje objekata od istih
 

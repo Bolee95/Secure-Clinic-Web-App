@@ -38,7 +38,7 @@ class CreatePatientComponent extends React.Component {
     .then(response => {
       showNotification('success', 'You have successfully created Pacient!');
     }, error => {
-      showNotification('danger', error);
+      showNotification('danger', error.response.data.message);
     }).then(() => {
       this.setState({ isLoading: false });
     });

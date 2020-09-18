@@ -43,7 +43,7 @@ class PacientWaitingStatusComponent extends React.Component {
                 isLoading: false
             })
         }, error => {
-          showNotification('danger', error);   
+          showNotification('danger', error.response.data.message);   
         })
   }
 
@@ -69,7 +69,7 @@ class PacientWaitingStatusComponent extends React.Component {
     .then(response => {
       showNotification('success', 'You have successfully changed pacient waiting status!');
     }, error => {
-      showNotification('danger', error);
+      showNotification('danger', error.response.data.message);
     }).then(() => {
       this.setState({ formSubmited: false });
     });
