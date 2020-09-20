@@ -185,12 +185,22 @@ Case 2:
 
 19.09.
 - Integracija podataka koje je dekan poslao u projekat
--- Sredjivanje podataka (kataloga)
--- Iscitavanje podataka iz tabele
--- Kreiranje objekata od istih
+-- Sredjivanje podataka (kataloga) *DONE*
+-- Iscitavanje podataka iz tabele *DONE*
+-- Kreiranje objekata od istih *DONEEEEEE*
+
+20.09.
+
+- Proveriti da li se prilikom pravljenja ammenda dodaje jedan evidence iako ne postoji *OK JE*
+
 
 -------------------------------------------------------------------------
 Moguca unapredjenja:
+
+- Napraviti stranice da dodavanje ordinacije i servisa bolnici
+- Napraviti stranicu gde se izlistavju svi privatni dokumenti korisnika
+- Proveriti zasto puca API kada se pokusa da se procita fajl a nije aktivan servre
+- Napraviti skriptu koja pokrece sve servere, API i web app
 
 - Izlistavanje transakcija (?) Proveriti Master Rad folder za primer
 - Proveriti da li se brise i enitet kada se brise wallet *NE BRISE SE ZA SAD*
@@ -199,25 +209,16 @@ UI
 
 --------------------------------------------------------------------------
 
-
 Major tasks (by priority):
 
 - Uploading i citanje podataka *DONE*
 - Logika za Ammends *DONE*
 - Generalni test aplikacije 1 *DONE*
-- Integracija podataka koje je dekan poslao u projekat / Soft DL:  20.09.
+- Integracija podataka koje je dekan poslao u projekat / Soft DL:  20.09. *DONE*
 - Pisanje rada / Soft DL: 10.10.
-- Implementacija BI za statistiku Soft DL: 27.09.
+- Implementacija BI za statistiku Soft DL: 01.10.
 - Generalni test 2
 -- Skloniti placeholdere
 - Dalja nadogradnja nedostataka (unapredjenja) projekta
 
-----------------------------------------------------------------------------
-Integracija podataka 
-- Iskoristiti dokument "Zdravstvene ustanove"
--- Iskoristiti nazive organizacijonih jedinica
--- Iskoritisti identifikatore
--- Proveriti da li moze da se iskoristi i adresa
-
-- Prilikom inicijalizacije ugovora "Hospital", ubaciti sve ove podatke
 
