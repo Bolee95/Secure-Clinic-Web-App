@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import renderSelectField from '../../../../shared/components/form/Select';
 import ExpandButton from '../../../../shared/components/Buttons/ExpandButton';
+import cities from '../../../../resources/Cities';
 
 class CreatePatientForm extends PureComponent {
   static propTypes = {
@@ -16,12 +17,7 @@ class CreatePatientForm extends PureComponent {
 
   constructor() {
     super();
-
-    const cities = [
-      { value: 'Beograd', label: 'Beograd' },
-      { value: 'Nis', label: 'Nis' }
-    ]
-
+    
     this.state = {
       cities: cities
     }

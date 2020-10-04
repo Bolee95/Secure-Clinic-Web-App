@@ -3,7 +3,6 @@ import { Container } from 'reactstrap';
 import CreatePatientForm from './components/CreatePatientForm';
 import { showNotification } from './../../../shared/Notification';
 import axios from 'axios';
-import { store } from 'store';
 
 class CreatePatientComponent extends React.Component {
 

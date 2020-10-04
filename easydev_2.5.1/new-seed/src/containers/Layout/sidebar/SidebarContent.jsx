@@ -67,6 +67,9 @@ class SidebarContent extends Component {
                       <SidebarCategory title="Pacients" icon="arrow-right-circle">
                         <SidebarLink title="All Pacients" route="/pages/allPatients" onClick={this.hideSidebar} />
                       </SidebarCategory>
+                      <SidebarCategory title="Hospital" icon="arrow-right-circle">
+                        <SidebarLink title="Add new service" route="/pages/addNewService" onClick={this.hideSidebar} />
+                      </SidebarCategory>
                       </div>
     };
 
@@ -87,6 +90,7 @@ class SidebarContent extends Component {
         <SidebarCategory title="Admin" icon="arrow-right-circle">
           <SidebarLink title="Create User" route="/pages/createUser" onClick={this.hideSidebar} />
           <SidebarLink title="Delete User" route="/pages/deleteUser" onClick={this.hideSidebar} />
+          <SidebarLink title="Add New Service" route="/pages/addNewService" onClick={this.hideSidebar} />
         </SidebarCategory>
         <SidebarCategory title="Patient" icon="arrow-right-circle">
           <SidebarLink title="Create Patient" route="/pages/createPatient" onClick={this.hideSidebar} />

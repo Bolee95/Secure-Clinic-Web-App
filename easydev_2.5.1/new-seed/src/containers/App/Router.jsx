@@ -21,6 +21,7 @@ import UploadFilesComponent from '../Shared/UploadFiles';
 import CreateAmmendComponent from '../Ammend/CreateAmmend';
 import AllAmmendsForHospital from '../Ammend/AllAmmendsForHospital';
 import AllAmmendsComponent from '../Ammend/AllAmmends';
+import AddNewServiceComponent from '../Admin/AddNewService';
 
 const Pages = () => (
   <Switch>
@@ -42,6 +43,8 @@ const Pages = () => (
     <Route path="/pages/createAmmend" component={CreateAmmendComponent} />
     <Route path="/pages/allAmmendsForHospital" component={AllAmmendsForHospital} />
     <Route path="/pages/allAmmends" component={AllAmmendsComponent} />
+
+    <Route path="/pages/addNewService" component={AddNewServiceComponent} />
   </Switch>
 );
 

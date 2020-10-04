@@ -197,9 +197,9 @@ Case 2:
 -------------------------------------------------------------------------
 Moguca unapredjenja:
 
-- Napraviti stranice da dodavanje ordinacije i servisa bolnici
+- Napraviti stranice da dodavanje ordinacije i servisa bolnici *DONE* 
 - Napraviti stranicu gde se izlistavju svi privatni dokumenti korisnika
-- Proveriti zasto puca API kada se pokusa da se procita fajl a nije aktivan servre
+- Proveriti zasto puca API kada se pokusa da se procita fajl a nije aktivan server *NE MORA ZA SAD*
 - Napraviti skriptu koja pokrece sve servere, API i web app
 
 - Izlistavanje transakcija (?) Proveriti Master Rad folder za primer
@@ -215,7 +215,7 @@ Major tasks (by priority):
 - Logika za Ammends *DONE*
 - Generalni test aplikacije 1 *DONE*
 - Integracija podataka koje je dekan poslao u projekat / Soft DL:  20.09. *DONE*
-- Pisanje rada / Soft DL: 10.10.
+- Pisanje rada / Soft DL: 10.10.  *IN PROGRESS*
 - Implementacija BI za statistiku Soft DL: 01.10.
 - Generalni test 2
 -- Skloniti placeholdere
