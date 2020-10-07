@@ -3,6 +3,7 @@ import React from 'react';
 import axios from 'axios';
 import AppTile from './components/AppTile';
 import Tile from './components/SimpleTile';
+import PieChart from './components/PieChartSimple';
 import Loading from '../../shared/components/Loading';
 import ExpandButton from './../../shared/components/Buttons/ExpandButton';
 import {
@@ -19,7 +20,8 @@ class StatisticComponent extends React.Component {
         this.state = {
             loading: false,
             updatingStats: false,
-            data: null,
+            data: undefined,
+            statistics: undefined,
             stats: []
         };
 
@@ -29,6 +31,7 @@ class StatisticComponent extends React.Component {
        this.getLatestStat = this.getLatestStat.bind(this);
        this.getNilStat = this.getNilStat.bind(this);
        this.getCompareStat = this.getCompareStat.bind(this);
+       this.generateWaitingListDataForTable = this.generateWaitingListDataForTable.bind(this);
     }
 
     componentDidMount() {
@@ -54,7 +57,8 @@ class StatisticComponent extends React.Component {
                 'diffNumPendings': data['diffNumPendings'],
                 'diffNumApprovedPendings': data['diffNumApprovedPendings'],
                 'diffNumUnapprovedPendings': data['diffNumUnapprovedPendings'],
-                'diffTimestamp': data['diffTimestamp']
+                'diffTimestamp': data['diffTimestamp'],
+                'waitingListsStats': data['waitingListsStats']
             }
 
             var statArray = [];
@@ -85,7 +89,6 @@ class StatisticComponent extends React.Component {
     }
 
     updateStatistics() {
-
         if (this.state.updateStatistics === true) {
             showNotification('success', "Statistics are already updating...")
             return 
@@ -185,10 +188,35 @@ class StatisticComponent extends React.Component {
 
           return data
     }
+
+    generateWaitingListDataForTable() {
+       
+        const { statistics } = this.state;
+
+        let colors = [ '#4ce1b6', '#70bbfd', '#f6da6e', '#ff4861'] 
+
+        var dataArray = [];
+        
+        if (statistics !== undefined) {
+        for (let index = 0; index < statistics['waitingListsStats'].length; index++ ) {
+            let statsItem = statistics['waitingListsStats'][index];
+            let colorIndex = index % colors.length;
+            let data = {
+                'name': statsItem['name'],
+                'count': statsItem['count'],
+                'fill': colors[colorIndex]
+            }
+
+            dataArray.push(data);
+        }
+        } 
+        return dataArray;
+    }
+
     
     render() {
 
-        const { stats, statistics, updateStatistics, loading } = this.state;
+        const { statistics, updateStatistics, loading } = this.state;
 
         var latestStat = this.getLatestStat();
         var lastUpdated = 0;
@@ -220,6 +248,11 @@ class StatisticComponent extends React.Component {
             <Col>
                 <Row>
                     <AppTile hoursUpdated={lastUpdated} data={this.generateDataForTable()} dir="ltr"/>
+                </Row>
+            </Col>     
+            <Col>
+                <Row>
+                    <PieChart data={this.generateWaitingListDataForTable()} dir="ltr"></PieChart> 
                 </Row>
             </Col>     
             <ButtonToolbar className="form__button-toolbar">
