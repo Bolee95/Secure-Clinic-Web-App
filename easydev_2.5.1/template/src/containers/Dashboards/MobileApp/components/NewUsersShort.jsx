@@ -20,7 +20,7 @@ const NewUsersShort = ({ t }) => (
             <h5>{t('dashboard_mobile_app.widget_new_users')}</h5>
           </div>
           <div className="progress-wrap progress-wrap--small progress-wrap--blue-gradient progress-wrap--label-top">
-            <Progress value={79}><p className="progress__label">79%</p></Progress>
+            <Progress value={100}><p className="progress__label"></p></Progress>
           </div>
         </div>
       </CardBody>

@@ -22,6 +22,7 @@ import CreateAmmendComponent from '../Ammend/CreateAmmend';
 import AllAmmendsForHospital from '../Ammend/AllAmmendsForHospital';
 import AllAmmendsComponent from '../Ammend/AllAmmends';
 import AddNewServiceComponent from '../Admin/AddNewService';
+import StatisticComponent from '../Statistic';
 
 const Pages = () => (
   <Switch>
@@ -45,6 +46,8 @@ const Pages = () => (
     <Route path="/pages/allAmmends" component={AllAmmendsComponent} />
 
     <Route path="/pages/addNewService" component={AddNewServiceComponent} />
+
+    <Route path="/pages/" component={StatisticComponent} />
   </Switch>
 );
 
