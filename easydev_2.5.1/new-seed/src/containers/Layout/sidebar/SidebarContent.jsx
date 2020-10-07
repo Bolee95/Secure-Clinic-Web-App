@@ -76,7 +76,7 @@ class SidebarContent extends Component {
     return (
       <div className="sidebar__content">
         <ul className="sidebar__block">
-          <SidebarCategory title="Layout" icon="layers">
+          <SidebarCategory title="Appearence mode" icon="layers">
             <button type="button" className="sidebar__link" onClick={changeToLight}>
               <p className="sidebar__link-title">Light Theme</p>
             </button>
@@ -87,6 +87,7 @@ class SidebarContent extends Component {
         </ul>
         <ul className="sidebar__block">
           {/* {sidebarLayout} */}
+          <SidebarLink title="Home" route="/pages/" onClick={this.hideSidebar} />
         <SidebarCategory title="Admin" icon="arrow-right-circle">
           <SidebarLink title="Create User" route="/pages/createUser" onClick={this.hideSidebar} />
           <SidebarLink title="Delete User" route="/pages/deleteUser" onClick={this.hideSidebar} />
