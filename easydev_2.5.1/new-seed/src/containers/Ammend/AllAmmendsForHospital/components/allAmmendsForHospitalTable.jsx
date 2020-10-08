@@ -39,7 +39,7 @@ class AllAmmendsForHospitalTable extends PureComponent {
         name: 'Hospital Name',
         sortable: true,
         center: true,
-        grow: 1
+        grow: 2
       },
       {
         selector: 'ordinationName',
@@ -53,7 +53,7 @@ class AllAmmendsForHospitalTable extends PureComponent {
         name: 'Service Name',
         sortable: true,
         center: true,
-        grow: 1
+        grow: 3
       },
       {
         selector: 'action',
