@@ -3,10 +3,9 @@ import React, { PureComponent } from 'react';
 import PropTypes, { array } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Card, CardBody, Col, ButtonToolbar } from 'reactstrap';
+import { Card, CardBody, Col } from 'reactstrap';
 import { ThemeProps } from '../../../../shared/prop-types/ReducerProps';
 import DataTable from 'react-data-table-component';
-import Modal from '../../../../shared/components/ModalPopUp';
 
 class AllAmmendsTable extends PureComponent {
   static propTypes = {
@@ -23,38 +22,46 @@ class AllAmmendsTable extends PureComponent {
         selector: 'index',
         name: 'Index',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientLbo',
         name: 'Pacient LBO',
         sortable: true,
+        center: true
       },
       {
         selector: 'hospitalCode',
         name: 'Hospital Code',
         sortable: true,
+        center: true
       },
       {
         selector: 'ordinationCode',
         name: 'Ordination Code',
         sortable: true,
+        center: true
       },
       {
         selector: 'serviceCode',
         name: 'Service Code',
         sortable: true,
+        center: true
       },
       {
         selector: 'action',
-        name: 'Action'
+        name: 'Reason',
+        center: true
       },
       {
         selector: 'isReviewed',
-        name: 'Is reviewed'
+        name: 'Is reviewed',
+        center: true
       },
       {
         selector: 'evidences',
-        name: 'Evidences'
+        name: 'Evidences',
+        center: true
       }
     ];
 
@@ -67,6 +74,16 @@ class AllAmmendsTable extends PureComponent {
   render() {
     const { headers } = this.state;
     const { theme, data } = this.props;
+
+    const customStyles = {
+      cells: {
+        style: {
+          paddingLeft: '5px',
+          paddingRight: '5px',
+          wordBreak: 'break-all'
+        },
+      },
+    };
 
     return (      
       <Col md={12} lg={12}>
@@ -81,6 +98,9 @@ class AllAmmendsTable extends PureComponent {
                  noHeader={true}
                  columns={headers}
                  data={data}
+                 striped={true}
+                 grow={true}
+                 customStyles={customStyles}
                  onRowClicked={this.onRowClick}/>
         </CardBody>
        </Card>

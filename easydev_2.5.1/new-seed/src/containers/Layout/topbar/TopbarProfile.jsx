@@ -20,11 +20,16 @@ export default class TopbarProfile extends PureComponent {
 
   render() {
     const { collapse } = this.state;
+    var licenceExists = false;
 
     var store = require('store');
     const user = store.get('user');
     const name = user.name + ' ' + user.surname;
-    const licenceId = "Licence ID: " + user.licenceId;
+    var licenceId;
+    if (user.licenceId !== undefined) {
+      licenceExists = true;
+      licenceId = "Licence ID: " + user.licenceId;
+    }
 
     return (
       <div className="topbar__profile">
@@ -37,7 +42,7 @@ export default class TopbarProfile extends PureComponent {
         <Collapse isOpen={collapse} className="topbar__menu-wrap">
           <div className="topbar__menu">
             <div className="topbar__menu-divider" />
-            <TopbarMenuLink title={licenceId} icon="graduation-hat" path="#" />
+            {licenceExists && <TopbarMenuLink title={licenceId} icon="graduation-hat" path="/pages/" />}
             <div className="topbar__menu-divider" />
             <TopbarMenuLink title="Log Out" icon="exit" path="/" />
           </div>

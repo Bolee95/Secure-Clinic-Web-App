@@ -26,36 +26,44 @@ class AllPendingsForHospitalTable extends PureComponent {
         selector: 'index',
         name: 'Index',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientScreenName',
         name: 'Pacient',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientLbo',
         name: 'Pacient LBO',
         sortable: true,
+        center: true
       },
       {
         selector: 'hospitalName',
         name: 'Hospital Name',
         sortable: true,
-        minWidth: 100
+        grow: 2,
+        center: true
       },
       {
         selector: 'ordinationName',
         name: 'Ordination Name',
         sortable: true,
+        center: true
       },
       {
         selector: 'serviceName',
         name: 'Service Name',
         sortable: true,
+        grow: 3,
+        center: true
       },
       {
         selector: 'approvePending',
         name: 'Actions',
+        center: true,
         cell: row =>  <ButtonToolbar className="form__button-toolbar">
                                    <Modal
                                      color="primary"
@@ -83,13 +91,23 @@ class AllPendingsForHospitalTable extends PureComponent {
   }
 
   onRowClick(row) {
-    window.alert(row.pacientLbo);
+    // window.alert(row.pacientLbo);
   }
 
 
   render() {
     const { headers } = this.state;
     const { theme, data } = this.props;
+
+    const customStyles = {
+      cells: {
+        style: {
+          paddingLeft: '5px',
+          paddingRight: '5px',
+          wordBreak: 'break-all'
+        },
+      },
+    };
 
     return (      
       <Col md={12} lg={12}>
@@ -102,8 +120,11 @@ class AllPendingsForHospitalTable extends PureComponent {
       <DataTable pagination={true} 
                  theme={ theme.className === 'theme-light' ? 'light' : 'dark'}
                  noHeader={true}
+                 striped={true}
+                 grow={true}
                  columns={headers}
                  data={data}
+                 customStyles={customStyles}
                  onRowClicked={this.onRowClick}/>
         </CardBody>
        </Card>

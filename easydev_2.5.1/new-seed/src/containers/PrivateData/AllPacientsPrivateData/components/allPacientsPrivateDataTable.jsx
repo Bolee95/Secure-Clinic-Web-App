@@ -21,16 +21,19 @@ class AllPacientsPrivateDataTable extends PureComponent {
         selector: 'diseaseName',
         name: 'Disease Name',
         sortable: true,
+        center: true
       },
       {
         selector: 'diseaseCode',
         name: 'Disease Code',
         sortable: true,
+        center: true
       },
       {
         selector: 'active',
         name: 'Disease Active',
         sortable: true,
+        center: true
       }
     ];
 
@@ -44,12 +47,25 @@ class AllPacientsPrivateDataTable extends PureComponent {
     const { headers } = this.state;
     const { theme, sicknessHistory } = this.props;
 
+    const customStyles = {
+      cells: {
+        style: {
+          paddingLeft: '5px',
+          paddingRight: '5px',
+          wordBreak: 'break-all'
+        },
+      },
+    };
+
     return (      
           <DataTable pagination={true} 
                      theme={ theme.className === 'theme-light' ? 'light' : 'dark'}
                      noHeader={true}
+                     striped={true}
+                     grow={true}
                      columns={headers}
-                     data={sicknessHistory}/>       
+                     data={sicknessHistory}
+                     customStyles={customStyles}/>       
     );
   }
 }

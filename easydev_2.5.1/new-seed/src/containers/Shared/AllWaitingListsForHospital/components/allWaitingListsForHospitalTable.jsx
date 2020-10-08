@@ -21,36 +21,44 @@ class AllWaitingListsForHospitalTable extends PureComponent {
         selector: 'index',
         name: 'Index',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientLbo',
         name: 'Pacient LBO',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientScreenName',
         name: 'Patient name',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientPlace',
         name: 'Place',
         sortable: true,
+        center: true,
+        grow: 1
       },
       {
         selector: 'dateOfPlacement',
         name: 'Date of placement',
         sortable: true,
+        center: true
       },
       {
         selector: 'maxWaitingDate',
         name: 'Maximum waitning date',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientScore',
         name: 'Score',
         sortable: true,
+        center: true
       }
     ];
 
@@ -64,12 +72,25 @@ class AllWaitingListsForHospitalTable extends PureComponent {
     const { headers } = this.state;
     const { theme, pacients } = this.props;
 
+    const customStyles = {
+      cells: {
+        style: {
+          paddingLeft: '5px',
+          paddingRight: '5px',
+          wordBreak: 'break-all'
+        },
+      },
+    };
+
     return (      
           <DataTable pagination={true} 
                      theme={ theme.className === 'theme-light' ? 'light' : 'dark'}
                      noHeader={true}
                      columns={headers}
-                     data={pacients}/>       
+                     striped={true}
+                     grow={true}
+                     data={pacients}
+                     customStyles={customStyles}/>       
     );
   }
 }

@@ -26,30 +26,39 @@ class AllAmmendsForHospitalTable extends PureComponent {
         selector: 'pacientLbo',
         name: 'Pacient LBO',
         sortable: true,
+        center: true
       },
       {
         selector: 'screenname',
         name: 'Pacient Name',
         sortable: true,
+        center: true
       },
       {
         selector: 'hospitalName',
         name: 'Hospital Name',
         sortable: true,
+        center: true,
+        grow: 1
       },
       {
         selector: 'ordinationName',
         name: 'Ordination Name',
         sortable: true,
+        center: true,
+        grow: 1
       },
       {
         selector: 'serviceName',
         name: 'Service Name',
         sortable: true,
+        center: true,
+        grow: 1
       },
       {
         selector: 'action',
-        name: 'Action'
+        name: 'Action',
+        center: true
       },
       {
         selector: 'approvePending',
@@ -65,7 +74,8 @@ class AllAmmendsForHospitalTable extends PureComponent {
       },
       {
         selector: 'evidences',
-        name: 'Evidences'
+        name: 'Evidences',
+        center: true
       }
     ];
 
@@ -81,13 +91,23 @@ class AllAmmendsForHospitalTable extends PureComponent {
   }
 
   onRowClick(row) {
-    window.alert(row.pacientLbo);
+    // window.alert(row.pacientLbo);
   }
 
 
   render() {
     const { headers } = this.state;
     const { theme, data } = this.props;
+
+    const customStyles = {
+      cells: {
+        style: {
+          paddingLeft: '5px',
+          paddingRight: '5px',
+          wordBreak: 'break-all'
+        },
+      },
+    };
 
     return (      
       <Col md={12} lg={12}>
@@ -102,6 +122,9 @@ class AllAmmendsForHospitalTable extends PureComponent {
                  noHeader={true}
                  columns={headers}
                  data={data}
+                 grow={true}
+                 striped={true}
+                 customStyles={customStyles}
                  onRowClicked={this.onRowClick}/>
         </CardBody>
        </Card>

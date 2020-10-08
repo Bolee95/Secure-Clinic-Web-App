@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unused-state,react/no-unescaped-entities */
 import React, { PureComponent } from 'react';
-import PropTypes, { array } from 'prop-types';
+import { array } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, CardBody, Col } from 'reactstrap';
@@ -21,41 +21,49 @@ class AllPatientsTable extends PureComponent {
         selector: 'pacientLbo',
         name: 'Pacient LBO',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientJmbg',
         name: 'Pacient JMBG',
         sortable: true,
+        center: true
       },
       {
         selector: 'hospitalName',
         name: 'Hospital Name',
         sortable: true,
-        minWidth: 100
+        grow: 2,
+        center: true
       },
       {
         selector: 'ordinationName',
         name: 'Ordination Name',
         sortable: true,
+        center: true,
+        grow: 1
       },
       {
         selector: 'serviceName',
         name: 'Service Name',
-        sortable: true,
+        center: true,
+        grow: 1
       },
       {
         selector: 'score',
         name: 'Score',
-        sortable: true
+        sortable: true,
+        center: true 
       },
       {
         selector: 'isReviewed',
         name: 'Is Pending Reviewed',
-        sortable: false,
+        center: true
       },
       {
         selector: 'documents',
-        name: 'Documents'
+        name: 'Documents',
+        center: true
       }
     ];
 
@@ -70,6 +78,16 @@ class AllPatientsTable extends PureComponent {
     const { headers } = this.state;
     const { theme, data } = this.props;
 
+    const customStyles = {
+      cells: {
+        style: {
+          paddingLeft: '5px',
+          paddingRight: '5px',
+          wordBreak: 'break-all'
+        },
+      },
+    };
+
     return (      
       <Col md={12} lg={12}>
       <Card>
@@ -81,8 +99,11 @@ class AllPatientsTable extends PureComponent {
       <DataTable pagination={true} 
                  theme={ theme.className === 'theme-light' ? 'light' : 'dark'}
                  noHeader={true}
+                 striped={true}
+                 grow={true}
                  columns={headers}
-                 data={data}/>
+                 data={data}
+                 customStyles={customStyles}/>
         </CardBody>
        </Card>
       </Col>

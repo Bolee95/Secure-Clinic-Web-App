@@ -216,7 +216,7 @@ Major tasks (by priority):
 - Generalni test aplikacije 1 *DONE*
 - Integracija podataka koje je dekan poslao u projekat / Soft DL:  20.09. *DONE*
 - Pisanje rada / Soft DL: 10.10.  *IN PROGRESS*
-- Implementacija BI za statistiku Soft DL: 01.10.
+- Implementacija BI za statistiku Soft DL: 01.10. *DONE* *2 dana ranije*
 - Generalni test 2
 -- Skloniti placeholdere
 - Dalja nadogradnja nedostataka (unapredjenja) projekta

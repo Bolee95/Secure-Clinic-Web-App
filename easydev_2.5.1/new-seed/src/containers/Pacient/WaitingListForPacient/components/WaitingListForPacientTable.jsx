@@ -22,26 +22,31 @@ class WaitingListForPacientTable extends PureComponent {
         selector: 'index',
         name: 'Index',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientLbo',
         name: 'Pacient LBO',
         sortable: true,
+        center: true
       },
       {
         selector: 'pacientScore',
         name: 'Score',
-        sortable: true
+        sortable: true, 
+        center: true
       },
       {
         selector: 'dateOfPlacement',
         name: 'Date of Placement',
-        sortable: false
+        sortable: false,
+        center: true
       },
       {
         selector: 'maxWaitingDate',
         name: 'Maximum Waiting Date',
-        sortable: false
+        sortable: false,
+        center: true
       }
     ];
 
@@ -56,6 +61,16 @@ class WaitingListForPacientTable extends PureComponent {
     const { headers } = this.state;
     const { theme, pacients, title } = this.props;
 
+    const customStyles = {
+      cells: {
+        style: {
+          paddingLeft: '5px',
+          paddingRight: '5px',
+          wordBreak: 'break-all'
+        },
+      },
+    };
+
     return (      
       <Col md={12} lg={12}>
       <Card>
@@ -68,7 +83,10 @@ class WaitingListForPacientTable extends PureComponent {
                  theme={ theme.className === 'theme-light' ? 'light' : 'dark'}
                  noHeader={true}
                  columns={headers}
-                 data={pacients}/>
+                 grow={true}
+                 striped={true}
+                 data={pacients}
+                 customStyles={customStyles}/>
         </CardBody>
        </Card>
       </Col>
