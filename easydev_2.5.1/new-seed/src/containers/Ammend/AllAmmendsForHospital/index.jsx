@@ -53,7 +53,7 @@ class AllAmmendsForHospital extends React.Component {
                     for (let index = 0; index < response.data.length; index++) {
                         let arrayItem = response.data[index];
                         let ammend = {
-                            'index': index,
+                            'index': index + 1,
                             'action': ammendStringForType(arrayItem.action),
                             'description': arrayItem.description,
                             'hospitalName': arrayItem.hospitalName,
@@ -80,7 +80,7 @@ class AllAmmendsForHospital extends React.Component {
                             }
                             value = {
                                 evidences[i]
-                                }> Evidence {[i]} </button></div>
+                                }> Evidence {[i + 1]} </button></div>
                                 links.push(test);
                         }
 
@@ -128,6 +128,10 @@ class AllAmmendsForHospital extends React.Component {
 
         approveTapped(rowData) {
 
+            this.setState({
+                loading: true
+            });
+
             const storage = require('store');
             const licenceId = storage.get('user').licenceId;
 
@@ -153,20 +157,18 @@ class AllAmmendsForHospital extends React.Component {
                     this.getPatients();
                 }, error => {
                     showNotification('danger', error.response.data.message);
-                })
+                }).then( () => {
+                    this.setState({
+                        loading: false
+                    });
+                });
         }
 
         render() {
-            const {
-                ammends,
-                loading
-            } = this.state;
+            const { ammends, loading } = this.state;
 
             if (loading) {
-                return ( < Loading loading = {
-                        loading
-                    }
-                    />);
+                return ( < Loading loading = {loading}/>);
                 }
 
                 return ( 

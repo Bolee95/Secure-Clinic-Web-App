@@ -21,7 +21,16 @@ class AddDiseaseToSicknessHistoryComponent extends React.Component {
     {  
         'diseaseCode': 'AA3',
         'diseaseName': 'Hipotermija'
-    }];
+    },
+    {
+        'diseaseCode': 'AA4',
+        'diseaseName': 'Bronhitis',
+    },
+    {
+        'diseaseCode': 'AA5',
+        'diseaseName': 'Aritmija'
+    }
+  ];
 
     this.state = { 
       isLoading : false,
@@ -76,6 +85,12 @@ class AddDiseaseToSicknessHistoryComponent extends React.Component {
     const licenceId = store.get('user').licenceId;
 
     this.setState({ formSubmited: true });
+
+    if (data['disease'] === undefined) {
+      showNotification('danger', 'No disase selected');
+      this.setState({ formSubmited: false });
+      return;
+    }
 
     const selectedPatientPrivateData = this.state.pacientsPrivateData.find(privateData => privateData.lbo === data['patient'].value);
     const selectedDisease = data['disease'].value;

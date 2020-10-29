@@ -112,8 +112,8 @@ class LogInComponent extends React.Component {
         <div className="account__wrapper">
           <div className="account__card">
             <div className="account__head">
-              <h3 className="account__title">Welcome to
-                <span className="account__logo"> Secure Clinic</span>
+              <h3 className="account__title">Welcome
+                <span className="account__logo"> </span>
               </h3>
               <h4 className="account__subhead subhead">Pacient centric and transparent Waiting lists managment</h4>
             </div>

@@ -63,6 +63,8 @@ class AllAmmendsForHospitalTable extends PureComponent {
       {
         selector: 'approvePending',
         name: 'Actions',
+        center: true,
+        grow: 2,
         cell: row =>  <ButtonToolbar className="form__button-toolbar">
                                    <Modal
                                      color="primary"

@@ -16,10 +16,6 @@ class AddDiseaseToSicknessHistoryForm extends PureComponent {
     reset: PropTypes.func.isRequired,
   };
 
-  constructor() {
-    super();
-  }
-
   render() {
     const { handleSubmit, reset, isLoading, pacientsPrivateData, diseases} = this.props;
 

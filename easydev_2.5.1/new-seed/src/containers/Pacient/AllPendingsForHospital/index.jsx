@@ -39,7 +39,7 @@ class AllPendingsForHospitalComponent extends React.Component {
             for (let index = 0; index < response.data.length; index++) {
                 let arrayItem = response.data[index];
                 let pending = {
-                    'index': index,
+                    'index': index + 1,
                     'hospitalCode': arrayItem.hospitalCode,
                     'ordinationCode': arrayItem.ordinationCode,
                     'pacientLbo': arrayItem.pacientLbo,
@@ -55,7 +55,7 @@ class AllPendingsForHospitalComponent extends React.Component {
 
                 var links = [];
                 for (var i=0; i < documents.length; i++) {
-                    let test = <div><button className="base-btn" onClick={(i) => this.documentClicked(i)} value={documents[i]}>Document {[i]}</button></div>
+                    let test = <div><button className="base-btn" onClick={(i) => this.documentClicked(i)} value={documents[i]}>Document {[i + 1]}</button></div>
                     links.push(test);
                 }
 
@@ -94,6 +94,7 @@ class AllPendingsForHospitalComponent extends React.Component {
 
     approveTapped(rowData) {
 
+        this.setState({ loading: true });
         const storage = require('store');
         const licenceId = storage.get('user').licenceId;
 
@@ -110,7 +111,9 @@ class AllPendingsForHospitalComponent extends React.Component {
             this.getPatients();
         }, error => {
             showNotification('danger', error.response.data.message);
-        })
+        }).then( () => {
+            this.setState({ loading: false });
+        });
     }
 
     render() {

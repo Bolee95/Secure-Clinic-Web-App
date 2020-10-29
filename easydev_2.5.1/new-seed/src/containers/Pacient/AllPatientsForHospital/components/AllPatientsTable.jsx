@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unused-state,react/no-unescaped-entities */
 import React, { PureComponent } from 'react';
-import PropTypes, { array } from 'prop-types';
+import { array } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Card, CardBody, Col } from 'reactstrap';
@@ -101,7 +101,7 @@ class AllPatientsTable extends PureComponent {
       <Card>
         <CardBody>
           <div className="card__title">
-            <h5 className="bold-text">All patients in system</h5>
+            <h5 className="bold-text">All patients for hospital</h5>
             <h5 className="subhead">List of all patients for all hospitals registered</h5>
           </div>
       <DataTable pagination={true} 

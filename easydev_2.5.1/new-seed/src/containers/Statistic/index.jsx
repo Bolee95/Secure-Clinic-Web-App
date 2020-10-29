@@ -42,50 +42,53 @@ class StatisticComponent extends React.Component {
         var store = require('store');
         let licenceId = store.get('user').licenceId;
         let hospitalCode = store.get('user').hospitalCode;
-        this.setState({ loading: true });
+        
+        // This is true for patient
+        if (licenceId !== undefined) {
+            this.setState({ loading: true });
+                axios({ method: 'GET', url: '/shared/getStatistics', headers: { 'Identity_name': licenceId }, params: { "hospitalCode": "AD" }})
+                .then(response => {
 
-        axios({ method: 'GET', url: '/shared/getStatistics', headers: { 'Identity_name': licenceId }, params: { "hospitalCode": hospitalCode }})
-        .then(response => {
+                    let data = response.data;
+                    let statistics = {
+                        'diffNumPacients': data['diffNumPacients'],
+                        'diffNumServices': data['diffNumServices'],
+                        'diffNumAmmends': data['diffNumAmmends'],
+                        'diffNumApprovedAmmends': data['diffNumApprovedAmmends'],
+                        'diffNumUnapprovedAmmends': data['diffNumUnapprovedAmmends'],
+                        'diffNumPendings': data['diffNumPendings'],
+                        'diffNumApprovedPendings': data['diffNumApprovedPendings'],
+                        'diffNumUnapprovedPendings': data['diffNumUnapprovedPendings'],
+                        'diffTimestamp': data['diffTimestamp'],
+                        'waitingListsStats': data['waitingListsStats']
+                    }
 
-            let data = response.data;
-            let statistics = {
-                'diffNumPacients': data['diffNumPacients'],
-                'diffNumServices': data['diffNumServices'],
-                'diffNumAmmends': data['diffNumAmmends'],
-                'diffNumApprovedAmmends': data['diffNumApprovedAmmends'],
-                'diffNumUnapprovedAmmends': data['diffNumUnapprovedAmmends'],
-                'diffNumPendings': data['diffNumPendings'],
-                'diffNumApprovedPendings': data['diffNumApprovedPendings'],
-                'diffNumUnapprovedPendings': data['diffNumUnapprovedPendings'],
-                'diffTimestamp': data['diffTimestamp'],
-                'waitingListsStats': data['waitingListsStats']
+                    var statArray = [];
+                    for (let index = 0; index < response.data['stats'].length; index++) {
+                        let arrayItem = response.data['stats'][index];
+                        let stats = {
+                            'numAmmends': arrayItem.numAmmends,
+                            'numApprovedAmmends': arrayItem.numApprovedAmmends,
+                            'numApprovedPendings': arrayItem.numApprovedPendings,
+                            'numPacients': arrayItem.numPacients,
+                            'numPendings': arrayItem.numPendings,
+                            'numServices': arrayItem.numServices,
+                            'numUnapprovedAmmends': arrayItem.numUnapprovedAmmends,
+                            'numUnapprovedPendings': arrayItem.numUnapprovedPendings,
+                            'timestamp': arrayItem.timestamp
+                        }
+                        statArray.push(stats);
+                    }
+
+                    this.setState({
+                        statistics: statistics,
+                        loading: false,
+                        stats: statArray
+                    })
+                }, error => {
+                showNotification('danger', error.response.data.message);  
+                })
             }
-
-            var statArray = [];
-            for (let index = 0; index < response.data['stats'].length; index++) {
-                let arrayItem = response.data['stats'][index];
-                 let stats = {
-                    'numAmmends': arrayItem.numAmmends,
-                    'numApprovedAmmends': arrayItem.numApprovedAmmends,
-                    'numApprovedPendings': arrayItem.numApprovedPendings,
-                    'numPacients': arrayItem.numPacients,
-                    'numPendings': arrayItem.numPendings,
-                    'numServices': arrayItem.numServices,
-                    'numUnapprovedAmmends': arrayItem.numUnapprovedAmmends,
-                    'numUnapprovedPendings': arrayItem.numUnapprovedPendings,
-                    'timestamp': arrayItem.timestamp
-                }
-                statArray.push(stats);
-            }
-
-            this.setState({
-                statistics: statistics,
-                loading: false,
-                stats: statArray
-            })
-        }, error => {
-           showNotification('danger', error.response.data.message);  
-        })
     }
 
     updateStatistics() {
@@ -230,37 +233,49 @@ class StatisticComponent extends React.Component {
 
         var store = require('store');
         var username = store.get('user').name + ' ' + store.get('user').surname;
+        var licenceId = store.get('user').licenceId;
 
-        return (
-            <Container className="dashboard">
-            <Col>
+        if (licenceId === undefined) {
+            return (<Container className="dashboard">
+                        <Col>
+                            <Row>
+                                <h2 className="page-title">Welcome back, {username}</h2>
+                            </Row>
+                        </Col>
+                    </Container>)
+        } else {
+
+            return (
+                <Container className="dashboard">
+                <Col>
+                    <Row>
+                        <h2 className="page-title">Welcome back, {username}</h2>
+                    </Row>
+                </Col>
+                
                 <Row>
-                    <h2 className="page-title">Welcome back, {username}</h2>
-                </Row>
-            </Col>
-        
-            <Row>
-                <Tile title="Number of pacients" dir="ltr" color="blue" value={latestStat['numPacients']} />
-                <Tile title="Number of services" dir="ltr" color="lime" value={latestStat['numServices']} />
-                <Tile title="Number of ammends"  dir="ltr" color="blue" value={latestStat['numAmmends']} />
-                <Tile title="Number of pendings" dir="ltr" color="lime" value={latestStat['numPendings']} />
-            </Row> 
-            <Col>
-                <Row>
-                    <AppTile hoursUpdated={lastUpdated} data={this.generateDataForTable()} dir="ltr"/>
-                </Row>
-            </Col>     
-            <Col>
-                <Row>
-                    <PieChart data={this.generateWaitingListDataForTable()} dir="ltr"></PieChart> 
-                </Row>
-            </Col>     
-            <ButtonToolbar className="form__button-toolbar">
-                <ExpandButton title="Update statistics" onSubmit={this.updateStatistics} load={updateStatistics}></ExpandButton>
-                <Button color="primary" onClick={this.loadStatistics}>Reload</Button>
-            </ButtonToolbar>
-            </Container>
-        )};
+                    <Tile title="Number of pacients" dir="ltr" color="blue" value={latestStat['numPacients']} />
+                    <Tile title="Number of services" dir="ltr" color="lime" value={latestStat['numServices']} />
+                    <Tile title="Number of ammends"  dir="ltr" color="blue" value={latestStat['numAmmends']} />
+                    <Tile title="Number of pendings" dir="ltr" color="lime" value={latestStat['numPendings']} />
+                </Row> 
+                <Col>
+                    <Row>
+                        <AppTile hoursUpdated={lastUpdated} data={this.generateDataForTable()} dir="ltr"/>
+                    </Row>
+                </Col>     
+                <Col>
+                    <Row>
+                        <PieChart data={this.generateWaitingListDataForTable()} dir="ltr"></PieChart> 
+                    </Row>
+                </Col>     
+                <ButtonToolbar className="form__button-toolbar">
+                    <ExpandButton title="Update statistics" onSubmit={this.updateStatistics} load={updateStatistics}></ExpandButton>
+                    <Button color="primary" onClick={this.loadStatistics}>Reload</Button>
+                </ButtonToolbar>
+                </Container>)
+             };
+        };
 }
 
 export default StatisticComponent;

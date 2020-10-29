@@ -32,7 +32,8 @@ class AllPendingsForHospitalTable extends PureComponent {
         selector: 'pacientScreenName',
         name: 'Pacient',
         sortable: true,
-        center: true
+        center: true,
+        grow: 2
       },
       {
         selector: 'pacientLbo',
@@ -44,7 +45,7 @@ class AllPendingsForHospitalTable extends PureComponent {
         selector: 'hospitalName',
         name: 'Hospital Name',
         sortable: true,
-        grow: 2,
+        grow: 3,
         center: true
       },
       {
@@ -57,13 +58,14 @@ class AllPendingsForHospitalTable extends PureComponent {
         selector: 'serviceName',
         name: 'Service Name',
         sortable: true,
-        grow: 3,
+        grow: 4,
         center: true
       },
       {
         selector: 'approvePending',
         name: 'Actions',
         center: true,
+        grow: 2,
         cell: row =>  <ButtonToolbar className="form__button-toolbar">
                                    <Modal
                                      color="primary"

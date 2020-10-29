@@ -65,8 +65,8 @@ class AddPendingForm extends PureComponent {
         <Card>
           <CardBody>
             <div className="card__title">
-              <h4 className="page-title" >New Pacient Formulae</h4>
-              <h1 className="subhead">Please, insert mandatory user data for creating new one inside system</h1>
+              <h4 className="page-title" >New Pending Formulae</h4>
+              <h1 className="subhead">Please, fill mandatory data for creating waiting list request for selected pacient</h1>
             </div>
             <form className="form" onSubmit={handleSubmit}>
             <div className="form__form-group">

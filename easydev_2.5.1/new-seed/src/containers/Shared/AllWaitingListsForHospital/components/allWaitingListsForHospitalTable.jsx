@@ -16,51 +16,91 @@ class AllWaitingListsForHospitalTable extends PureComponent {
   constructor() {
     super();
 
-    const headers = [
-      {
-        selector: 'index',
-        name: 'Index',
-        sortable: true,
-        center: true
-      },
-      {
-        selector: 'pacientLbo',
-        name: 'Pacient LBO',
-        sortable: true,
-        center: true
-      },
-      {
-        selector: 'pacientScreenName',
-        name: 'Patient name',
-        sortable: true,
-        center: true
-      },
-      {
-        selector: 'pacientPlace',
-        name: 'Place',
-        sortable: true,
-        center: true,
-        grow: 1
-      },
-      {
-        selector: 'dateOfPlacement',
-        name: 'Date of placement',
-        sortable: true,
-        center: true
-      },
-      {
-        selector: 'maxWaitingDate',
-        name: 'Maximum waitning date',
-        sortable: true,
-        center: true
-      },
-      {
-        selector: 'pacientScore',
-        name: 'Score',
-        sortable: true,
-        center: true
-      }
-    ];
+    var headers;
+    var store = require('store');
+    let licenceId = store.get('user').licenceId;
+    // This is true for patient
+    if (licenceId !== undefined) {
+      headers = [
+        {
+          selector: 'index',
+          name: 'Index',
+          sortable: true,
+          center: true
+        },
+        {
+          selector: 'pacientLbo',
+          name: 'Pacient LBO',
+          sortable: true,
+          center: true
+        },
+        {
+          selector: 'pacientScreenName',
+          name: 'Patient name',
+          sortable: true,
+          center: true
+        },
+        {
+          selector: 'pacientPlace',
+          name: 'Place',
+          sortable: true,
+          center: true,
+          grow: 1
+        },
+        {
+          selector: 'dateOfPlacement',
+          name: 'Date of placement',
+          sortable: true,
+          center: true
+        },
+        {
+          selector: 'maxWaitingDate',
+          name: 'Maximum waitning date',
+          sortable: true,
+          center: true
+        },
+        {
+          selector: 'pacientScore',
+          name: 'Score',
+          sortable: true,
+          center: true
+        }
+      ]; 
+    }
+    else {
+      headers = [
+        {
+          selector: 'index',
+          name: 'Index',
+          sortable: true,
+          center: true
+        },
+        {
+          selector: 'pacientLbo',
+          name: 'Pacient LBO',
+          sortable: true,
+          center: true
+        },
+        {
+          selector: 'pacientScore',
+          name: 'Score',
+          sortable: true,
+          center: true
+        },
+        {
+          selector: 'dateOfPlacement',
+          name: 'Date of placement',
+          sortable: true,
+          center: true
+        },
+        {
+          selector: 'maxWaitingDate',
+          name: 'Maximum waitning date',
+          sortable: true,
+          center: true
+        }
+      ]; 
+    }
 
     this.state = {
       headers: headers

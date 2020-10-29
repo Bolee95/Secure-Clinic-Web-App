@@ -24,11 +24,15 @@ class AllWaitingListsForHospital extends React.Component {
 
     getWaitingLists() {
         var store = require('store');
-        const hospitalCode = store.get('user').hospitalCode;
+        var hospitalCode = store.get('user').hospitalCode;
         const licenceId = store.get('user').licenceId;
+        // Patient
+        if (licenceId === undefined) {
+            hospitalCode = "";
+        }
 
         this.setState({ loading: true });
-        axios({ method: 'GET', url: '/shared/getAllWaitingListsForHospital', headers: { 'Identity_name': licenceId }, params: { 'hospitalCode': hospitalCode }})
+        axios({ method: 'GET', url: '/shared/getAllWaitingListsForHospital', headers: { 'Identity_name': 'admin' }, params: { 'hospitalCode': hospitalCode }})
         .then(response => {
             let waitingLists = [];
             for (let index = 0; index < response.data.length; index++) {
