@@ -15,7 +15,7 @@
     "bootstrap": "^4.5.2",
     "classnames": "^2.2.6",
     "js-file-download": "^0.4.12",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "lodash.range": "^3.2.0",
     "mdi-react": "^7.3.0",
     "node-sass": "^4.14.1",
