@@ -18,7 +18,7 @@
     "lodash": "^4.17.20",
     "lodash.range": "^3.2.0",
     "mdi-react": "^7.3.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-data-grid": "^7.0.0-canary.20",
     "react-data-table-component": "^6.11.0",
